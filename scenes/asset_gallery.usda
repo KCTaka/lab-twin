@@ -1,0 +1,161 @@
+#usda 1.0
+(
+    defaultPrim = "World"
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "World"
+{
+    def PhysicsScene "PhysicsScene"
+    {
+    }
+
+    def Xform "Floor"
+    {
+        double3 xformOp:translate = (0, 0, -0.01)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+
+        def Cube "shape" (
+            prepend apiSchemas = ["PhysicsCollisionAPI"]
+        )
+        {
+            color3f[] primvars:displayColor = [(0.55, 0.56, 0.58)]
+            double size = 1
+            float3 xformOp:scale = (30.38765, 8, 0.02)
+            uniform token[] xformOpOrder = ["xformOp:scale"]
+        }
+    }
+
+    def DomeLight "Dome"
+    {
+        float inputs:intensity = 300
+    }
+
+    def DistantLight "Sun"
+    {
+        float inputs:angle = 1
+        float inputs:intensity = 1500
+        float3 xformOp:rotateXYZ = (-40, 25, 0)
+        uniform token[] xformOpOrder = ["xformOp:rotateXYZ"]
+    }
+
+    def Xform "Gallery"
+    {
+        double3 xformOp:translate = (-13.193825000000002, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+
+        def Xform "Newport_OTS_UT2_48_12_I_6fd189" (
+            prepend references = @../assets/Newport_OTS_UT2_48_12_I_6fd189/Newport_OTS_UT2_48_12_I_6fd189.usda@
+        )
+        {
+            double3 xformOp:translate = (1.2192, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "TMCTechnical_784_655_02R_52b98b" (
+            prepend references = @../assets/TMCTechnical_784_655_02R_52b98b/TMCTechnical_784_655_02R_52b98b.usda@
+        )
+        {
+            double3 xformOp:translate = (4.1576, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "Newport_VIS3672_PG4_325A_8fb101" (
+            prepend references = @../assets/Newport_VIS3672_PG4_325A_8fb101/Newport_VIS3672_PG4_325A_8fb101.usda@
+        )
+        {
+            double3 xformOp:translate = (6.8267500000000005, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "Newport_OTS_8_1344b3" (
+            prepend references = @../assets/Newport_OTS_8_1344b3/Newport_OTS_8_1344b3.usda@
+        )
+        {
+            double3 xformOp:translate = (9.6677, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "Rousseau_no_P_N_ROUSSEAU_MODULAR_13dbe5" (
+            prepend references = @../assets/Rousseau_no_P_N_ROUSSEAU_MODULAR_13dbe5/Rousseau_no_P_N_ROUSSEAU_MODULAR_13dbe5.usda@
+        )
+        {
+            double3 xformOp:translate = (12.4731, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "Rousseau_no_P_N_ROUSSEAU_SPIDER_89bfee" (
+            prepend references = @../assets/Rousseau_no_P_N_ROUSSEAU_SPIDER_89bfee/Rousseau_no_P_N_ROUSSEAU_SPIDER_89bfee.usda@
+        )
+        {
+            double3 xformOp:translate = (14.344700000000001, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "PremierAV_AV34_817e78" (
+            prepend references = @../assets/PremierAV_AV34_817e78/PremierAV_AV34_817e78.usda@
+        )
+        {
+            double3 xformOp:translate = (15.644800000000002, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "Newport_ATS_HS_12_baa14b" (
+            prepend references = @../assets/Newport_ATS_HS_12_baa14b/Newport_ATS_HS_12_baa14b.usda@
+        )
+        {
+            double3 xformOp:translate = (16.7798, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "VWRInternati_10819_650_3fad9a" (
+            prepend references = @../assets/VWRInternati_10819_650_3fad9a/VWRInternati_10819_650_3fad9a.usda@
+        )
+        {
+            double3 xformOp:translate = (17.829075000000003, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "Quartet_QRT66080_with_606_wall_m_8d033c" (
+            prepend references = @../assets/Quartet_QRT66080_with_606_wall_m_8d033c/Quartet_QRT66080_with_606_wall_m_8d033c.usda@
+        )
+        {
+            double3 xformOp:translate = (19.435900000000004, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "Newport_ACWS_42ec99" (
+            prepend references = @../assets/Newport_ACWS_42ec99/Newport_ACWS_42ec99.usda@
+        )
+        {
+            double3 xformOp:translate = (20.950650000000003, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "Quartet_QRT02304_5983b0" (
+            prepend references = @../assets/Quartet_QRT02304_5983b0/Quartet_QRT02304_5983b0.usda@
+        )
+        {
+            double3 xformOp:translate = (22.225350000000002, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "Laservision_F5P06_f57242" (
+            prepend references = @../assets/Laservision_F5P06_f57242/Laservision_F5P06_f57242.usda@
+        )
+        {
+            double3 xformOp:translate = (24.604950000000002, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "FIXTURE_cad_tr2_like_post" (
+            prepend references = @../assets/FIXTURE_cad_tr2_like_post/FIXTURE_cad_tr2_like_post.usda@
+        )
+        {
+            double3 xformOp:translate = (26.381300000000003, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+    }
+}
+

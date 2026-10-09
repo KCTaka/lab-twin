@@ -1,0 +1,197 @@
+#usda 1.0
+(
+    defaultPrim = "Quartet_QRT02304_5983b0"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "Quartet_QRT02304_5983b0" (
+    prepend apiSchemas = ["SemanticsLabelsAPI:class"]
+    assetInfo = {
+        asset identifier = @Quartet_QRT02304_5983b0.usda@
+        string name = "Quartet_QRT02304_5983b0"
+        string version = "b564028e3997"
+    }
+    customData = {
+        dictionary lab_twin = {
+            string body = "static"
+            string expected_bbox_mm = "[[-609.6, -9.525, 0.0], [609.6, 9.525, 914.4]]"
+            string family = "wall_panel"
+            string manufacturer = "Quartet"
+            double mass_kg = 6.9
+            string part_number = "QRT02304"
+            string provisional_params = "t,frame_w"
+            string route = "PARAMETRIC_PRIMITIVE"
+            string spec_sha = "b564028e3997"
+        }
+    }
+    kind = "component"
+)
+{
+    token[] semantics:labels:class = ["bulletin_board"]
+
+    def Scope "Looks"
+    {
+        def Material "PhysicsMaterial" (
+            prepend apiSchemas = ["PhysicsMaterialAPI"]
+        )
+        {
+            float physics:dynamicFriction = 0.5
+            float physics:restitution = 0
+            float physics:staticFriction = 0.6
+        }
+
+        def Material "cork"
+        {
+            token outputs:surface.connect = </Quartet_QRT02304_5983b0/Looks/cork/PreviewSurface.outputs:surface>
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.62, 0.46, 0.3)
+                float inputs:metallic = 0
+                float inputs:roughness = 0.9
+                token outputs:surface
+            }
+        }
+
+        def Material "aluminium"
+        {
+            token outputs:surface.connect = </Quartet_QRT02304_5983b0/Looks/aluminium/PreviewSurface.outputs:surface>
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.8, 0.81, 0.82)
+                float inputs:metallic = 1
+                float inputs:roughness = 0.35
+                token outputs:surface
+            }
+        }
+    }
+
+    def Scope "Geometry"
+    {
+        def Xform "face"
+        {
+            double3 xformOp:translate = (0, 0, 0.4572)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                rel material:binding = </Quartet_QRT02304_5983b0/Looks/cork>
+                rel material:binding:physics = </Quartet_QRT02304_5983b0/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double size = 1
+                float3 xformOp:scale = (1.1811, 0.01905, 0.8763)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "frame_bottom"
+        {
+            double3 xformOp:translate = (0, 0, 0.009525)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                rel material:binding = </Quartet_QRT02304_5983b0/Looks/aluminium>
+                rel material:binding:physics = </Quartet_QRT02304_5983b0/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double size = 1
+                float3 xformOp:scale = (1.2192, 0.01905, 0.01905)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "frame_top"
+        {
+            double3 xformOp:translate = (0, 0, 0.904875)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                rel material:binding = </Quartet_QRT02304_5983b0/Looks/aluminium>
+                rel material:binding:physics = </Quartet_QRT02304_5983b0/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double size = 1
+                float3 xformOp:scale = (1.2192, 0.01905, 0.01905)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "frame_left"
+        {
+            double3 xformOp:translate = (-0.600075, 0, 0.4572)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                rel material:binding = </Quartet_QRT02304_5983b0/Looks/aluminium>
+                rel material:binding:physics = </Quartet_QRT02304_5983b0/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double size = 1
+                float3 xformOp:scale = (0.01905, 0.01905, 0.8763)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "frame_right"
+        {
+            double3 xformOp:translate = (0.600075, 0, 0.4572)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                rel material:binding = </Quartet_QRT02304_5983b0/Looks/aluminium>
+                rel material:binding:physics = </Quartet_QRT02304_5983b0/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double size = 1
+                float3 xformOp:scale = (0.01905, 0.01905, 0.8763)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+    }
+
+    def Scope "KeyPoints"
+    {
+        def Xform "face_center" (
+            customData = {
+                double3 normal = (0, -1, 0)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (0, -0.009525, 0.4572)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "wall_mount_center" (
+            customData = {
+                double3 normal = (0, 1, 0)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (0, 0.009525, 0.4572)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+    }
+}
+

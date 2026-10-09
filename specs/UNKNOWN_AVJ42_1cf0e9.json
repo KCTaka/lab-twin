@@ -1,0 +1,23 @@
+{
+  "asset_id": "UNKNOWN_AVJ42_1cf0e9",
+  "inventory": {
+    "manufacturer": "UNKNOWN",
+    "part_number": "AVJ42",
+    "description": "Metal adjustable-height AV cart, black",
+    "qty": 2,
+    "instances": 2
+  },
+  "route": "PARAMETRIC_PRIMITIVE",
+  "family": "cart",
+  "params": {},
+  "physics": {
+    "body": "static",
+    "collision": "box",
+    "mass_kg": {
+      "value": null,
+      "src": "assumed"
+    }
+  },
+  "semantic_class": "cart",
+  "notes": "maker unknown; route MANUAL_RESEARCH -> PARAMETRIC_PRIMITIVE"
+}

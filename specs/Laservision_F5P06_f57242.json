@@ -1,0 +1,43 @@
+{
+  "asset_id": "Laservision_F5P06_f57242",
+  "inventory": {
+    "manufacturer": "Laservision",
+    "part_number": "F5P06",
+    "description": "Laser barrier curtain panel, 100 W/cm^2, 100\" x 84\"",
+    "qty": 2,
+    "instances": 2
+  },
+  "route": "PARAMETRIC_PRIMITIVE",
+  "family": "curtain",
+  "params": {
+    "w": {
+      "value": 2540.0,
+      "unit": "mm",
+      "src": "inventory",
+      "quote": "Laser barrier curtain panel, 100 W/cm^2, 100\" x 84\""
+    },
+    "h": {
+      "value": 2133.6,
+      "unit": "mm",
+      "src": "inventory",
+      "quote": "Laser barrier curtain panel, 100 W/cm^2, 100\" x 84\""
+    },
+    "t": {
+      "value": 1.0,
+      "unit": "mm",
+      "src": "assumed",
+      "note": "fabric thickness not published"
+    }
+  },
+  "physics": {
+    "body": "static",
+    "collision": "box",
+    "mass_kg": {
+      "value": null,
+      "src": "assumed",
+      "note": "not published"
+    }
+  },
+  "semantic_class": "laser_curtain",
+  "notes": "hangs from 1.44 x 1.25 in ceiling track (datasheet); track not modelled"
+}

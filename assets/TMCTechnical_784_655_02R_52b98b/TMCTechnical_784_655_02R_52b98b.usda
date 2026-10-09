@@ -1,0 +1,209 @@
+#usda 1.0
+(
+    defaultPrim = "TMCTechnical_784_655_02R_52b98b"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "TMCTechnical_784_655_02R_52b98b" (
+    prepend apiSchemas = ["SemanticsLabelsAPI:class"]
+    assetInfo = {
+        asset identifier = @TMCTechnical_784_655_02R_52b98b.usda@
+        string name = "TMCTechnical_784_655_02R_52b98b"
+        string version = "9331487aa4ef"
+    }
+    customData = {
+        dictionary lab_twin = {
+            string body = "static"
+            string expected_bbox_mm = "[[-1219.2, -609.6, 0.0], [1219.2, 609.6, 914.4000000000001]]"
+            string family = "optical_table"
+            string manufacturer = "TMC (Technical Manufacturing Corp.)"
+            double mass_kg = 553.9
+            string part_number = "784-655-02R"
+            string provisional_params = "surface_h,leg_w,leg_inset_x,leg_inset_y,hole_offset_x,hole_offset_y"
+            string route = "PARAMETRIC_PRIMITIVE"
+            string spec_sha = "9331487aa4ef"
+        }
+    }
+    kind = "component"
+)
+{
+    token[] semantics:labels:class = ["optical_table"]
+
+    def Scope "Looks"
+    {
+        def Material "PhysicsMaterial" (
+            prepend apiSchemas = ["PhysicsMaterialAPI"]
+        )
+        {
+            float physics:dynamicFriction = 0.5
+            float physics:restitution = 0
+            float physics:staticFriction = 0.6
+        }
+
+        def Material "stainless_steel"
+        {
+            token outputs:surface.connect = </TMCTechnical_784_655_02R_52b98b/Looks/stainless_steel/PreviewSurface.outputs:surface>
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.45, 0.46, 0.47)
+                float inputs:metallic = 0.8
+                float inputs:roughness = 0.45
+                token outputs:surface
+            }
+        }
+
+        def Material "painted_steel_dark"
+        {
+            token outputs:surface.connect = </TMCTechnical_784_655_02R_52b98b/Looks/painted_steel_dark/PreviewSurface.outputs:surface>
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.1, 0.1, 0.11)
+                float inputs:metallic = 0.2
+                float inputs:roughness = 0.6
+                token outputs:surface
+            }
+        }
+    }
+
+    def Scope "Geometry"
+    {
+        def Xform "top"
+        {
+            double3 xformOp:translate = (0, 0, 0.762)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                rel material:binding = </TMCTechnical_784_655_02R_52b98b/Looks/stainless_steel>
+                rel material:binding:physics = </TMCTechnical_784_655_02R_52b98b/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double size = 1
+                float3 xformOp:scale = (2.4384, 1.2192, 0.3048)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "leg_00"
+        {
+            double3 xformOp:translate = (-0.9144000000000001, -0.40640000000000004, 0.30479999999999996)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                rel material:binding = </TMCTechnical_784_655_02R_52b98b/Looks/painted_steel_dark>
+                rel material:binding:physics = </TMCTechnical_784_655_02R_52b98b/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double size = 1
+                float3 xformOp:scale = (0.1524, 0.1524, 0.6096)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "leg_01"
+        {
+            double3 xformOp:translate = (-0.9144000000000001, 0.40640000000000004, 0.30479999999999996)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                rel material:binding = </TMCTechnical_784_655_02R_52b98b/Looks/painted_steel_dark>
+                rel material:binding:physics = </TMCTechnical_784_655_02R_52b98b/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double size = 1
+                float3 xformOp:scale = (0.1524, 0.1524, 0.6096)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "leg_10"
+        {
+            double3 xformOp:translate = (0.9144000000000001, -0.40640000000000004, 0.30479999999999996)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                rel material:binding = </TMCTechnical_784_655_02R_52b98b/Looks/painted_steel_dark>
+                rel material:binding:physics = </TMCTechnical_784_655_02R_52b98b/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double size = 1
+                float3 xformOp:scale = (0.1524, 0.1524, 0.6096)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "leg_11"
+        {
+            double3 xformOp:translate = (0.9144000000000001, 0.40640000000000004, 0.30479999999999996)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                rel material:binding = </TMCTechnical_784_655_02R_52b98b/Looks/painted_steel_dark>
+                rel material:binding:physics = </TMCTechnical_784_655_02R_52b98b/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double size = 1
+                float3 xformOp:scale = (0.1524, 0.1524, 0.6096)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+    }
+
+    def Scope "KeyPoints"
+    {
+        def Xform "surface_center" (
+            customData = {
+                double3 normal = (0, 0, 1)
+                bool support = 1
+            }
+        )
+        {
+            double3 xformOp:translate = (0, 0, 0.9144)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "hole_grid_origin" (
+            customData = {
+                string data = '{"pitch_mm": 25.4, "n_x": 96, "n_y": 48, "thread": "1/4-20"}'
+                double3 normal = (0, 0, 1)
+                bool support = 1
+            }
+        )
+        {
+            double3 xformOp:translate = (-1.2065000000000001, -0.5969, 0.9144)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "front_edge_center" (
+            customData = {
+                double3 normal = (0, -1, 0)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (0, -0.6096, 0.9144)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+    }
+}
+

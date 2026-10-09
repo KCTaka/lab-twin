@@ -1,0 +1,78 @@
+{
+  "asset_id": "Newport_VIS3672_PG4_325A_8fb101",
+  "pass": true,
+  "checks": {
+    "C1_metrics": {
+      "pass": true,
+      "mpu": 1.0,
+      "up": "Z"
+    },
+    "C2_bbox": {
+      "pass": true,
+      "axes": [
+        {
+          "axis": "x",
+          "expected_mm": 1899.9,
+          "got_mm": 1899.9,
+          "ok": true
+        },
+        {
+          "axis": "y",
+          "expected_mm": 985.5,
+          "got_mm": 985.5,
+          "ok": true
+        },
+        {
+          "axis": "z",
+          "expected_mm": 909.3,
+          "got_mm": 909.3,
+          "ok": true
+        }
+      ]
+    },
+    "C3_floor_origin": {
+      "pass": true,
+      "min_z_mm": -0.0
+    },
+    "C4_collision": {
+      "pass": true,
+      "shapes": 5,
+      "collidable": 5
+    },
+    "C5_physics_settle": {
+      "pass": true,
+      "applicable": true,
+      "probes": [
+        {
+          "probe": "surface_center",
+          "probe_edge_mm": 100.0,
+          "probe_kg": 1.0,
+          "z0_mm": 979.3,
+          "z_err_mm": 0.0,
+          "speed_mm_s": 0.0,
+          "ok": true
+        },
+        {
+          "probe": "hole_grid_origin",
+          "probe_edge_mm": 100.0,
+          "probe_kg": 1.0,
+          "z0_mm": 979.3,
+          "z_err_mm": 0.0,
+          "speed_mm_s": 0.0,
+          "ok": true
+        }
+      ],
+      "note": ""
+    },
+    "C6_provenance": {
+      "pass": true,
+      "provisional": [
+        "leg_w",
+        "hole_pitch",
+        "hole_offset_x",
+        "hole_offset_y",
+        "physics.mass_kg"
+      ]
+    }
+  }
+}

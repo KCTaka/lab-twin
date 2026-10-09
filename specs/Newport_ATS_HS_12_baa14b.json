@@ -1,0 +1,60 @@
+{
+  "asset_id": "Newport_ATS_HS_12_baa14b",
+  "inventory": {
+    "manufacturer": "Newport",
+    "part_number": "ATS-HS-12",
+    "description": "Hanging shelf assembly, 12 in rod length",
+    "qty": 1,
+    "instances": 1
+  },
+  "route": "PARAMETRIC_PRIMITIVE",
+  "family": "hanging_shelf",
+  "params": {
+    "shelf_len": {
+      "value": 584.2,
+      "unit": "mm",
+      "src": "datasheet",
+      "url": "https://www.newport.com.cn/p/ATS-HS-12",
+      "quote": "12 inch rods support this 20 inch by 23 inch hanging shelf.",
+      "note": "Spec table: Width 23 in., Length 20 in."
+    },
+    "shelf_d": {
+      "value": 508.0,
+      "unit": "mm",
+      "src": "datasheet",
+      "url": "https://www.newport.com.cn/p/ATS-HS-12",
+      "quote": "12 inch rods support this 20 inch by 23 inch hanging shelf."
+    },
+    "shelf_t": {
+      "value": 19.05,
+      "unit": "mm",
+      "src": "assumed",
+      "note": "sheet-metal tray thickness not published"
+    },
+    "rod_len": {
+      "value": 304.8,
+      "unit": "mm",
+      "src": "datasheet",
+      "url": "https://www.newport.com.cn/p/ATS-HS-12",
+      "quote": "12 inch rods support this 20 inch by 23 inch hanging shelf.",
+      "note": "Spec 'Height 12 in.' = rod length; shelf hangs ~12 in below main shelf."
+    },
+    "rod_dia": {
+      "value": 12.7,
+      "unit": "mm",
+      "src": "assumed",
+      "note": "rod diameter not published"
+    }
+  },
+  "physics": {
+    "body": "static",
+    "collision": "box",
+    "mass_kg": {
+      "value": null,
+      "src": "assumed",
+      "note": "not published"
+    }
+  },
+  "semantic_class": "hanging_shelf",
+  "notes": "ATS line hardware; fit to OTS-8 nut tracks unconfirmed"
+}

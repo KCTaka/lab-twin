@@ -1,0 +1,112 @@
+{
+  "asset_id": "Newport_OTS_UT2_48_12_I_6fd189",
+  "inventory": {
+    "manufacturer": "Newport",
+    "part_number": "OTS-UT2-48-12-I",
+    "description": "SmartTable OTS SmartStation UT2 48-12, isolated optical table, 4 ft x 8 ft x 12 in, 1/4-20 holes, ST-UT2",
+    "qty": 5,
+    "instances": 5
+  },
+  "route": "PARAMETRIC_PRIMITIVE",
+  "family": "optical_table",
+  "params": {
+    "w": {
+      "value": 2438.4,
+      "unit": "mm",
+      "src": "datasheet",
+      "url": "https://api.p1.mks.com/medias/sys_master/resources/h76/h28/9954276769822/OTS-I%20MECHANICAL%20OUTLINE/OTS-I-MECHANICAL-OUTLINE.pdf",
+      "quote": "OTS-xxx-48-12-I 48.0 [1219] 96.0 [2438] 12 [305]",
+      "note": "Dimension B."
+    },
+    "d": {
+      "value": 1219.2,
+      "unit": "mm",
+      "src": "datasheet",
+      "url": "https://api.p1.mks.com/medias/sys_master/resources/h76/h28/9954276769822/OTS-I%20MECHANICAL%20OUTLINE/OTS-I-MECHANICAL-OUTLINE.pdf",
+      "quote": "OTS-xxx-48-12-I 48.0 [1219] 96.0 [2438] 12 [305]",
+      "note": "Dimension A in OTS-I outline."
+    },
+    "top_t": {
+      "value": 304.8,
+      "unit": "mm",
+      "src": "datasheet",
+      "url": "https://api.p1.mks.com/medias/sys_master/resources/h76/h28/9954276769822/OTS-I%20MECHANICAL%20OUTLINE/OTS-I-MECHANICAL-OUTLINE.pdf",
+      "quote": "OTS-xxx-48-12-I 48.0 [1219] 96.0 [2438] 12 [305]",
+      "note": "Dimension C."
+    },
+    "surface_h": {
+      "value": 1033.8,
+      "unit": "mm",
+      "src": "datasheet",
+      "url": "https://www.newport.com.cn/p/OTS-UT2-48-12-I",
+      "quote": "Working Surface Height 40.7 \u00b1 0.5 in.",
+      "note": "Same value in OTS-I mechanical outline row OTS-xxx-48-12-I: F=40.7 in, G=1034 mm. Height is with isolators floating."
+    },
+    "leg_w": {
+      "value": 152.4,
+      "unit": "mm",
+      "src": "datasheet",
+      "url": "https://api.p1.mks.com/medias/sys_master/images/images/hb0/h91/8797262741534/SmartTable-OTS-90026760-RevC.pdf",
+      "quote": "6.0 inches which is the isolator base dimension",
+      "note": "From SmartTable OTS user manual (90026760 Rev C), sec. 1.5. Leg weldment cross-section itself is not dimensioned anywhere found; 6 in square is a reasonable box; leg modelled as an isolator-base-sized square column; true leg cross-section not published"
+    },
+    "leg_inset_x": {
+      "value": 132.1,
+      "unit": "mm",
+      "src": "datasheet",
+      "url": "https://api.p1.mks.com/medias/sys_master/resources/h76/h28/9954276769822/OTS-I%20MECHANICAL%20OUTLINE/OTS-I-MECHANICAL-OUTLINE.pdf",
+      "quote": "43.6 [1107]   91.6 [2327]   40.7   1034",
+      "note": "Dimension E (side view): outer face to outer face of the legs at the two table ends. Implied inset from each short table edge = (96.0-91.6)/2 = 2.2 in (55.9 mm); derived: (2438.4-2326.6)/2 + leg_w/2 = leg centre inset"
+    },
+    "leg_inset_y": {
+      "value": 132.1,
+      "unit": "mm",
+      "src": "datasheet",
+      "url": "https://api.p1.mks.com/medias/sys_master/resources/h76/h28/9954276769822/OTS-I%20MECHANICAL%20OUTLINE/OTS-I-MECHANICAL-OUTLINE.pdf",
+      "quote": "43.6 [1107]   91.6 [2327]   40.7   1034",
+      "note": "Dimension D (end view): outer face to outer face of the two legs of one leg weldment. Implied inset from each long table edge to the outer face of a leg = (48.0; derived: (1219.2-1107.4)/2 + leg_w/2"
+    },
+    "hole_pitch": {
+      "value": 25.4,
+      "unit": "mm",
+      "src": "datasheet",
+      "url": "https://www.newport.com.cn/p/OTS-UT2-48-12-I",
+      "quote": "Mounting Hole Pattern 1 in. grid",
+      "note": "Outline: '1.00 TYP HOLE TO HOLE DISTANCE [25.4]'."
+    },
+    "hole_offset_x": {
+      "value": 12.7,
+      "unit": "mm",
+      "src": "datasheet",
+      "url": "https://api.p1.mks.com/medias/sys_master/resources/h76/h28/9954276769822/OTS-I%20MECHANICAL%20OUTLINE/OTS-I-MECHANICAL-OUTLINE.pdf",
+      "quote": ".50 TYP BORDER DISTANCE [12.70]",
+      "note": "Product page also: 'Mounting Hole Borders 0.5 in.' => 48 x 96 holes on 4x8 ft top."
+    },
+    "hole_offset_y": {
+      "value": 12.7,
+      "unit": "mm",
+      "src": "datasheet",
+      "url": "https://api.p1.mks.com/medias/sys_master/resources/h76/h28/9954276769822/OTS-I%20MECHANICAL%20OUTLINE/OTS-I-MECHANICAL-OUTLINE.pdf",
+      "quote": ".50 TYP BORDER DISTANCE [12.70]",
+      "note": "Product page also: 'Mounting Hole Borders 0.5 in.' => 48 x 96 holes on 4x8 ft top."
+    },
+    "tie_bar_h": {
+      "value": 0,
+      "unit": "mm",
+      "src": "assumed",
+      "note": "OTS frame has 2 leg weldments + 3 cross braces (datasheet); not modelled yet"
+    }
+  },
+  "physics": {
+    "body": "static",
+    "collision": "box",
+    "mass_kg": {
+      "value": 583.8,
+      "src": "datasheet",
+      "quote": "Weight, System 1287 lb",
+      "url": "https://www.newport.com.cn/p/OTS-UT2-48-12-I"
+    }
+  },
+  "semantic_class": "optical_table",
+  "notes": "product discontinued (replacement TF-48-24-I); 'SmartStation' is not a Newport term"
+}

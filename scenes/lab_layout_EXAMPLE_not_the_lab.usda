@@ -1,0 +1,201 @@
+#usda 1.0
+(
+    defaultPrim = "World"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "World" (
+    customData = {
+        dictionary lab_twin_layout = {
+            string name = "EXAMPLE_not_the_lab"
+            string source = "EXAMPLE_not_the_lab.yaml"
+            string status = "draft"
+        }
+    }
+)
+{
+    def PhysicsScene "PhysicsScene"
+    {
+    }
+
+    def "Lights"
+    {
+        def DomeLight "Dome"
+        {
+            float inputs:intensity = 250
+        }
+    }
+
+    def "Room"
+    {
+        def Xform "Floor"
+        {
+            float xformOp:rotateZ = 0
+            double3 xformOp:translate = (4, 3, -0.025)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZ"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                color3f[] primvars:displayColor = [(0.45, 0.46, 0.48)]
+                double size = 1
+                float3 xformOp:scale = (8.3, 6.3, 0.05)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "Wall_0_0"
+        {
+            float xformOp:rotateZ = 0
+            double3 xformOp:translate = (0.3, -0.075, 1.5)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZ"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                color3f[] primvars:displayColor = [(0.8, 0.8, 0.78)]
+                double size = 1
+                float3 xformOp:scale = (0.6, 0.15, 3)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "Wall_0_1"
+        {
+            float xformOp:rotateZ = 0
+            double3 xformOp:translate = (1.075, -0.075, 2.55)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZ"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                color3f[] primvars:displayColor = [(0.8, 0.8, 0.78)]
+                double size = 1
+                float3 xformOp:scale = (0.95, 0.15, 0.9)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "Wall_0_2"
+        {
+            float xformOp:rotateZ = 0
+            double3 xformOp:translate = (4.775, -0.075, 1.5)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZ"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                color3f[] primvars:displayColor = [(0.8, 0.8, 0.78)]
+                double size = 1
+                float3 xformOp:scale = (6.45, 0.15, 3)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "Wall_1_0"
+        {
+            float xformOp:rotateZ = 90
+            double3 xformOp:translate = (8.075, 3, 1.5)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZ"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                color3f[] primvars:displayColor = [(0.8, 0.8, 0.78)]
+                double size = 1
+                float3 xformOp:scale = (6, 0.15, 3)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "Wall_2_0"
+        {
+            float xformOp:rotateZ = 180
+            double3 xformOp:translate = (4, 6.075, 1.5)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZ"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                color3f[] primvars:displayColor = [(0.8, 0.8, 0.78)]
+                double size = 1
+                float3 xformOp:scale = (8, 0.15, 3)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "Wall_3_0"
+        {
+            float xformOp:rotateZ = -90
+            double3 xformOp:translate = (-0.075, 3, 1.5)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZ"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["PhysicsCollisionAPI"]
+            )
+            {
+                color3f[] primvars:displayColor = [(0.8, 0.8, 0.78)]
+                double size = 1
+                float3 xformOp:scale = (6, 0.15, 3)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+    }
+
+    def "Lab"
+    {
+        def Xform "bench_1" (
+            customData = {
+                dictionary lab_twin = {
+                    string asset_id = "Rousseau_no_P_N_ROUSSEAU_MODULAR_13dbe5"
+                    string placement = '{"id": "bench_1", "asset": "Rousseau_no_P_N_ROUSSEAU_MODULAR_13dbe5", "wall": 2, "offset": 2.0}'
+                }
+            }
+            prepend references = @../assets/Rousseau_no_P_N_ROUSSEAU_MODULAR_13dbe5/Rousseau_no_P_N_ROUSSEAU_MODULAR_13dbe5.usda@
+        )
+        {
+            float xformOp:rotateZ = 360
+            double3 xformOp:translate = (6, 5.6952, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZ"]
+        }
+
+        def Xform "bench_2" (
+            customData = {
+                dictionary lab_twin = {
+                    string asset_id = "Rousseau_no_P_N_ROUSSEAU_MODULAR_13dbe5"
+                    string placement = '{"id": "bench_2", "asset": "Rousseau_no_P_N_ROUSSEAU_MODULAR_13dbe5", "wall": 2, "offset": 4.2}'
+                }
+            }
+            prepend references = @../assets/Rousseau_no_P_N_ROUSSEAU_MODULAR_13dbe5/Rousseau_no_P_N_ROUSSEAU_MODULAR_13dbe5.usda@
+        )
+        {
+            float xformOp:rotateZ = 360
+            double3 xformOp:translate = (3.8, 5.6952, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZ"]
+        }
+
+        def Xform "post_demo" (
+            customData = {
+                dictionary lab_twin = {
+                    string asset_id = "FIXTURE_cad_tr2_like_post"
+                    string placement = '{"id": "post_demo", "asset": "FIXTURE_cad_tr2_like_post", "host": "bench_1.work_surface_center", "at": [0.3, 0]}'
+                }
+            }
+            prepend references = @../assets/FIXTURE_cad_tr2_like_post/FIXTURE_cad_tr2_like_post.usda@
+        )
+        {
+            float xformOp:rotateZ = 360
+            double3 xformOp:translate = (6.3, 5.6952, 0.85725)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateZ"]
+        }
+    }
+}
+

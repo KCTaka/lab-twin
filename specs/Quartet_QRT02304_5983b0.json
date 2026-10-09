@@ -1,0 +1,50 @@
+{
+  "asset_id": "Quartet_QRT02304_5983b0",
+  "inventory": {
+    "manufacturer": "Quartet",
+    "part_number": "QRT02304",
+    "description": "Cork bulletin board 36\" x 48\", aluminum frame",
+    "qty": 5,
+    "instances": 5
+  },
+  "route": "PARAMETRIC_PRIMITIVE",
+  "family": "wall_panel",
+  "params": {
+    "w": {
+      "value": 1219.2,
+      "unit": "mm",
+      "src": "inventory",
+      "quote": "Cork bulletin board 36\" x 48\""
+    },
+    "h": {
+      "value": 914.4,
+      "unit": "mm",
+      "src": "inventory",
+      "quote": "Cork bulletin board 36\" x 48\""
+    },
+    "t": {
+      "value": 19.05,
+      "unit": "mm",
+      "src": "assumed",
+      "note": "packaged depth 1.5 in is an upper bound; 0.75 in frame assumed"
+    },
+    "frame_w": {
+      "value": 19.05,
+      "unit": "mm",
+      "src": "assumed",
+      "note": "aluminium frame width not published"
+    }
+  },
+  "physics": {
+    "body": "static",
+    "collision": "box",
+    "mass_kg": {
+      "value": 6.9,
+      "src": "datasheet",
+      "quote": "Gross weight 15.20lbs (packaged; upper bound)",
+      "url": "https://www.mybinding.com/media/manuals/quartet-QRT-2304-spec-sheet.pdf"
+    }
+  },
+  "semantic_class": "bulletin_board",
+  "notes": "orientation (landscape) assumed"
+}

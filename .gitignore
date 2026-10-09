@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+# vendor CAD / datasheets: licences generally forbid redistribution; provenance is in SOURCE.json
+sources/**
+!sources/.gitkeep
+# intermediates (regenerable): converter output, logs, renders
+build/
+# CAD-derived assets reference build/ outputs and vendor geometry; keep them local
+assets/*/cad/
+!assets/FIXTURE_*/cad/

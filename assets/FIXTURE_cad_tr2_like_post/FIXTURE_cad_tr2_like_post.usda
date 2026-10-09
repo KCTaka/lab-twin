@@ -1,0 +1,112 @@
+#usda 1.0
+(
+    defaultPrim = "FIXTURE_cad_tr2_like_post"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "FIXTURE_cad_tr2_like_post" (
+    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "SemanticsLabelsAPI:class"]
+    assetInfo = {
+        asset identifier = @FIXTURE_cad_tr2_like_post.usda@
+        string name = "FIXTURE_cad_tr2_like_post"
+        string version = "429415f50fc4"
+    }
+    customData = {
+        dictionary lab_twin = {
+            string body = "dynamic"
+            string expected_bbox_mm = "[[-6.349999904632568, -6.349999904632568, 0.0], [6.349999904632568, 6.349999904632568, 50.79999923706055]]"
+            string family = "cad"
+            string manufacturer = "FIXTURE"
+            double mass_kg = 0.049365
+            string part_number = "TR2-like"
+            string provisional_params = ""
+            string route = "VENDOR_STEP"
+            string spec_sha = "429415f50fc4"
+        }
+    }
+    kind = "component"
+)
+{
+    float physics:mass = 0.049365
+    token[] semantics:labels:class = ["optical_post"]
+
+    def Scope "Looks"
+    {
+        def Material "PhysicsMaterial" (
+            prepend apiSchemas = ["PhysicsMaterialAPI"]
+        )
+        {
+            float physics:dynamicFriction = 0.5
+            float physics:restitution = 0
+            float physics:staticFriction = 0.6
+        }
+
+        def Material "cad_default"
+        {
+            token outputs:surface.connect = </FIXTURE_cad_tr2_like_post/Looks/cad_default/PreviewSurface.outputs:surface>
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.75, 0.75, 0.75)
+                float inputs:metallic = 0.5
+                float inputs:roughness = 0.5
+                token outputs:surface
+            }
+        }
+    }
+
+    def Xform "Geometry"
+    {
+        float3 xformOp:scale = (0.001, 0.001, 0.001)
+        double3 xformOp:translate = (-0, -0, -0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+
+        def "cad" (
+            prepend references = @./cad/cad_raw.usda@
+        )
+        {
+            over "tn__OpenCASCADESTEPtranslator791_XTCHSV0fF"
+            {
+                over "Mesh" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding = </FIXTURE_cad_tr2_like_post/Looks/cad_default>
+                    rel material:binding:physics = </FIXTURE_cad_tr2_like_post/Looks/PhysicsMaterial> (
+                        bindMaterialAs = "weakerThanDescendants"
+                    )
+                    uniform token physics:approximation = "convexHull"
+                }
+            }
+        }
+    }
+
+    def Scope "KeyPoints"
+    {
+        def Xform "top_face_center" (
+            customData = {
+                double3 normal = (0, 0, 1)
+                bool support = 1
+            }
+        )
+        {
+            double3 xformOp:translate = (0, 0, 0.0508)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "bottom_face_center" (
+            customData = {
+                double3 normal = (0, 0, -1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+    }
+}
+

@@ -1,0 +1,63 @@
+{
+  "asset_id": "Newport_ACWS_42ec99",
+  "pass": true,
+  "checks": {
+    "C1_metrics": {
+      "pass": true,
+      "mpu": 1.0,
+      "up": "Z"
+    },
+    "C2_bbox": {
+      "pass": true,
+      "axes": [
+        {
+          "axis": "x",
+          "expected_mm": 330.2,
+          "got_mm": 330.2,
+          "ok": true
+        },
+        {
+          "axis": "y",
+          "expected_mm": 203.2,
+          "got_mm": 203.2,
+          "ok": true
+        },
+        {
+          "axis": "z",
+          "expected_mm": 355.6,
+          "got_mm": 355.6,
+          "ok": true
+        }
+      ]
+    },
+    "C3_floor_origin": {
+      "pass": true,
+      "min_z_mm": 0.0
+    },
+    "C4_collision": {
+      "pass": true,
+      "shapes": 1,
+      "collidable": 1
+    },
+    "C5_physics_settle": {
+      "pass": true,
+      "applicable": true,
+      "probes": [
+        {
+          "probe": "top_center",
+          "probe_edge_mm": 100.0,
+          "probe_kg": 1.0,
+          "z0_mm": 425.6,
+          "z_err_mm": 0.0,
+          "speed_mm_s": 0.0,
+          "ok": true
+        }
+      ],
+      "note": ""
+    },
+    "C6_provenance": {
+      "pass": true,
+      "provisional": []
+    }
+  }
+}

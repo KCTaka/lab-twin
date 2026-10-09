@@ -1,0 +1,55 @@
+{
+  "asset_id": "Newport_ACWS_42ec99",
+  "inventory": {
+    "manufacturer": "Newport",
+    "part_number": "ACWS",
+    "description": "Air compressor, low noise, 110 V (for IsoStation)",
+    "qty": 1,
+    "instances": 1
+  },
+  "route": "PARAMETRIC_PRIMITIVE",
+  "family": "appliance_box",
+  "params": {
+    "w": {
+      "value": 330.2,
+      "unit": "mm",
+      "src": "datasheet",
+      "url": "https://www.newport.com.cn/p/ACWS-02",
+      "quote": "Width 13 in.",
+      "note": "basis=related_model; Values from ACWS-02 (220 VAC twin of ACWS, same 1.0 L tank). Search-engine extract of newport.com/p/ACWS (403 to fetch) shows identical 13 x 8 x 14 in, 16 kg, b"
+    },
+    "d": {
+      "value": 203.2,
+      "unit": "mm",
+      "src": "datasheet",
+      "url": "https://www.newport.com.cn/p/ACWS-02",
+      "quote": "Length 8 in.",
+      "note": "basis=related_model; See width note."
+    },
+    "h": {
+      "value": 355.6,
+      "unit": "mm",
+      "src": "datasheet",
+      "url": "https://www.newport.com.cn/p/ACWS-02",
+      "quote": "Height 14 in.",
+      "note": "basis=related_model; See width note."
+    },
+    "material": {
+      "value": "painted_steel_white",
+      "src": "assumed",
+      "note": "visual only"
+    }
+  },
+  "physics": {
+    "body": "static",
+    "collision": "box",
+    "mass_kg": {
+      "value": 16.0,
+      "src": "datasheet",
+      "quote": "Weight 16 kg (ACWS-02, related model)",
+      "url": "https://www.newport.com.cn/p/ACWS-02"
+    }
+  },
+  "semantic_class": "air_compressor",
+  "notes": "air compressor; route VENDOR_STEP -> PARAMETRIC_PRIMITIVE"
+}

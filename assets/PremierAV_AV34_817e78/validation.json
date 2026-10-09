@@ -1,0 +1,86 @@
+{
+  "asset_id": "PremierAV_AV34_817e78",
+  "pass": true,
+  "checks": {
+    "C1_metrics": {
+      "pass": true,
+      "mpu": 1.0,
+      "up": "Z"
+    },
+    "C2_bbox": {
+      "pass": true,
+      "axes": [
+        {
+          "axis": "x",
+          "expected_mm": 685.8,
+          "got_mm": 685.8,
+          "ok": true
+        },
+        {
+          "axis": "y",
+          "expected_mm": 533.4,
+          "got_mm": 533.4,
+          "ok": true
+        },
+        {
+          "axis": "z",
+          "expected_mm": 863.6,
+          "got_mm": 863.6,
+          "ok": true
+        }
+      ]
+    },
+    "C3_floor_origin": {
+      "pass": true,
+      "min_z_mm": 0.0
+    },
+    "C4_collision": {
+      "pass": true,
+      "shapes": 11,
+      "collidable": 11
+    },
+    "C5_physics_settle": {
+      "pass": true,
+      "applicable": true,
+      "probes": [
+        {
+          "probe": "shelf_0_center",
+          "probe_edge_mm": 100.0,
+          "probe_kg": 1.0,
+          "z0_mm": 197.0,
+          "z_err_mm": 0.0,
+          "speed_mm_s": 0.0,
+          "ok": true
+        },
+        {
+          "probe": "shelf_1_center",
+          "probe_edge_mm": 100.0,
+          "probe_kg": 1.0,
+          "z0_mm": 565.3,
+          "z_err_mm": 0.0,
+          "speed_mm_s": 0.0,
+          "ok": true
+        },
+        {
+          "probe": "shelf_2_center",
+          "probe_edge_mm": 100.0,
+          "probe_kg": 1.0,
+          "z0_mm": 933.6,
+          "z_err_mm": 0.0,
+          "speed_mm_s": 0.0,
+          "ok": true
+        }
+      ],
+      "note": ""
+    },
+    "C6_provenance": {
+      "pass": true,
+      "provisional": [
+        "shelf_t",
+        "post_w",
+        "caster_h",
+        "physics.mass_kg"
+      ]
+    }
+  }
+}

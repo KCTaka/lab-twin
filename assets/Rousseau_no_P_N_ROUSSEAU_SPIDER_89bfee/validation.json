@@ -1,0 +1,101 @@
+{
+  "asset_id": "Rousseau_no_P_N_ROUSSEAU_SPIDER_89bfee",
+  "pass": true,
+  "checks": {
+    "C1_metrics": {
+      "pass": true,
+      "mpu": 1.0,
+      "up": "Z"
+    },
+    "C2_bbox": {
+      "pass": true,
+      "axes": [
+        {
+          "axis": "x",
+          "expected_mm": 914.4,
+          "got_mm": 914.4,
+          "ok": true
+        },
+        {
+          "axis": "y",
+          "expected_mm": 609.6,
+          "got_mm": 609.6,
+          "ok": true
+        },
+        {
+          "axis": "z",
+          "expected_mm": 1905.0,
+          "got_mm": 1905.0,
+          "ok": true
+        }
+      ]
+    },
+    "C3_floor_origin": {
+      "pass": true,
+      "min_z_mm": 0.0
+    },
+    "C4_collision": {
+      "pass": true,
+      "shapes": 9,
+      "collidable": 9
+    },
+    "C5_physics_settle": {
+      "pass": true,
+      "applicable": true,
+      "probes": [
+        {
+          "probe": "shelf_0_center",
+          "probe_edge_mm": 100.0,
+          "probe_kg": 1.0,
+          "z0_mm": 152.6,
+          "z_err_mm": -0.0,
+          "speed_mm_s": 0.0,
+          "ok": true
+        },
+        {
+          "probe": "shelf_1_center",
+          "probe_edge_mm": 100.0,
+          "probe_kg": 1.0,
+          "z0_mm": 517.1,
+          "z_err_mm": 0.0,
+          "speed_mm_s": 0.0,
+          "ok": true
+        },
+        {
+          "probe": "shelf_2_center",
+          "probe_edge_mm": 100.0,
+          "probe_kg": 1.0,
+          "z0_mm": 881.6,
+          "z_err_mm": 0.0,
+          "speed_mm_s": 0.0,
+          "ok": true
+        },
+        {
+          "probe": "shelf_3_center",
+          "probe_edge_mm": 100.0,
+          "probe_kg": 1.0,
+          "z0_mm": 1246.0,
+          "z_err_mm": 0.0,
+          "speed_mm_s": 0.0,
+          "ok": true
+        },
+        {
+          "probe": "shelf_4_center",
+          "probe_edge_mm": 100.0,
+          "probe_kg": 1.0,
+          "z0_mm": 1610.5,
+          "z_err_mm": 0.0,
+          "speed_mm_s": 0.0,
+          "ok": true
+        }
+      ],
+      "note": ""
+    },
+    "C6_provenance": {
+      "pass": true,
+      "provisional": [
+        "physics.mass_kg"
+      ]
+    }
+  }
+}

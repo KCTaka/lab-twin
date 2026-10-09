@@ -1,0 +1,159 @@
+#usda 1.0
+(
+    defaultPrim = "Newport_OTS_8_1344b3"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "Newport_OTS_8_1344b3" (
+    prepend apiSchemas = ["SemanticsLabelsAPI:class"]
+    assetInfo = {
+        asset identifier = @Newport_OTS_8_1344b3.usda@
+        string name = "Newport_OTS_8_1344b3"
+        string version = "7380696cab37"
+    }
+    customData = {
+        dictionary lab_twin = {
+            string body = "static"
+            string expected_bbox_mm = "[[-1391.0, -298.45, 0.0], [1391.0, 298.45, 543.56]]"
+            string family = "overhead_shelf"
+            string manufacturer = "Newport"
+            double mass_kg = -1
+            string part_number = "OTS-8"
+            string provisional_params = "post_w,physics.mass_kg"
+            string route = "PARAMETRIC_PRIMITIVE"
+            string spec_sha = "7380696cab37"
+        }
+    }
+    kind = "component"
+)
+{
+    token[] semantics:labels:class = ["overhead_shelf"]
+
+    def Scope "Looks"
+    {
+        def Material "PhysicsMaterial" (
+            prepend apiSchemas = ["PhysicsMaterialAPI"]
+        )
+        {
+            float physics:dynamicFriction = 0.5
+            float physics:restitution = 0
+            float physics:staticFriction = 0.6
+        }
+
+        def Material "painted_steel_grey"
+        {
+            token outputs:surface.connect = </Newport_OTS_8_1344b3/Looks/painted_steel_grey/PreviewSurface.outputs:surface>
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.72, 0.73, 0.74)
+                float inputs:metallic = 0.1
+                float inputs:roughness = 0.6
+                token outputs:surface
+            }
+        }
+
+        def Material "painted_steel_dark"
+        {
+            token outputs:surface.connect = </Newport_OTS_8_1344b3/Looks/painted_steel_dark/PreviewSurface.outputs:surface>
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.1, 0.1, 0.11)
+                float inputs:metallic = 0.2
+                float inputs:roughness = 0.6
+                token outputs:surface
+            }
+        }
+    }
+
+    def Scope "Geometry"
+    {
+        def Xform "shelf"
+        {
+            double3 xformOp:translate = (0, 0, 0.48387)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                rel material:binding = </Newport_OTS_8_1344b3/Looks/painted_steel_grey>
+                rel material:binding:physics = </Newport_OTS_8_1344b3/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double size = 1
+                float3 xformOp:scale = (2.782, 0.5969, 0.11938)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "post_0"
+        {
+            double3 xformOp:translate = (-1.3656, 0.27304999999999996, 0.21209)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                rel material:binding = </Newport_OTS_8_1344b3/Looks/painted_steel_dark>
+                rel material:binding:physics = </Newport_OTS_8_1344b3/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double size = 1
+                float3 xformOp:scale = (0.0508, 0.0508, 0.42418)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "post_1"
+        {
+            double3 xformOp:translate = (1.3656, 0.27304999999999996, 0.21209)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                rel material:binding = </Newport_OTS_8_1344b3/Looks/painted_steel_dark>
+                rel material:binding:physics = </Newport_OTS_8_1344b3/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double size = 1
+                float3 xformOp:scale = (0.0508, 0.0508, 0.42418)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+    }
+
+    def Scope "KeyPoints"
+    {
+        def Xform "shelf_top_center" (
+            customData = {
+                double3 normal = (0, 0, 1)
+                bool support = 1
+            }
+        )
+        {
+            double3 xformOp:translate = (0, 0, 0.5435599999999999)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "shelf_underside_center" (
+            customData = {
+                double3 normal = (0, 0, -1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (0, 0, 0.42418)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+    }
+}
+

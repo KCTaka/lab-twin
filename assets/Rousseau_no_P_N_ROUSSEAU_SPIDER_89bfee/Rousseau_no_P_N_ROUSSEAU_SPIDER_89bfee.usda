@@ -1,0 +1,292 @@
+#usda 1.0
+(
+    defaultPrim = "Rousseau_no_P_N_ROUSSEAU_SPIDER_89bfee"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "Rousseau_no_P_N_ROUSSEAU_SPIDER_89bfee" (
+    prepend apiSchemas = ["SemanticsLabelsAPI:class"]
+    assetInfo = {
+        asset identifier = @Rousseau_no_P_N_ROUSSEAU_SPIDER_89bfee.usda@
+        string name = "Rousseau_no_P_N_ROUSSEAU_SPIDER_89bfee"
+        string version = "3784c364b14a"
+    }
+    customData = {
+        dictionary lab_twin = {
+            string body = "static"
+            string expected_bbox_mm = "[[-457.19999999999993, -304.8, 0.0], [457.19999999999993, 304.8, 1905.0]]"
+            string family = "shelving_closed"
+            string manufacturer = "Rousseau"
+            double mass_kg = -1
+            string part_number = "(no P/N) ROUSSEAU-SPIDER-SERIES-CLOSED-SHELVING-UNIT"
+            string provisional_params = "physics.mass_kg"
+            string route = "PARAMETRIC_PRIMITIVE"
+            string spec_sha = "3784c364b14a"
+        }
+    }
+    kind = "component"
+)
+{
+    token[] semantics:labels:class = ["shelving"]
+
+    def Scope "Looks"
+    {
+        def Material "PhysicsMaterial" (
+            prepend apiSchemas = ["PhysicsMaterialAPI"]
+        )
+        {
+            float physics:dynamicFriction = 0.5
+            float physics:restitution = 0
+            float physics:staticFriction = 0.6
+        }
+
+        def Material "painted_steel_grey"
+        {
+            token outputs:surface.connect = </Rousseau_no_P_N_ROUSSEAU_SPIDER_89bfee/Looks/painted_steel_grey/PreviewSurface.outputs:surface>
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.72, 0.73, 0.74)
+                float inputs:metallic = 0.1
+                float inputs:roughness = 0.6
+                token outputs:surface
+            }
+        }
+    }
+
+    def Scope "Geometry"
+    {
+        def Xform "side_left"
+        {
+            double3 xformOp:translate = (-0.44129999999999997, 0, 0.9525)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                rel material:binding = </Rousseau_no_P_N_ROUSSEAU_SPIDER_89bfee/Looks/painted_steel_grey>
+                rel material:binding:physics = </Rousseau_no_P_N_ROUSSEAU_SPIDER_89bfee/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double size = 1
+                float3 xformOp:scale = (0.0318, 0.6096, 1.905)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "side_right"
+        {
+            double3 xformOp:translate = (0.44129999999999997, 0, 0.9525)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                rel material:binding = </Rousseau_no_P_N_ROUSSEAU_SPIDER_89bfee/Looks/painted_steel_grey>
+                rel material:binding:physics = </Rousseau_no_P_N_ROUSSEAU_SPIDER_89bfee/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double size = 1
+                float3 xformOp:scale = (0.0318, 0.6096, 1.905)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "back"
+        {
+            double3 xformOp:translate = (0, 0.2889, 0.9525)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                rel material:binding = </Rousseau_no_P_N_ROUSSEAU_SPIDER_89bfee/Looks/painted_steel_grey>
+                rel material:binding:physics = </Rousseau_no_P_N_ROUSSEAU_SPIDER_89bfee/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double size = 1
+                float3 xformOp:scale = (0.8508, 0.0318, 1.905)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "top"
+        {
+            double3 xformOp:translate = (0, -0.015900000000000004, 1.8891)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                rel material:binding = </Rousseau_no_P_N_ROUSSEAU_SPIDER_89bfee/Looks/painted_steel_grey>
+                rel material:binding:physics = </Rousseau_no_P_N_ROUSSEAU_SPIDER_89bfee/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double size = 1
+                float3 xformOp:scale = (0.8508, 0.5778, 0.0318)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "shelf_0"
+        {
+            double3 xformOp:translate = (0, -0.015900000000000004, 0.0667)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                rel material:binding = </Rousseau_no_P_N_ROUSSEAU_SPIDER_89bfee/Looks/painted_steel_grey>
+                rel material:binding:physics = </Rousseau_no_P_N_ROUSSEAU_SPIDER_89bfee/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double size = 1
+                float3 xformOp:scale = (0.8508, 0.5778, 0.0318)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "shelf_1"
+        {
+            double3 xformOp:translate = (0, -0.015900000000000004, 0.43118000000000006)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                rel material:binding = </Rousseau_no_P_N_ROUSSEAU_SPIDER_89bfee/Looks/painted_steel_grey>
+                rel material:binding:physics = </Rousseau_no_P_N_ROUSSEAU_SPIDER_89bfee/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double size = 1
+                float3 xformOp:scale = (0.8508, 0.5778, 0.0318)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "shelf_2"
+        {
+            double3 xformOp:translate = (0, -0.015900000000000004, 0.79566)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                rel material:binding = </Rousseau_no_P_N_ROUSSEAU_SPIDER_89bfee/Looks/painted_steel_grey>
+                rel material:binding:physics = </Rousseau_no_P_N_ROUSSEAU_SPIDER_89bfee/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double size = 1
+                float3 xformOp:scale = (0.8508, 0.5778, 0.0318)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "shelf_3"
+        {
+            double3 xformOp:translate = (0, -0.015900000000000004, 1.16014)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                rel material:binding = </Rousseau_no_P_N_ROUSSEAU_SPIDER_89bfee/Looks/painted_steel_grey>
+                rel material:binding:physics = </Rousseau_no_P_N_ROUSSEAU_SPIDER_89bfee/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double size = 1
+                float3 xformOp:scale = (0.8508, 0.5778, 0.0318)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "shelf_4"
+        {
+            double3 xformOp:translate = (0, -0.015900000000000004, 1.5246199999999999)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                rel material:binding = </Rousseau_no_P_N_ROUSSEAU_SPIDER_89bfee/Looks/painted_steel_grey>
+                rel material:binding:physics = </Rousseau_no_P_N_ROUSSEAU_SPIDER_89bfee/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double size = 1
+                float3 xformOp:scale = (0.8508, 0.5778, 0.0318)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+    }
+
+    def Scope "KeyPoints"
+    {
+        def Xform "shelf_0_center" (
+            customData = {
+                double3 normal = (0, 0, 1)
+                bool support = 1
+            }
+        )
+        {
+            double3 xformOp:translate = (0, 0, 0.08259999999999999)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "shelf_1_center" (
+            customData = {
+                double3 normal = (0, 0, 1)
+                bool support = 1
+            }
+        )
+        {
+            double3 xformOp:translate = (0, 0, 0.44708000000000003)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "shelf_2_center" (
+            customData = {
+                double3 normal = (0, 0, 1)
+                bool support = 1
+            }
+        )
+        {
+            double3 xformOp:translate = (0, 0, 0.81156)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "shelf_3_center" (
+            customData = {
+                double3 normal = (0, 0, 1)
+                bool support = 1
+            }
+        )
+        {
+            double3 xformOp:translate = (0, 0, 1.17604)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "shelf_4_center" (
+            customData = {
+                double3 normal = (0, 0, 1)
+                bool support = 1
+            }
+        )
+        {
+            double3 xformOp:translate = (0, 0, 1.5405200000000001)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+    }
+}
+

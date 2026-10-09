@@ -1,0 +1,66 @@
+{
+  "asset_id": "Newport_OTS_8_1344b3",
+  "pass": true,
+  "checks": {
+    "C1_metrics": {
+      "pass": true,
+      "mpu": 1.0,
+      "up": "Z"
+    },
+    "C2_bbox": {
+      "pass": true,
+      "axes": [
+        {
+          "axis": "x",
+          "expected_mm": 2782.0,
+          "got_mm": 2782.0,
+          "ok": true
+        },
+        {
+          "axis": "y",
+          "expected_mm": 596.9,
+          "got_mm": 596.9,
+          "ok": true
+        },
+        {
+          "axis": "z",
+          "expected_mm": 543.56,
+          "got_mm": 543.56,
+          "ok": true
+        }
+      ]
+    },
+    "C3_floor_origin": {
+      "pass": true,
+      "min_z_mm": -0.0
+    },
+    "C4_collision": {
+      "pass": true,
+      "shapes": 3,
+      "collidable": 3
+    },
+    "C5_physics_settle": {
+      "pass": true,
+      "applicable": true,
+      "probes": [
+        {
+          "probe": "shelf_top_center",
+          "probe_edge_mm": 100.0,
+          "probe_kg": 1.0,
+          "z0_mm": 613.6,
+          "z_err_mm": 0.0,
+          "speed_mm_s": 0.0,
+          "ok": true
+        }
+      ],
+      "note": ""
+    },
+    "C6_provenance": {
+      "pass": true,
+      "provisional": [
+        "post_w",
+        "physics.mass_kg"
+      ]
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "asset_id": "VWRInternati_10819_650_3fad9a",
+  "pass": true,
+  "checks": {
+    "C1_metrics": {
+      "pass": true,
+      "mpu": 1.0,
+      "up": "Z"
+    },
+    "C2_bbox": {
+      "pass": true,
+      "axes": [
+        {
+          "axis": "x",
+          "expected_mm": 514.35,
+          "got_mm": 514.35,
+          "ok": true
+        },
+        {
+          "axis": "y",
+          "expected_mm": 558.8,
+          "got_mm": 558.8,
+          "ok": true
+        },
+        {
+          "axis": "z",
+          "expected_mm": 800.1,
+          "got_mm": 800.1,
+          "ok": true
+        }
+      ]
+    },
+    "C3_floor_origin": {
+      "pass": true,
+      "min_z_mm": -0.0
+    },
+    "C4_collision": {
+      "pass": true,
+      "shapes": 1,
+      "collidable": 1
+    },
+    "C5_physics_settle": {
+      "pass": true,
+      "applicable": true,
+      "probes": [
+        {
+          "probe": "top_center",
+          "probe_edge_mm": 100.0,
+          "probe_kg": 1.0,
+          "z0_mm": 870.1,
+          "z_err_mm": 0.0,
+          "speed_mm_s": 0.0,
+          "ok": true
+        }
+      ],
+      "note": ""
+    },
+    "C6_provenance": {
+      "pass": true,
+      "provisional": [
+        "physics.mass_kg"
+      ]
+    }
+  }
+}

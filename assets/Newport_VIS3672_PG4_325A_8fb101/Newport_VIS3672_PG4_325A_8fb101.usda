@@ -1,0 +1,209 @@
+#usda 1.0
+(
+    defaultPrim = "Newport_VIS3672_PG4_325A_8fb101"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "Newport_VIS3672_PG4_325A_8fb101" (
+    prepend apiSchemas = ["SemanticsLabelsAPI:class"]
+    assetInfo = {
+        asset identifier = @Newport_VIS3672_PG4_325A_8fb101.usda@
+        string name = "Newport_VIS3672_PG4_325A_8fb101"
+        string version = "763d02302968"
+    }
+    customData = {
+        dictionary lab_twin = {
+            string body = "static"
+            string expected_bbox_mm = "[[-949.95, -492.75, 0.0], [949.95, 492.75, 909.3]]"
+            string family = "optical_table"
+            string manufacturer = "Newport"
+            double mass_kg = -1
+            string part_number = "VIS3672-PG4-325A"
+            string provisional_params = "leg_w,hole_pitch,hole_offset_x,hole_offset_y,physics.mass_kg"
+            string route = "PARAMETRIC_PRIMITIVE"
+            string spec_sha = "763d02302968"
+        }
+    }
+    kind = "component"
+)
+{
+    token[] semantics:labels:class = ["optical_table"]
+
+    def Scope "Looks"
+    {
+        def Material "PhysicsMaterial" (
+            prepend apiSchemas = ["PhysicsMaterialAPI"]
+        )
+        {
+            float physics:dynamicFriction = 0.5
+            float physics:restitution = 0
+            float physics:staticFriction = 0.6
+        }
+
+        def Material "stainless_steel"
+        {
+            token outputs:surface.connect = </Newport_VIS3672_PG4_325A_8fb101/Looks/stainless_steel/PreviewSurface.outputs:surface>
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.45, 0.46, 0.47)
+                float inputs:metallic = 0.8
+                float inputs:roughness = 0.45
+                token outputs:surface
+            }
+        }
+
+        def Material "painted_steel_dark"
+        {
+            token outputs:surface.connect = </Newport_VIS3672_PG4_325A_8fb101/Looks/painted_steel_dark/PreviewSurface.outputs:surface>
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.1, 0.1, 0.11)
+                float inputs:metallic = 0.2
+                float inputs:roughness = 0.6
+                token outputs:surface
+            }
+        }
+    }
+
+    def Scope "Geometry"
+    {
+        def Xform "top"
+        {
+            double3 xformOp:translate = (0, 0, 0.85469)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                rel material:binding = </Newport_VIS3672_PG4_325A_8fb101/Looks/stainless_steel>
+                rel material:binding:physics = </Newport_VIS3672_PG4_325A_8fb101/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double size = 1
+                float3 xformOp:scale = (1.8288, 0.9144, 0.10922)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "leg_00"
+        {
+            double3 xformOp:translate = (-0.91185, -0.45465, 0.40003999999999995)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                rel material:binding = </Newport_VIS3672_PG4_325A_8fb101/Looks/painted_steel_dark>
+                rel material:binding:physics = </Newport_VIS3672_PG4_325A_8fb101/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double size = 1
+                float3 xformOp:scale = (0.0762, 0.0762, 0.80008)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "leg_01"
+        {
+            double3 xformOp:translate = (-0.91185, 0.45465, 0.40003999999999995)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                rel material:binding = </Newport_VIS3672_PG4_325A_8fb101/Looks/painted_steel_dark>
+                rel material:binding:physics = </Newport_VIS3672_PG4_325A_8fb101/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double size = 1
+                float3 xformOp:scale = (0.0762, 0.0762, 0.80008)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "leg_10"
+        {
+            double3 xformOp:translate = (0.91185, -0.45465, 0.40003999999999995)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                rel material:binding = </Newport_VIS3672_PG4_325A_8fb101/Looks/painted_steel_dark>
+                rel material:binding:physics = </Newport_VIS3672_PG4_325A_8fb101/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double size = 1
+                float3 xformOp:scale = (0.0762, 0.0762, 0.80008)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "leg_11"
+        {
+            double3 xformOp:translate = (0.91185, 0.45465, 0.40003999999999995)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                rel material:binding = </Newport_VIS3672_PG4_325A_8fb101/Looks/painted_steel_dark>
+                rel material:binding:physics = </Newport_VIS3672_PG4_325A_8fb101/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double size = 1
+                float3 xformOp:scale = (0.0762, 0.0762, 0.80008)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+    }
+
+    def Scope "KeyPoints"
+    {
+        def Xform "surface_center" (
+            customData = {
+                double3 normal = (0, 0, 1)
+                bool support = 1
+            }
+        )
+        {
+            double3 xformOp:translate = (0, 0, 0.9093)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "hole_grid_origin" (
+            customData = {
+                string data = '{"pitch_mm": 25.4, "n_x": 72, "n_y": 36, "thread": "1/4-20"}'
+                double3 normal = (0, 0, 1)
+                bool support = 1
+            }
+        )
+        {
+            double3 xformOp:translate = (-0.9017, -0.4445, 0.9093)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "front_edge_center" (
+            customData = {
+                double3 normal = (0, -1, 0)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (0, -0.4572, 0.9093)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+    }
+}
+

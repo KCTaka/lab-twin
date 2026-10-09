@@ -1,0 +1,74 @@
+{
+  "asset_id": "PremierAV_AV34_817e78",
+  "inventory": {
+    "manufacturer": "Premier A/V",
+    "part_number": "AV34",
+    "description": "34\" metal audio-visual cart",
+    "qty": 2,
+    "instances": 2
+  },
+  "route": "PARAMETRIC_PRIMITIVE",
+  "family": "cart",
+  "params": {
+    "w": {
+      "value": 609.6,
+      "unit": "mm",
+      "src": "datasheet",
+      "url": "https://www.mybinding.com/luxor-av34-34-high-3-shelf-black-steel-utility-a-v-cart.html",
+      "quote": "Measures 24\"W x 18\"D x 34\"H.",
+      "note": "basis=related_model; Found as LUXOR AV34 (34 in high 3-shelf black steel A/V cart), not 'Premier'. Same page's spec table says 24 x 18 x 26 in (internal conflict; 34 in matches name; 24 in; Luxor listing"
+    },
+    "d": {
+      "value": 457.2,
+      "unit": "mm",
+      "src": "datasheet",
+      "url": "https://www.mybinding.com/luxor-av34-34-high-3-shelf-black-steel-utility-a-v-cart.html",
+      "quote": "Measures 24\"W x 18\"D x 34\"H.",
+      "note": "basis=related_model; Found as LUXOR AV34 (34 in high 3-shelf black steel A/V cart), not 'Premier'. Same page's spec table says 24 x 18 x 26 in (internal conflict; 34 in matches name; 18 in"
+    },
+    "h": {
+      "value": 863.6,
+      "unit": "mm",
+      "src": "datasheet",
+      "url": "https://www.mybinding.com/luxor-av34-34-high-3-shelf-black-steel-utility-a-v-cart.html",
+      "quote": "Measures 24\"W x 18\"D x 34\"H.",
+      "note": "basis=related_model; Found as LUXOR AV34 (34 in high 3-shelf black steel A/V cart), not 'Premier'. Same page's spec table says 24 x 18 x 26 in (internal conflict; 34 in matches name; 34 in (listing also mentions 26 in)"
+    },
+    "n_shelves": {
+      "value": 3,
+      "unit": "1",
+      "src": "datasheet",
+      "url": "https://www.mybinding.com/luxor-av34-34-high-3-shelf-black-steel-utility-a-v-cart.html",
+      "quote": "No. of Shelves: 3"
+    },
+    "shelf_t": {
+      "value": 25.4,
+      "unit": "mm",
+      "src": "assumed",
+      "note": "not published"
+    },
+    "post_w": {
+      "value": 25.4,
+      "unit": "mm",
+      "src": "assumed",
+      "note": "not published"
+    },
+    "caster_h": {
+      "value": 101.6,
+      "unit": "mm",
+      "src": "assumed",
+      "note": "4 in casters typical"
+    }
+  },
+  "physics": {
+    "body": "static",
+    "collision": "box",
+    "mass_kg": {
+      "value": null,
+      "src": "assumed",
+      "note": "not published"
+    }
+  },
+  "semantic_class": "cart",
+  "notes": "inventory says Premier; product found as Luxor AV34"
+}

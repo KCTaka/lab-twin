@@ -1,0 +1,93 @@
+{
+  "asset_id": "Newport_VIS3672_PG4_325A_8fb101",
+  "inventory": {
+    "manufacturer": "Newport",
+    "part_number": "VIS3672-PG4-325A",
+    "description": "VIS IsoStation vibration isolation workstation, 36 in x 72 in, 4 in thick PG breadboard, I-325 isolators",
+    "qty": 1,
+    "instances": 1
+  },
+  "route": "PARAMETRIC_PRIMITIVE",
+  "family": "optical_table",
+  "params": {
+    "w": {
+      "value": 1828.8,
+      "unit": "mm",
+      "src": "inventory",
+      "quote": "36 in x 72 in"
+    },
+    "d": {
+      "value": 914.4,
+      "unit": "mm",
+      "src": "inventory",
+      "quote": "36 in x 72 in"
+    },
+    "top_t": {
+      "value": 109.22,
+      "unit": "mm",
+      "src": "datasheet",
+      "url": "https://www.newport.com.cn/p/VIS3672-PG4-325A",
+      "quote": "Breadboard thickness 4.3 in.",
+      "note": "36 in = 914.4 mm, 72 in = 1828.8 mm, 4.3 in = 109.2 mm. Inventory says '4 in thick'; actual PG4 is 4.3 in.; 4.3 in per datasheet; inventory says 4 in"
+    },
+    "surface_h": {
+      "value": 909.3,
+      "unit": "mm",
+      "src": "datasheet",
+      "url": "https://api.p1.mks.com/medias/sys_master/images/images/h29/he4/8797302751262/Vision-IsoStation-Brochure.pdf",
+      "quote": "35.8 \u00b1 0.2 FOR 4\" BB",
+      "note": "Product page: 'Working surface height 35.8 in.'; metric twin M-VIS3672-PG4-325A is 909 mm per search snippet."
+    },
+    "leg_w": {
+      "value": 76.2,
+      "unit": "mm",
+      "src": "assumed",
+      "note": "frame tube size not published; 3 in assumed"
+    },
+    "leg_inset_x": {
+      "value": 2.55,
+      "unit": "mm",
+      "src": "datasheet",
+      "url": "https://api.p1.mks.com/medias/sys_master/images/images/h29/he4/8797302751262/Vision-IsoStation-Brochure.pdf",
+      "quote": "VIS3672         38.8                  74.8",
+      "note": "DIM B; i.e. 1.4 in beyond breadboard each side.; derived: frame overhangs top by (1899.9-1828.8)/2; leg centre = leg_w/2 - overhang"
+    },
+    "leg_inset_y": {
+      "value": 2.55,
+      "unit": "mm",
+      "src": "datasheet",
+      "url": "https://api.p1.mks.com/medias/sys_master/images/images/h29/he4/8797302751262/Vision-IsoStation-Brochure.pdf",
+      "quote": "VIS3672         38.8                  74.8",
+      "note": "Brochure dimension drawing, DIM A (top view overall incl. corner brackets/frame).; derived: frame overhangs top by (985.5-914.4)/2"
+    },
+    "hole_pitch": {
+      "value": 25.4,
+      "unit": "mm",
+      "src": "assumed",
+      "note": "PG breadboard hole grid not in research; Newport standard 1/4-20 on 1 in"
+    },
+    "hole_offset_x": {
+      "value": 12.7,
+      "unit": "mm",
+      "src": "assumed",
+      "note": "Newport standard 0.5 in border (from OTS drawing)"
+    },
+    "hole_offset_y": {
+      "value": 12.7,
+      "unit": "mm",
+      "src": "assumed",
+      "note": "Newport standard 0.5 in border (from OTS drawing)"
+    }
+  },
+  "physics": {
+    "body": "static",
+    "collision": "box",
+    "mass_kg": {
+      "value": null,
+      "src": "assumed",
+      "note": "net mass not published (crated 670 lb)"
+    }
+  },
+  "semantic_class": "optical_table",
+  "notes": "discontinued (replacement VIS3672-PG2-I); frame wider than top"
+}

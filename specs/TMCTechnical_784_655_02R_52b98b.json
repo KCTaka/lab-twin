@@ -1,0 +1,87 @@
+{
+  "asset_id": "TMCTechnical_784_655_02R_52b98b",
+  "inventory": {
+    "manufacturer": "TMC (Technical Manufacturing Corp.)",
+    "part_number": "784-655-02R",
+    "description": "TMC 784 Series Optical CleanTop II table top, 48 in x 96 in x 12 in thick, 1/4-20 threaded holes on 1 in centres, 3/16 in plates, MAX dry damping - replaces water-damaged top in SF4202",
+    "qty": 1,
+    "instances": 1
+  },
+  "route": "PARAMETRIC_PRIMITIVE",
+  "family": "optical_table",
+  "params": {
+    "w": {
+      "value": 2438.4,
+      "unit": "mm",
+      "src": "inventory",
+      "quote": "48 in x 96 in x 12 in thick"
+    },
+    "d": {
+      "value": 1219.2,
+      "unit": "mm",
+      "src": "inventory",
+      "quote": "48 in x 96 in x 12 in thick"
+    },
+    "top_t": {
+      "value": 304.8,
+      "unit": "mm",
+      "src": "inventory",
+      "quote": "48 in x 96 in x 12 in thick"
+    },
+    "surface_h": {
+      "value": 914.4,
+      "unit": "mm",
+      "src": "assumed",
+      "note": "support pre-existing and unknown; TMC posts 12-32 in, 24 in post + 12 in top assumed; MEASURE"
+    },
+    "leg_w": {
+      "value": 152.4,
+      "unit": "mm",
+      "src": "assumed",
+      "note": "support unknown"
+    },
+    "leg_inset_x": {
+      "value": 304.8,
+      "unit": "mm",
+      "src": "assumed",
+      "note": "support unknown"
+    },
+    "leg_inset_y": {
+      "value": 203.2,
+      "unit": "mm",
+      "src": "assumed",
+      "note": "support unknown"
+    },
+    "hole_pitch": {
+      "value": 25.4,
+      "unit": "mm",
+      "src": "datasheet",
+      "url": "https://www.lambdaphoto.co.uk/pdfs/TMC/LAMBDA_CleanTop.pdf",
+      "quote": "1 in. centers - 1/4-20        02R"
+    },
+    "hole_offset_x": {
+      "value": 12.7,
+      "unit": "mm",
+      "src": "assumed",
+      "note": "TMC border not found; Newport value used"
+    },
+    "hole_offset_y": {
+      "value": 12.7,
+      "unit": "mm",
+      "src": "assumed",
+      "note": "TMC border not found"
+    }
+  },
+  "physics": {
+    "body": "static",
+    "collision": "box",
+    "mass_kg": {
+      "value": 553.9,
+      "src": "datasheet",
+      "quote": "0.225 lb/in.2    0.265 lb/in.2      0.420 lb/in.2 (0.265 lb/in^2 x 48 x 96 in; derived)",
+      "url": "https://www.lambdaphoto.co.uk/pdfs/TMC/LAMBDA_CleanTop.pdf"
+    }
+  },
+  "semantic_class": "optical_table",
+  "notes": "'SF4202' in the inventory is most likely the room number, not a TMC model"
+}

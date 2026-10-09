@@ -1,0 +1,107 @@
+#usda 1.0
+(
+    defaultPrim = "Newport_ACWS_42ec99"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "Newport_ACWS_42ec99" (
+    prepend apiSchemas = ["SemanticsLabelsAPI:class"]
+    assetInfo = {
+        asset identifier = @Newport_ACWS_42ec99.usda@
+        string name = "Newport_ACWS_42ec99"
+        string version = "9f2b7f3de218"
+    }
+    customData = {
+        dictionary lab_twin = {
+            string body = "static"
+            string expected_bbox_mm = "[[-165.1, -101.6, 0.0], [165.1, 101.6, 355.6]]"
+            string family = "appliance_box"
+            string manufacturer = "Newport"
+            double mass_kg = 16
+            string part_number = "ACWS"
+            string provisional_params = ""
+            string route = "PARAMETRIC_PRIMITIVE"
+            string spec_sha = "9f2b7f3de218"
+        }
+    }
+    kind = "component"
+)
+{
+    token[] semantics:labels:class = ["air_compressor"]
+
+    def Scope "Looks"
+    {
+        def Material "PhysicsMaterial" (
+            prepend apiSchemas = ["PhysicsMaterialAPI"]
+        )
+        {
+            float physics:dynamicFriction = 0.5
+            float physics:restitution = 0
+            float physics:staticFriction = 0.6
+        }
+
+        def Material "painted_steel_white"
+        {
+            token outputs:surface.connect = </Newport_ACWS_42ec99/Looks/painted_steel_white/PreviewSurface.outputs:surface>
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.88, 0.88, 0.86)
+                float inputs:metallic = 0.1
+                float inputs:roughness = 0.6
+                token outputs:surface
+            }
+        }
+    }
+
+    def Scope "Geometry"
+    {
+        def Xform "body"
+        {
+            double3 xformOp:translate = (0, 0, 0.1778)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                rel material:binding = </Newport_ACWS_42ec99/Looks/painted_steel_white>
+                rel material:binding:physics = </Newport_ACWS_42ec99/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double size = 1
+                float3 xformOp:scale = (0.3302, 0.2032, 0.3556)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+    }
+
+    def Scope "KeyPoints"
+    {
+        def Xform "top_center" (
+            customData = {
+                double3 normal = (0, 0, 1)
+                bool support = 1
+            }
+        )
+        {
+            double3 xformOp:translate = (0, 0, 0.3556)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "front_center" (
+            customData = {
+                double3 normal = (0, -1, 0)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (0, -0.1016, 0.1778)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+    }
+}
+

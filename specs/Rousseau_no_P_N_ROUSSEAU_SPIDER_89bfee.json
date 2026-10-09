@@ -1,0 +1,69 @@
+{
+  "asset_id": "Rousseau_no_P_N_ROUSSEAU_SPIDER_89bfee",
+  "inventory": {
+    "manufacturer": "Rousseau",
+    "part_number": "(no P/N) ROUSSEAU-SPIDER-SERIES-CLOSED-SHELVING-UNIT",
+    "description": "Rousseau Spider series closed shelving unit (starter), 36 in W x 24 in D x 75 in H, 5 shelves, light grey",
+    "qty": 2,
+    "instances": 2
+  },
+  "route": "PARAMETRIC_PRIMITIVE",
+  "family": "shelving_closed",
+  "params": {
+    "w": {
+      "value": 914.4,
+      "unit": "mm",
+      "src": "inventory",
+      "quote": "36 in W x 24 in D x 75 in H, 5 shelves"
+    },
+    "d": {
+      "value": 609.6,
+      "unit": "mm",
+      "src": "inventory",
+      "quote": "36 in W x 24 in D x 75 in H, 5 shelves"
+    },
+    "h": {
+      "value": 1905.0,
+      "unit": "mm",
+      "src": "inventory",
+      "quote": "36 in W x 24 in D x 75 in H, 5 shelves"
+    },
+    "panel_t": {
+      "value": 31.8,
+      "unit": "mm",
+      "src": "datasheet",
+      "url": "https://www.millsupply.ca/wp-content/uploads/2024/03/Rousseau-Catalogue.pdf",
+      "quote": "20 gauge steel, 1 1/4\" thick",
+      "note": "SH20 BOX shelf 36x24 in.; 1.25 in box shelf used for all panels; side-panel gauge not published"
+    },
+    "n_shelves": {
+      "value": 5,
+      "unit": "1",
+      "src": "inventory",
+      "quote": "36 in W x 24 in D x 75 in H, 5 shelves"
+    },
+    "kick_h": {
+      "value": 50.8,
+      "unit": "mm",
+      "src": "datasheet",
+      "url": "https://www.millsupply.ca/wp-content/uploads/2024/03/Rousseau-Catalogue.pdf",
+      "quote": "The 2\" front base is always included with closed shelving preconfigured models."
+    },
+    "material": {
+      "value": "painted_steel_grey",
+      "src": "inventory",
+      "quote": "light grey"
+    }
+  },
+  "physics": {
+    "body": "static",
+    "collision": "box",
+    "mass_kg": {
+      "value": null,
+      "src": "assumed",
+      "note": "not published"
+    }
+  },
+  "semantic_class": "shelving",
+  "notes": ""
+}

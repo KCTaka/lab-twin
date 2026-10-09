@@ -1,0 +1,773 @@
+{
+  "schema": "lab_twin.library/1",
+  "assets": {
+    "Newport_ATS_HS_12_baa14b": {
+      "usd": "assets/Newport_ATS_HS_12_baa14b/Newport_ATS_HS_12_baa14b.usda",
+      "family": "hanging_shelf",
+      "semantic_class": "hanging_shelf",
+      "manufacturer": "Newport",
+      "part_number": "ATS-HS-12",
+      "instances_owned": 1,
+      "size_m": [
+        0.5842,
+        0.508,
+        0.32385
+      ],
+      "body": "static",
+      "mass_kg": null,
+      "key_points": {
+        "shelf_top_center": {
+          "pos_m": [
+            0.0,
+            0.0,
+            0.01905
+          ],
+          "normal": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "support": true
+        },
+        "hang_plane_center": {
+          "pos_m": [
+            0.0,
+            0.0,
+            0.32385
+          ],
+          "normal": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "support": false
+        }
+      },
+      "provisional": [
+        "shelf_t",
+        "rod_dia",
+        "physics.mass_kg"
+      ],
+      "validation": "assets/Newport_ATS_HS_12_baa14b/validation.json",
+      "thumbnail": "assets/Newport_ATS_HS_12_baa14b/thumb.png"
+    },
+    "PremierAV_AV34_817e78": {
+      "usd": "assets/PremierAV_AV34_817e78/PremierAV_AV34_817e78.usda",
+      "family": "cart",
+      "semantic_class": "cart",
+      "manufacturer": "Premier A/V",
+      "part_number": "AV34",
+      "instances_owned": 2,
+      "size_m": [
+        0.6858,
+        0.5334,
+        0.8636
+      ],
+      "body": "static",
+      "mass_kg": null,
+      "key_points": {
+        "shelf_0_center": {
+          "pos_m": [
+            0.0,
+            0.0,
+            0.127
+          ],
+          "normal": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "support": true
+        },
+        "shelf_1_center": {
+          "pos_m": [
+            0.0,
+            0.0,
+            0.4953
+          ],
+          "normal": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "support": true
+        },
+        "shelf_2_center": {
+          "pos_m": [
+            0.0,
+            0.0,
+            0.8636
+          ],
+          "normal": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "support": true
+        }
+      },
+      "provisional": [
+        "shelf_t",
+        "post_w",
+        "caster_h",
+        "physics.mass_kg"
+      ],
+      "validation": "assets/PremierAV_AV34_817e78/validation.json",
+      "thumbnail": "assets/PremierAV_AV34_817e78/thumb.png"
+    },
+    "Quartet_QRT02304_5983b0": {
+      "usd": "assets/Quartet_QRT02304_5983b0/Quartet_QRT02304_5983b0.usda",
+      "family": "wall_panel",
+      "semantic_class": "bulletin_board",
+      "manufacturer": "Quartet",
+      "part_number": "QRT02304",
+      "instances_owned": 5,
+      "size_m": [
+        1.2192,
+        0.01905,
+        0.9144
+      ],
+      "body": "static",
+      "mass_kg": 6.9,
+      "key_points": {
+        "face_center": {
+          "pos_m": [
+            0.0,
+            -0.00953,
+            0.4572
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ],
+          "support": false
+        },
+        "wall_mount_center": {
+          "pos_m": [
+            0.0,
+            0.00953,
+            0.4572
+          ],
+          "normal": [
+            0,
+            1,
+            0
+          ],
+          "support": false
+        }
+      },
+      "provisional": [
+        "t",
+        "frame_w"
+      ],
+      "validation": "assets/Quartet_QRT02304_5983b0/validation.json",
+      "thumbnail": "assets/Quartet_QRT02304_5983b0/thumb.png"
+    },
+    "Quartet_QRT66080_with_606_wall_m_8d033c": {
+      "usd": "assets/Quartet_QRT66080_with_606_wall_m_8d033c/Quartet_QRT66080_with_606_wall_m_8d033c.usda",
+      "family": "projector_screen",
+      "semantic_class": "projection_screen",
+      "manufacturer": "Quartet",
+      "part_number": "QRT66080 (with 606 wall mount brackets)",
+      "instances_owned": 1,
+      "size_m": [
+        1.6993,
+        0.0762,
+        0.0762
+      ],
+      "body": "static",
+      "mass_kg": 5.4,
+      "key_points": {
+        "case_center": {
+          "pos_m": [
+            0.0,
+            0.0,
+            0.0381
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ],
+          "support": false
+        }
+      },
+      "provisional": [
+        "case_len",
+        "case_h",
+        "case_d"
+      ],
+      "validation": "assets/Quartet_QRT66080_with_606_wall_m_8d033c/validation.json",
+      "thumbnail": "assets/Quartet_QRT66080_with_606_wall_m_8d033c/thumb.png"
+    },
+    "Rousseau_no_P_N_ROUSSEAU_MODULAR_13dbe5": {
+      "usd": "assets/Rousseau_no_P_N_ROUSSEAU_MODULAR_13dbe5/Rousseau_no_P_N_ROUSSEAU_MODULAR_13dbe5.usda",
+      "family": "workbench",
+      "semantic_class": "workbench",
+      "manufacturer": "Rousseau",
+      "part_number": "(no P/N) ROUSSEAU-MODULAR-WORKBENCH-72-IN-W-X-24-IN-D",
+      "instances_owned": 2,
+      "size_m": [
+        1.8288,
+        0.6096,
+        0.85725
+      ],
+      "body": "static",
+      "mass_kg": null,
+      "key_points": {
+        "work_surface_center": {
+          "pos_m": [
+            0.0,
+            0.0,
+            0.85725
+          ],
+          "normal": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "support": true
+        },
+        "knee_space_center": {
+          "pos_m": [
+            0.0,
+            -0.3048,
+            0.46037
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ],
+          "support": false
+        }
+      },
+      "provisional": [
+        "physics.mass_kg"
+      ],
+      "validation": "assets/Rousseau_no_P_N_ROUSSEAU_MODULAR_13dbe5/validation.json",
+      "thumbnail": "assets/Rousseau_no_P_N_ROUSSEAU_MODULAR_13dbe5/thumb.png"
+    },
+    "Rousseau_no_P_N_ROUSSEAU_SPIDER_89bfee": {
+      "usd": "assets/Rousseau_no_P_N_ROUSSEAU_SPIDER_89bfee/Rousseau_no_P_N_ROUSSEAU_SPIDER_89bfee.usda",
+      "family": "shelving_closed",
+      "semantic_class": "shelving",
+      "manufacturer": "Rousseau",
+      "part_number": "(no P/N) ROUSSEAU-SPIDER-SERIES-CLOSED-SHELVING-UNIT",
+      "instances_owned": 2,
+      "size_m": [
+        0.9144,
+        0.6096,
+        1.905
+      ],
+      "body": "static",
+      "mass_kg": null,
+      "key_points": {
+        "shelf_0_center": {
+          "pos_m": [
+            0.0,
+            0.0,
+            0.0826
+          ],
+          "normal": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "support": true
+        },
+        "shelf_1_center": {
+          "pos_m": [
+            0.0,
+            0.0,
+            0.44708
+          ],
+          "normal": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "support": true
+        },
+        "shelf_2_center": {
+          "pos_m": [
+            0.0,
+            0.0,
+            0.81156
+          ],
+          "normal": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "support": true
+        },
+        "shelf_3_center": {
+          "pos_m": [
+            0.0,
+            0.0,
+            1.17604
+          ],
+          "normal": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "support": true
+        },
+        "shelf_4_center": {
+          "pos_m": [
+            0.0,
+            0.0,
+            1.54052
+          ],
+          "normal": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "support": true
+        }
+      },
+      "provisional": [
+        "physics.mass_kg"
+      ],
+      "validation": "assets/Rousseau_no_P_N_ROUSSEAU_SPIDER_89bfee/validation.json",
+      "thumbnail": "assets/Rousseau_no_P_N_ROUSSEAU_SPIDER_89bfee/thumb.png"
+    },
+    "VWRInternati_10819_650_3fad9a": {
+      "usd": "assets/VWRInternati_10819_650_3fad9a/VWRInternati_10819_650_3fad9a.usda",
+      "family": "appliance_box",
+      "semantic_class": "refrigerator",
+      "manufacturer": "VWR International",
+      "part_number": "10819-650",
+      "instances_owned": 1,
+      "size_m": [
+        0.51435,
+        0.5588,
+        0.8001
+      ],
+      "body": "static",
+      "mass_kg": 41.0,
+      "key_points": {
+        "top_center": {
+          "pos_m": [
+            0.0,
+            0.0,
+            0.8001
+          ],
+          "normal": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "support": true
+        },
+        "front_center": {
+          "pos_m": [
+            0.0,
+            -0.2794,
+            0.40005
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ],
+          "support": false
+        }
+      },
+      "provisional": [
+        "physics.mass_kg"
+      ],
+      "validation": "assets/VWRInternati_10819_650_3fad9a/validation.json",
+      "thumbnail": "assets/VWRInternati_10819_650_3fad9a/thumb.png"
+    },
+    "Laservision_F5P06_f57242": {
+      "usd": "assets/Laservision_F5P06_f57242/Laservision_F5P06_f57242.usda",
+      "family": "curtain",
+      "semantic_class": "laser_curtain",
+      "manufacturer": "Laservision",
+      "part_number": "F5P06",
+      "instances_owned": 2,
+      "size_m": [
+        2.54,
+        0.001,
+        2.1336
+      ],
+      "body": "static",
+      "mass_kg": null,
+      "key_points": {
+        "panel_center": {
+          "pos_m": [
+            0.0,
+            -0.0005,
+            1.0668
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ],
+          "support": false
+        }
+      },
+      "provisional": [
+        "t",
+        "physics.mass_kg"
+      ],
+      "validation": "assets/Laservision_F5P06_f57242/validation.json",
+      "thumbnail": "assets/Laservision_F5P06_f57242/thumb.png"
+    },
+    "Newport_ACWS_42ec99": {
+      "usd": "assets/Newport_ACWS_42ec99/Newport_ACWS_42ec99.usda",
+      "family": "appliance_box",
+      "semantic_class": "air_compressor",
+      "manufacturer": "Newport",
+      "part_number": "ACWS",
+      "instances_owned": 1,
+      "size_m": [
+        0.3302,
+        0.2032,
+        0.3556
+      ],
+      "body": "static",
+      "mass_kg": 16.0,
+      "key_points": {
+        "top_center": {
+          "pos_m": [
+            0.0,
+            0.0,
+            0.3556
+          ],
+          "normal": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "support": true
+        },
+        "front_center": {
+          "pos_m": [
+            0.0,
+            -0.1016,
+            0.1778
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ],
+          "support": false
+        }
+      },
+      "provisional": [],
+      "validation": "assets/Newport_ACWS_42ec99/validation.json",
+      "thumbnail": "assets/Newport_ACWS_42ec99/thumb.png"
+    },
+    "Newport_OTS_8_1344b3": {
+      "usd": "assets/Newport_OTS_8_1344b3/Newport_OTS_8_1344b3.usda",
+      "family": "overhead_shelf",
+      "semantic_class": "overhead_shelf",
+      "manufacturer": "Newport",
+      "part_number": "OTS-8",
+      "instances_owned": 4,
+      "size_m": [
+        2.782,
+        0.5969,
+        0.5435599999999999
+      ],
+      "body": "static",
+      "mass_kg": null,
+      "key_points": {
+        "shelf_top_center": {
+          "pos_m": [
+            0.0,
+            0.0,
+            0.54356
+          ],
+          "normal": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "support": true
+        },
+        "shelf_underside_center": {
+          "pos_m": [
+            0.0,
+            0.0,
+            0.42418
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false
+        }
+      },
+      "provisional": [
+        "post_w",
+        "physics.mass_kg"
+      ],
+      "validation": "assets/Newport_OTS_8_1344b3/validation.json",
+      "thumbnail": "assets/Newport_OTS_8_1344b3/thumb.png"
+    },
+    "Newport_OTS_UT2_48_12_I_6fd189": {
+      "usd": "assets/Newport_OTS_UT2_48_12_I_6fd189/Newport_OTS_UT2_48_12_I_6fd189.usda",
+      "family": "optical_table",
+      "semantic_class": "optical_table",
+      "manufacturer": "Newport",
+      "part_number": "OTS-UT2-48-12-I",
+      "instances_owned": 5,
+      "size_m": [
+        2.4384,
+        1.2192,
+        1.0338
+      ],
+      "body": "static",
+      "mass_kg": 583.8,
+      "key_points": {
+        "surface_center": {
+          "pos_m": [
+            0.0,
+            0.0,
+            1.0338
+          ],
+          "normal": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "support": true
+        },
+        "hole_grid_origin": {
+          "pos_m": [
+            -1.2065,
+            -0.5969,
+            1.0338
+          ],
+          "normal": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "support": true,
+          "data": {
+            "pitch_mm": 25.4,
+            "n_x": 96,
+            "n_y": 48,
+            "thread": "1/4-20"
+          }
+        },
+        "front_edge_center": {
+          "pos_m": [
+            0.0,
+            -0.6096,
+            1.0338
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ],
+          "support": false
+        }
+      },
+      "provisional": [
+        "tie_bar_h"
+      ],
+      "validation": "assets/Newport_OTS_UT2_48_12_I_6fd189/validation.json",
+      "thumbnail": "assets/Newport_OTS_UT2_48_12_I_6fd189/thumb.png"
+    },
+    "Newport_VIS3672_PG4_325A_8fb101": {
+      "usd": "assets/Newport_VIS3672_PG4_325A_8fb101/Newport_VIS3672_PG4_325A_8fb101.usda",
+      "family": "optical_table",
+      "semantic_class": "optical_table",
+      "manufacturer": "Newport",
+      "part_number": "VIS3672-PG4-325A",
+      "instances_owned": 1,
+      "size_m": [
+        1.8999000000000001,
+        0.9855,
+        0.9093
+      ],
+      "body": "static",
+      "mass_kg": null,
+      "key_points": {
+        "surface_center": {
+          "pos_m": [
+            0.0,
+            0.0,
+            0.9093
+          ],
+          "normal": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "support": true
+        },
+        "hole_grid_origin": {
+          "pos_m": [
+            -0.9017,
+            -0.4445,
+            0.9093
+          ],
+          "normal": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "support": true,
+          "data": {
+            "pitch_mm": 25.4,
+            "n_x": 72,
+            "n_y": 36,
+            "thread": "1/4-20"
+          }
+        },
+        "front_edge_center": {
+          "pos_m": [
+            0.0,
+            -0.4572,
+            0.9093
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ],
+          "support": false
+        }
+      },
+      "provisional": [
+        "leg_w",
+        "hole_pitch",
+        "hole_offset_x",
+        "hole_offset_y",
+        "physics.mass_kg"
+      ],
+      "validation": "assets/Newport_VIS3672_PG4_325A_8fb101/validation.json",
+      "thumbnail": "assets/Newport_VIS3672_PG4_325A_8fb101/thumb.png"
+    },
+    "TMCTechnical_784_655_02R_52b98b": {
+      "usd": "assets/TMCTechnical_784_655_02R_52b98b/TMCTechnical_784_655_02R_52b98b.usda",
+      "family": "optical_table",
+      "semantic_class": "optical_table",
+      "manufacturer": "TMC (Technical Manufacturing Corp.)",
+      "part_number": "784-655-02R",
+      "instances_owned": 1,
+      "size_m": [
+        2.4384,
+        1.2192,
+        0.9144
+      ],
+      "body": "static",
+      "mass_kg": 553.9,
+      "key_points": {
+        "surface_center": {
+          "pos_m": [
+            0.0,
+            0.0,
+            0.9144
+          ],
+          "normal": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "support": true
+        },
+        "hole_grid_origin": {
+          "pos_m": [
+            -1.2065,
+            -0.5969,
+            0.9144
+          ],
+          "normal": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "support": true,
+          "data": {
+            "pitch_mm": 25.4,
+            "n_x": 96,
+            "n_y": 48,
+            "thread": "1/4-20"
+          }
+        },
+        "front_edge_center": {
+          "pos_m": [
+            0.0,
+            -0.6096,
+            0.9144
+          ],
+          "normal": [
+            0,
+            -1,
+            0
+          ],
+          "support": false
+        }
+      },
+      "provisional": [
+        "surface_h",
+        "leg_w",
+        "leg_inset_x",
+        "leg_inset_y",
+        "hole_offset_x",
+        "hole_offset_y"
+      ],
+      "validation": "assets/TMCTechnical_784_655_02R_52b98b/validation.json",
+      "thumbnail": "assets/TMCTechnical_784_655_02R_52b98b/thumb.png"
+    },
+    "FIXTURE_cad_tr2_like_post": {
+      "usd": "assets/FIXTURE_cad_tr2_like_post/FIXTURE_cad_tr2_like_post.usda",
+      "family": "cad",
+      "semantic_class": "optical_post",
+      "manufacturer": "FIXTURE",
+      "part_number": "TR2-like",
+      "instances_owned": 1,
+      "size_m": [
+        0.0127,
+        0.0127,
+        0.0508
+      ],
+      "body": "dynamic",
+      "mass_kg": 0.049365,
+      "key_points": {
+        "top_face_center": {
+          "pos_m": [
+            0.0,
+            0.0,
+            0.0508
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ]
+        },
+        "bottom_face_center": {
+          "pos_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ]
+        }
+      },
+      "provisional": [],
+      "validation": "assets/FIXTURE_cad_tr2_like_post/validation.json",
+      "thumbnail": "assets/FIXTURE_cad_tr2_like_post/thumb.png"
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "asset_id": "Quartet_QRT66080_with_606_wall_m_8d033c",
+  "inventory": {
+    "manufacturer": "Quartet",
+    "part_number": "QRT66080 (with 606 wall mount brackets)",
+    "description": "Projector screen 60\" x 60\" with wall mount brackets",
+    "qty": 1,
+    "instances": 1
+  },
+  "route": "PARAMETRIC_PRIMITIVE",
+  "family": "projector_screen",
+  "params": {
+    "w": {
+      "value": 1524.0,
+      "unit": "mm",
+      "src": "inventory",
+      "quote": "Projector screen 60\" x 60\""
+    },
+    "h": {
+      "value": 1524.0,
+      "unit": "mm",
+      "src": "inventory",
+      "quote": "Projector screen 60\" x 60\""
+    },
+    "case_len": {
+      "value": 1699.3,
+      "unit": "mm",
+      "src": "assumed",
+      "note": "scaled from 70 in sibling 670S (76.875 in case): 60 + 6.9 in"
+    },
+    "case_h": {
+      "value": 76.2,
+      "unit": "mm",
+      "src": "assumed",
+      "note": "not published"
+    },
+    "case_d": {
+      "value": 76.2,
+      "unit": "mm",
+      "src": "assumed",
+      "note": "not published"
+    },
+    "deployed": {
+      "value": 0,
+      "unit": "1",
+      "src": "assumed",
+      "note": "modelled rolled up"
+    }
+  },
+  "physics": {
+    "body": "static",
+    "collision": "box",
+    "mass_kg": {
+      "value": 5.4,
+      "src": "datasheet",
+      "quote": "Shipping Weight 11.84 lb.",
+      "url": "https://argo.webstaurantstore.com/quartet-660s-60-x-60-white-matte-wall-or-ceiling-projection-screen-with-black-matte-case/139660S.html"
+    }
+  },
+  "semantic_class": "projection_screen",
+  "notes": "model is Quartet 660S per research; inventory P/N 66080 not found"
+}

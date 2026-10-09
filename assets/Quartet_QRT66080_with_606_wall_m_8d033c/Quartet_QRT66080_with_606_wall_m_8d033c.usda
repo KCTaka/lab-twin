@@ -1,0 +1,96 @@
+#usda 1.0
+(
+    defaultPrim = "Quartet_QRT66080_with_606_wall_m_8d033c"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "Quartet_QRT66080_with_606_wall_m_8d033c" (
+    prepend apiSchemas = ["SemanticsLabelsAPI:class"]
+    assetInfo = {
+        asset identifier = @Quartet_QRT66080_with_606_wall_m_8d033c.usda@
+        string name = "Quartet_QRT66080_with_606_wall_m_8d033c"
+        string version = "f0eba976d489"
+    }
+    customData = {
+        dictionary lab_twin = {
+            string body = "static"
+            string expected_bbox_mm = "[[-849.65, -38.1, 0.0], [849.65, 38.1, 76.2]]"
+            string family = "projector_screen"
+            string manufacturer = "Quartet"
+            double mass_kg = 5.4
+            string part_number = "QRT66080 (with 606 wall mount brackets)"
+            string provisional_params = "case_len,case_h,case_d"
+            string route = "PARAMETRIC_PRIMITIVE"
+            string spec_sha = "f0eba976d489"
+        }
+    }
+    kind = "component"
+)
+{
+    token[] semantics:labels:class = ["projection_screen"]
+
+    def Scope "Looks"
+    {
+        def Material "PhysicsMaterial" (
+            prepend apiSchemas = ["PhysicsMaterialAPI"]
+        )
+        {
+            float physics:dynamicFriction = 0.5
+            float physics:restitution = 0
+            float physics:staticFriction = 0.6
+        }
+
+        def Material "painted_steel_white"
+        {
+            token outputs:surface.connect = </Quartet_QRT66080_with_606_wall_m_8d033c/Looks/painted_steel_white/PreviewSurface.outputs:surface>
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.88, 0.88, 0.86)
+                float inputs:metallic = 0.1
+                float inputs:roughness = 0.6
+                token outputs:surface
+            }
+        }
+    }
+
+    def Scope "Geometry"
+    {
+        def Xform "case"
+        {
+            double3 xformOp:translate = (0, 0, 0.0381)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                rel material:binding = </Quartet_QRT66080_with_606_wall_m_8d033c/Looks/painted_steel_white>
+                rel material:binding:physics = </Quartet_QRT66080_with_606_wall_m_8d033c/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double size = 1
+                float3 xformOp:scale = (1.6993, 0.0762, 0.0762)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+    }
+
+    def Scope "KeyPoints"
+    {
+        def Xform "case_center" (
+            customData = {
+                double3 normal = (0, -1, 0)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (0, 0, 0.0381)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+    }
+}
+

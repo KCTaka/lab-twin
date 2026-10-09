@@ -1,0 +1,57 @@
+{
+  "asset_id": "Quartet_QRT66080_with_606_wall_m_8d033c",
+  "pass": true,
+  "checks": {
+    "C1_metrics": {
+      "pass": true,
+      "mpu": 1.0,
+      "up": "Z"
+    },
+    "C2_bbox": {
+      "pass": true,
+      "axes": [
+        {
+          "axis": "x",
+          "expected_mm": 1699.3,
+          "got_mm": 1699.3,
+          "ok": true
+        },
+        {
+          "axis": "y",
+          "expected_mm": 76.2,
+          "got_mm": 76.2,
+          "ok": true
+        },
+        {
+          "axis": "z",
+          "expected_mm": 76.2,
+          "got_mm": 76.2,
+          "ok": true
+        }
+      ]
+    },
+    "C3_floor_origin": {
+      "pass": true,
+      "min_z_mm": -0.0
+    },
+    "C4_collision": {
+      "pass": true,
+      "shapes": 1,
+      "collidable": 1
+    },
+    "C5_physics_settle": {
+      "pass": true,
+      "applicable": false,
+      "probes": [],
+      "note": "not applicable: static asset without support key points (collision presence checked by C4)"
+    },
+    "C6_provenance": {
+      "pass": true,
+      "provisional": [
+        "case_len",
+        "case_h",
+        "case_d"
+      ]
+    }
+  }
+}

@@ -1,0 +1,211 @@
+#usda 1.0
+(
+    defaultPrim = "Rousseau_no_P_N_ROUSSEAU_MODULAR_13dbe5"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "Rousseau_no_P_N_ROUSSEAU_MODULAR_13dbe5" (
+    prepend apiSchemas = ["SemanticsLabelsAPI:class"]
+    assetInfo = {
+        asset identifier = @Rousseau_no_P_N_ROUSSEAU_MODULAR_13dbe5.usda@
+        string name = "Rousseau_no_P_N_ROUSSEAU_MODULAR_13dbe5"
+        string version = "7f7c4b8400ee"
+    }
+    customData = {
+        dictionary lab_twin = {
+            string body = "static"
+            string expected_bbox_mm = "[[-914.4, -304.8, 0.0], [914.4, 304.8, 857.25]]"
+            string family = "workbench"
+            string manufacturer = "Rousseau"
+            double mass_kg = -1
+            string part_number = "(no P/N) ROUSSEAU-MODULAR-WORKBENCH-72-IN-W-X-24-IN-D"
+            string provisional_params = "physics.mass_kg"
+            string route = "PARAMETRIC_PRIMITIVE"
+            string spec_sha = "7f7c4b8400ee"
+        }
+    }
+    kind = "component"
+)
+{
+    token[] semantics:labels:class = ["workbench"]
+
+    def Scope "Looks"
+    {
+        def Material "PhysicsMaterial" (
+            prepend apiSchemas = ["PhysicsMaterialAPI"]
+        )
+        {
+            float physics:dynamicFriction = 0.5
+            float physics:restitution = 0
+            float physics:staticFriction = 0.6
+        }
+
+        def Material "laminate_black"
+        {
+            token outputs:surface.connect = </Rousseau_no_P_N_ROUSSEAU_MODULAR_13dbe5/Looks/laminate_black/PreviewSurface.outputs:surface>
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.04, 0.04, 0.04)
+                float inputs:metallic = 0
+                float inputs:roughness = 0.5
+                token outputs:surface
+            }
+        }
+
+        def Material "painted_steel_dark"
+        {
+            token outputs:surface.connect = </Rousseau_no_P_N_ROUSSEAU_MODULAR_13dbe5/Looks/painted_steel_dark/PreviewSurface.outputs:surface>
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.1, 0.1, 0.11)
+                float inputs:metallic = 0.2
+                float inputs:roughness = 0.6
+                token outputs:surface
+            }
+        }
+
+        def Material "painted_steel_blue"
+        {
+            token outputs:surface.connect = </Rousseau_no_P_N_ROUSSEAU_MODULAR_13dbe5/Looks/painted_steel_blue/PreviewSurface.outputs:surface>
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.08, 0.12, 0.3)
+                float inputs:metallic = 0.2
+                float inputs:roughness = 0.55
+                token outputs:surface
+            }
+        }
+    }
+
+    def Scope "Geometry"
+    {
+        def Xform "top"
+        {
+            double3 xformOp:translate = (0, 0, 0.8382000000000001)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                rel material:binding = </Rousseau_no_P_N_ROUSSEAU_MODULAR_13dbe5/Looks/laminate_black>
+                rel material:binding:physics = </Rousseau_no_P_N_ROUSSEAU_MODULAR_13dbe5/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double size = 1
+                float3 xformOp:scale = (1.8288, 0.6096, 0.0381)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "base_left"
+        {
+            double3 xformOp:translate = (-0.6858, 0, 0.0508)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                rel material:binding = </Rousseau_no_P_N_ROUSSEAU_MODULAR_13dbe5/Looks/painted_steel_dark>
+                rel material:binding:physics = </Rousseau_no_P_N_ROUSSEAU_MODULAR_13dbe5/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double size = 1
+                float3 xformOp:scale = (0.4372, 0.5134, 0.1016)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "pedestal_left"
+        {
+            double3 xformOp:translate = (-0.6858, 0, 0.46037500000000003)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                rel material:binding = </Rousseau_no_P_N_ROUSSEAU_MODULAR_13dbe5/Looks/painted_steel_blue>
+                rel material:binding:physics = </Rousseau_no_P_N_ROUSSEAU_MODULAR_13dbe5/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double size = 1
+                float3 xformOp:scale = (0.4572, 0.5334, 0.71755)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "base_right"
+        {
+            double3 xformOp:translate = (0.6858, 0, 0.0508)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                rel material:binding = </Rousseau_no_P_N_ROUSSEAU_MODULAR_13dbe5/Looks/painted_steel_dark>
+                rel material:binding:physics = </Rousseau_no_P_N_ROUSSEAU_MODULAR_13dbe5/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double size = 1
+                float3 xformOp:scale = (0.4372, 0.5134, 0.1016)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "pedestal_right"
+        {
+            double3 xformOp:translate = (0.6858, 0, 0.46037500000000003)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                rel material:binding = </Rousseau_no_P_N_ROUSSEAU_MODULAR_13dbe5/Looks/painted_steel_blue>
+                rel material:binding:physics = </Rousseau_no_P_N_ROUSSEAU_MODULAR_13dbe5/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double size = 1
+                float3 xformOp:scale = (0.4572, 0.5334, 0.71755)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+    }
+
+    def Scope "KeyPoints"
+    {
+        def Xform "work_surface_center" (
+            customData = {
+                double3 normal = (0, 0, 1)
+                bool support = 1
+            }
+        )
+        {
+            double3 xformOp:translate = (0, 0, 0.8572500000000001)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "knee_space_center" (
+            customData = {
+                double3 normal = (0, -1, 0)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (0, -0.3048, 0.46037500000000003)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+    }
+}
+

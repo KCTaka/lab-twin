@@ -1,0 +1,69 @@
+{
+  "asset_id": "FIXTURE_cad_tr2_like_post",
+  "pass": true,
+  "checks": {
+    "C1_metrics": {
+      "pass": true,
+      "mpu": 1.0,
+      "up": "Z"
+    },
+    "C2_bbox": {
+      "pass": true,
+      "axes": [
+        {
+          "axis": "x",
+          "expected_mm": 12.7,
+          "got_mm": 12.7,
+          "ok": true
+        },
+        {
+          "axis": "y",
+          "expected_mm": 12.7,
+          "got_mm": 12.7,
+          "ok": true
+        },
+        {
+          "axis": "z",
+          "expected_mm": 50.8,
+          "got_mm": 50.8,
+          "ok": true
+        }
+      ]
+    },
+    "C3_floor_origin": {
+      "pass": true,
+      "min_z_mm": 0.0
+    },
+    "C4_collision": {
+      "pass": true,
+      "shapes": 1,
+      "collidable": 1
+    },
+    "C5_physics_settle": {
+      "pass": true,
+      "applicable": true,
+      "probes": [
+        {
+          "probe": "asset_itself",
+          "drift_mm": 0.0,
+          "speed_mm_s": 0.0,
+          "ok": true
+        },
+        {
+          "probe": "top_face_center",
+          "probe_edge_mm": 6.3,
+          "probe_kg": 0.0099,
+          "z0_mm": 74.0,
+          "z_err_mm": 0.0,
+          "speed_mm_s": 0.0,
+          "ok": true
+        }
+      ],
+      "note": ""
+    },
+    "C6_provenance": {
+      "pass": true,
+      "provisional": []
+    }
+  }
+}

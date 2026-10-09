@@ -1,0 +1,63 @@
+{
+  "asset_id": "Newport_OTS_8_1344b3",
+  "inventory": {
+    "manufacturer": "Newport",
+    "part_number": "OTS-8",
+    "description": "Overhead table shelf system, 8 ft table length, 110 V US sockets",
+    "qty": 4,
+    "instances": 4
+  },
+  "route": "PARAMETRIC_PRIMITIVE",
+  "family": "overhead_shelf",
+  "params": {
+    "shelf_len": {
+      "value": 2782.0,
+      "unit": "mm",
+      "src": "datasheet",
+      "url": "https://api.p1.mks.com/medias/sys_master/resources/h88/h2b/9954276835358/OTS%20OVERHEAD%20SHELF%20MECHANICAL%20OUTLINE/OTS-OVERHEAD-SHELF-MECHANICAL-OUTLINE.pdf",
+      "quote": "OTS-8      109.5 [2782]   34.9 [886]   28.7 [729]",
+      "note": "Dimension A = outer extent of shelf uprights, i.e. 6.75 in beyond each end of the 96 in table (derived). Product page lists 'Length 8 ft.' (compatible table len"
+    },
+    "shelf_d": {
+      "value": 596.9,
+      "unit": "mm",
+      "src": "datasheet",
+      "url": "https://www.newport.com.cn/p/OTS-8",
+      "quote": "The shelf is 23.5'' deep.",
+      "note": "See discrepancy note on shelf_depth_overall.; drawing gives 26 in overall depth (incl. brackets?)"
+    },
+    "shelf_t": {
+      "value": 119.38,
+      "unit": "mm",
+      "src": "datasheet",
+      "url": "https://api.p1.mks.com/medias/sys_master/resources/h88/h2b/9954276835358/OTS%20OVERHEAD%20SHELF%20MECHANICAL%20OUTLINE/OTS-OVERHEAD-SHELF-MECHANICAL-OUTLINE.pdf",
+      "quote": "39.6 [1006]   33.4 [848]",
+      "note": "Same datum as above. For 12 in top: shelf top 21.4-27.6 in above table surface; 62.1-68.3 in (1577-1735 mm) above floor (derived). Shelf structure ~4.7 in thick; derived: top 33.4 in - underside 28.7 in at the lowest position (shelf box incl. outlet strip)"
+    },
+    "shelf_z": {
+      "value": 424.18,
+      "unit": "mm",
+      "src": "datasheet",
+      "url": "https://api.p1.mks.com/medias/sys_master/resources/h88/h2b/9954276835358/OTS%20OVERHEAD%20SHELF%20MECHANICAL%20OUTLINE/OTS-OVERHEAD-SHELF-MECHANICAL-OUTLINE.pdf",
+      "quote": "OTS-8      109.5 [2782]   34.9 [886]   28.7 [729]   39.6 [1006]",
+      "note": "Datum (from drawing extension lines) is the UNDERSIDE of the tabletop / top of the frame, not the table surface and not the floor. For OTS-UT2-48-12-I (undersid; derived for a 12 in OTS table: underside ref (28.7 in above table underside, lowest of 3 positions) + 28.7 in table underside height - 40.7 in surface height"
+    },
+    "post_w": {
+      "value": 50.8,
+      "unit": "mm",
+      "src": "assumed",
+      "note": "upright cross-section not published"
+    }
+  },
+  "physics": {
+    "body": "static",
+    "collision": "box",
+    "mass_kg": {
+      "value": null,
+      "src": "assumed",
+      "note": "not published"
+    }
+  },
+  "semantic_class": "overhead_shelf",
+  "notes": "route VENDOR_STEP -> PARAMETRIC_PRIMITIVE"
+}

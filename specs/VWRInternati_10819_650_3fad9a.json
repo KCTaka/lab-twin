@@ -1,0 +1,54 @@
+{
+  "asset_id": "VWRInternati_10819_650_3fad9a",
+  "inventory": {
+    "manufacturer": "VWR International",
+    "part_number": "10819-650",
+    "description": "VWR Standard Series free-standing undercounter refrigerator, 130 L (5 cu ft), 1-10 C, 115 V, 3 shelves, solid locking door",
+    "qty": 1,
+    "instances": 1
+  },
+  "route": "PARAMETRIC_PRIMITIVE",
+  "family": "appliance_box",
+  "params": {
+    "w": {
+      "value": 514.35,
+      "unit": "mm",
+      "src": "datasheet",
+      "url": "https://americanlaboratorytrading.com/lab-equipment-products/vwr-free-standing-undercounter-refrigerator-cat-no-10819-650-17627/",
+      "quote": "Dimensions (W x D x H): 20 \u00bc\u201d \u00d7 22\u201d \u00d7 31 \u00bd",
+      "note": "= 514.4 x 558.8 x 800.1 mm; vwr.com (JS, not fetchable) reportedly lists 514 x 559 x 800 mm. Model HCUCFS-0404. Other resellers list 20-1/4 x 21-3/4 x 32-1/4 in; 20 1/4 in"
+    },
+    "d": {
+      "value": 558.8,
+      "unit": "mm",
+      "src": "datasheet",
+      "url": "https://americanlaboratorytrading.com/lab-equipment-products/vwr-free-standing-undercounter-refrigerator-cat-no-10819-650-17627/",
+      "quote": "Dimensions (W x D x H): 20 \u00bc\u201d \u00d7 22\u201d \u00d7 31 \u00bd",
+      "note": "= 514.4 x 558.8 x 800.1 mm; vwr.com (JS, not fetchable) reportedly lists 514 x 559 x 800 mm. Model HCUCFS-0404. Other resellers list 20-1/4 x 21-3/4 x 32-1/4 in; 22 in"
+    },
+    "h": {
+      "value": 800.1,
+      "unit": "mm",
+      "src": "datasheet",
+      "url": "https://americanlaboratorytrading.com/lab-equipment-products/vwr-free-standing-undercounter-refrigerator-cat-no-10819-650-17627/",
+      "quote": "Dimensions (W x D x H): 20 \u00bc\u201d \u00d7 22\u201d \u00d7 31 \u00bd",
+      "note": "= 514.4 x 558.8 x 800.1 mm; vwr.com (JS, not fetchable) reportedly lists 514 x 559 x 800 mm. Model HCUCFS-0404. Other resellers list 20-1/4 x 21-3/4 x 32-1/4 in; 31 1/2 in"
+    },
+    "material": {
+      "value": "painted_steel_white",
+      "src": "assumed",
+      "note": "visual only"
+    }
+  },
+  "physics": {
+    "body": "static",
+    "collision": "box",
+    "mass_kg": {
+      "value": 41.0,
+      "src": "assumed",
+      "note": "41 kg from a search snippet of vwr.com, not verified verbatim"
+    }
+  },
+  "semantic_class": "refrigerator",
+  "notes": "undercounter fridge; route DATASHEET_DIMS -> PARAMETRIC_PRIMITIVE"
+}

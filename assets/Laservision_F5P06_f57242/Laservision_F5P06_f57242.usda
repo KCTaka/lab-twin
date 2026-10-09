@@ -1,0 +1,96 @@
+#usda 1.0
+(
+    defaultPrim = "Laservision_F5P06_f57242"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "Laservision_F5P06_f57242" (
+    prepend apiSchemas = ["SemanticsLabelsAPI:class"]
+    assetInfo = {
+        asset identifier = @Laservision_F5P06_f57242.usda@
+        string name = "Laservision_F5P06_f57242"
+        string version = "8baeb69adcc5"
+    }
+    customData = {
+        dictionary lab_twin = {
+            string body = "static"
+            string expected_bbox_mm = "[[-1270.0, -0.5, 0.0], [1270.0, 0.5, 2133.6]]"
+            string family = "curtain"
+            string manufacturer = "Laservision"
+            double mass_kg = -1
+            string part_number = "F5P06"
+            string provisional_params = "t,physics.mass_kg"
+            string route = "PARAMETRIC_PRIMITIVE"
+            string spec_sha = "8baeb69adcc5"
+        }
+    }
+    kind = "component"
+)
+{
+    token[] semantics:labels:class = ["laser_curtain"]
+
+    def Scope "Looks"
+    {
+        def Material "PhysicsMaterial" (
+            prepend apiSchemas = ["PhysicsMaterialAPI"]
+        )
+        {
+            float physics:dynamicFriction = 0.5
+            float physics:restitution = 0
+            float physics:staticFriction = 0.6
+        }
+
+        def Material "laser_curtain_black"
+        {
+            token outputs:surface.connect = </Laservision_F5P06_f57242/Looks/laser_curtain_black/PreviewSurface.outputs:surface>
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.03, 0.03, 0.03)
+                float inputs:metallic = 0
+                float inputs:roughness = 0.8
+                token outputs:surface
+            }
+        }
+    }
+
+    def Scope "Geometry"
+    {
+        def Xform "panel"
+        {
+            double3 xformOp:translate = (0, 0, 1.0668)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                rel material:binding = </Laservision_F5P06_f57242/Looks/laser_curtain_black>
+                rel material:binding:physics = </Laservision_F5P06_f57242/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double size = 1
+                float3 xformOp:scale = (2.54, 0.001, 2.1336)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+    }
+
+    def Scope "KeyPoints"
+    {
+        def Xform "panel_center" (
+            customData = {
+                double3 normal = (0, -1, 0)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (0, -0.0005, 1.0668)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+    }
+}
+

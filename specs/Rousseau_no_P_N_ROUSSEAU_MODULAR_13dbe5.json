@@ -1,0 +1,75 @@
+{
+  "asset_id": "Rousseau_no_P_N_ROUSSEAU_MODULAR_13dbe5",
+  "inventory": {
+    "manufacturer": "Rousseau",
+    "part_number": "(no P/N) ROUSSEAU-MODULAR-WORKBENCH-72-IN-W-X-24-IN-D",
+    "description": "Rousseau modular workbench 72 in W x 24 in D x 33.75 in H; each = 1x WS08-7224A laminate top, 1x L3ABD-2852 4-drawer pedestal, 1x L3ABD-2854 door/shelf pedestal, 2x LA85-182104 4 in bases; midnight blue steel, black laminate top",
+    "qty": 2,
+    "instances": 2
+  },
+  "route": "PARAMETRIC_PRIMITIVE",
+  "family": "workbench",
+  "params": {
+    "w": {
+      "value": 1828.8,
+      "unit": "mm",
+      "src": "inventory",
+      "quote": "Rousseau modular workbench 72 in W x 24 in D x 33.75 in H"
+    },
+    "d": {
+      "value": 609.6,
+      "unit": "mm",
+      "src": "inventory",
+      "quote": "Rousseau modular workbench 72 in W x 24 in D x 33.75 in H"
+    },
+    "h": {
+      "value": 857.25,
+      "unit": "mm",
+      "src": "inventory",
+      "quote": "Rousseau modular workbench 72 in W x 24 in D x 33.75 in H (catalogue sum 4 + 28 + 1.5 = 33.5 in; 6.35 mm unexplained, MEASURE)"
+    },
+    "top_t": {
+      "value": 38.1,
+      "unit": "mm",
+      "src": "datasheet",
+      "url": "https://www.millsupply.ca/wp-content/uploads/2024/03/Rousseau-Catalogue.pdf",
+      "quote": "Thickness: 1 1/2\"",
+      "note": "WS08 = resistant acrylic/PVC laminate, particle-board core, gray. Same thickness in 2018 catalogue https://www.commander.ca/wp-content/uploads/2018/01/36.pdf; two-column catalogue page; mapped to WS08 by column, checked by hand"
+    },
+    "ped_w": {
+      "value": 457.2,
+      "unit": "mm",
+      "src": "datasheet",
+      "url": "https://www.millsupply.ca/wp-content/uploads/2024/03/Rousseau-Catalogue.pdf",
+      "quote": "L3ABD-2854__C 18\" \u00d7 21\" \u00d7 32\"",
+      "note": "Configuration label in catalogue: '1 DOOR / 1 AJUSTABLE SHELF'. Housing 28 in high.; 18 in"
+    },
+    "ped_d": {
+      "value": 533.4,
+      "unit": "mm",
+      "src": "datasheet",
+      "url": "https://www.millsupply.ca/wp-content/uploads/2024/03/Rousseau-Catalogue.pdf",
+      "quote": "L3ABD-2854__C 18\" \u00d7 21\" \u00d7 32\"",
+      "note": "Configuration label in catalogue: '1 DOOR / 1 AJUSTABLE SHELF'. Housing 28 in high.; 21 in"
+    },
+    "base_h": {
+      "value": 101.6,
+      "unit": "mm",
+      "src": "datasheet",
+      "url": "https://www.millsupply.ca/wp-content/uploads/2024/03/Rousseau-Catalogue.pdf",
+      "quote": "LA__-182104                 18\" \u00d7 21\" \u00d7 4\"",
+      "note": "LA85 = painted steel cabinet base; 'Recessed 2\" from the front to create more space for feet'."
+    }
+  },
+  "physics": {
+    "body": "static",
+    "collision": "box",
+    "mass_kg": {
+      "value": null,
+      "src": "assumed",
+      "note": "not published"
+    }
+  },
+  "semantic_class": "workbench",
+  "notes": ""
+}

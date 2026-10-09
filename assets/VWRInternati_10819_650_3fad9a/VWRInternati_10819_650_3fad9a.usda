@@ -1,0 +1,107 @@
+#usda 1.0
+(
+    defaultPrim = "VWRInternati_10819_650_3fad9a"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "VWRInternati_10819_650_3fad9a" (
+    prepend apiSchemas = ["SemanticsLabelsAPI:class"]
+    assetInfo = {
+        asset identifier = @VWRInternati_10819_650_3fad9a.usda@
+        string name = "VWRInternati_10819_650_3fad9a"
+        string version = "3001ef914ed1"
+    }
+    customData = {
+        dictionary lab_twin = {
+            string body = "static"
+            string expected_bbox_mm = "[[-257.175, -279.4, 0.0], [257.175, 279.4, 800.1]]"
+            string family = "appliance_box"
+            string manufacturer = "VWR International"
+            double mass_kg = 41
+            string part_number = "10819-650"
+            string provisional_params = "physics.mass_kg"
+            string route = "PARAMETRIC_PRIMITIVE"
+            string spec_sha = "3001ef914ed1"
+        }
+    }
+    kind = "component"
+)
+{
+    token[] semantics:labels:class = ["refrigerator"]
+
+    def Scope "Looks"
+    {
+        def Material "PhysicsMaterial" (
+            prepend apiSchemas = ["PhysicsMaterialAPI"]
+        )
+        {
+            float physics:dynamicFriction = 0.5
+            float physics:restitution = 0
+            float physics:staticFriction = 0.6
+        }
+
+        def Material "painted_steel_white"
+        {
+            token outputs:surface.connect = </VWRInternati_10819_650_3fad9a/Looks/painted_steel_white/PreviewSurface.outputs:surface>
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.88, 0.88, 0.86)
+                float inputs:metallic = 0.1
+                float inputs:roughness = 0.6
+                token outputs:surface
+            }
+        }
+    }
+
+    def Scope "Geometry"
+    {
+        def Xform "body"
+        {
+            double3 xformOp:translate = (0, 0, 0.40005)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                rel material:binding = </VWRInternati_10819_650_3fad9a/Looks/painted_steel_white>
+                rel material:binding:physics = </VWRInternati_10819_650_3fad9a/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double size = 1
+                float3 xformOp:scale = (0.51435, 0.5588, 0.8001)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+    }
+
+    def Scope "KeyPoints"
+    {
+        def Xform "top_center" (
+            customData = {
+                double3 normal = (0, 0, 1)
+                bool support = 1
+            }
+        )
+        {
+            double3 xformOp:translate = (0, 0, 0.8001)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "front_center" (
+            customData = {
+                double3 normal = (0, -1, 0)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (0, -0.2794, 0.40005)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+    }
+}
+

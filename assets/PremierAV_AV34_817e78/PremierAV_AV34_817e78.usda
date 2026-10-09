@@ -1,0 +1,322 @@
+#usda 1.0
+(
+    defaultPrim = "PremierAV_AV34_817e78"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "PremierAV_AV34_817e78" (
+    prepend apiSchemas = ["SemanticsLabelsAPI:class"]
+    assetInfo = {
+        asset identifier = @PremierAV_AV34_817e78.usda@
+        string name = "PremierAV_AV34_817e78"
+        string version = "9d7ff3439fd6"
+    }
+    customData = {
+        dictionary lab_twin = {
+            string body = "static"
+            string expected_bbox_mm = "[[-342.90000000000003, -266.7, 0.0], [342.90000000000003, 266.7, 863.6000000000001]]"
+            string family = "cart"
+            string manufacturer = "Premier A/V"
+            double mass_kg = -1
+            string part_number = "AV34"
+            string provisional_params = "shelf_t,post_w,caster_h,physics.mass_kg"
+            string route = "PARAMETRIC_PRIMITIVE"
+            string spec_sha = "9d7ff3439fd6"
+        }
+    }
+    kind = "component"
+)
+{
+    token[] semantics:labels:class = ["cart"]
+
+    def Scope "Looks"
+    {
+        def Material "PhysicsMaterial" (
+            prepend apiSchemas = ["PhysicsMaterialAPI"]
+        )
+        {
+            float physics:dynamicFriction = 0.5
+            float physics:restitution = 0
+            float physics:staticFriction = 0.6
+        }
+
+        def Material "painted_steel_dark"
+        {
+            token outputs:surface.connect = </PremierAV_AV34_817e78/Looks/painted_steel_dark/PreviewSurface.outputs:surface>
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.1, 0.1, 0.11)
+                float inputs:metallic = 0.2
+                float inputs:roughness = 0.6
+                token outputs:surface
+            }
+        }
+
+        def Material "rubber_black"
+        {
+            token outputs:surface.connect = </PremierAV_AV34_817e78/Looks/rubber_black/PreviewSurface.outputs:surface>
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.02, 0.02, 0.02)
+                float inputs:metallic = 0
+                float inputs:roughness = 0.9
+                token outputs:surface
+            }
+        }
+    }
+
+    def Scope "Geometry"
+    {
+        def Xform "post_00"
+        {
+            double3 xformOp:translate = (-0.2921, -0.2159, 0.48260000000000003)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                rel material:binding = </PremierAV_AV34_817e78/Looks/painted_steel_dark>
+                rel material:binding:physics = </PremierAV_AV34_817e78/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double size = 1
+                float3 xformOp:scale = (0.0254, 0.0254, 0.762)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "caster_00"
+        {
+            double3 xformOp:translate = (-0.2921, -0.2159, 0.0508)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cylinder "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                uniform token axis = "Z"
+                double height = 0.1016
+                rel material:binding = </PremierAV_AV34_817e78/Looks/rubber_black>
+                rel material:binding:physics = </PremierAV_AV34_817e78/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double radius = 0.0508
+            }
+        }
+
+        def Xform "post_01"
+        {
+            double3 xformOp:translate = (-0.2921, 0.2159, 0.48260000000000003)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                rel material:binding = </PremierAV_AV34_817e78/Looks/painted_steel_dark>
+                rel material:binding:physics = </PremierAV_AV34_817e78/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double size = 1
+                float3 xformOp:scale = (0.0254, 0.0254, 0.762)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "caster_01"
+        {
+            double3 xformOp:translate = (-0.2921, 0.2159, 0.0508)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cylinder "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                uniform token axis = "Z"
+                double height = 0.1016
+                rel material:binding = </PremierAV_AV34_817e78/Looks/rubber_black>
+                rel material:binding:physics = </PremierAV_AV34_817e78/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double radius = 0.0508
+            }
+        }
+
+        def Xform "post_10"
+        {
+            double3 xformOp:translate = (0.2921, -0.2159, 0.48260000000000003)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                rel material:binding = </PremierAV_AV34_817e78/Looks/painted_steel_dark>
+                rel material:binding:physics = </PremierAV_AV34_817e78/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double size = 1
+                float3 xformOp:scale = (0.0254, 0.0254, 0.762)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "caster_10"
+        {
+            double3 xformOp:translate = (0.2921, -0.2159, 0.0508)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cylinder "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                uniform token axis = "Z"
+                double height = 0.1016
+                rel material:binding = </PremierAV_AV34_817e78/Looks/rubber_black>
+                rel material:binding:physics = </PremierAV_AV34_817e78/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double radius = 0.0508
+            }
+        }
+
+        def Xform "post_11"
+        {
+            double3 xformOp:translate = (0.2921, 0.2159, 0.48260000000000003)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                rel material:binding = </PremierAV_AV34_817e78/Looks/painted_steel_dark>
+                rel material:binding:physics = </PremierAV_AV34_817e78/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double size = 1
+                float3 xformOp:scale = (0.0254, 0.0254, 0.762)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "caster_11"
+        {
+            double3 xformOp:translate = (0.2921, 0.2159, 0.0508)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cylinder "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                uniform token axis = "Z"
+                double height = 0.1016
+                rel material:binding = </PremierAV_AV34_817e78/Looks/rubber_black>
+                rel material:binding:physics = </PremierAV_AV34_817e78/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double radius = 0.0508
+            }
+        }
+
+        def Xform "shelf_0"
+        {
+            double3 xformOp:translate = (0, 0, 0.1143)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                rel material:binding = </PremierAV_AV34_817e78/Looks/painted_steel_dark>
+                rel material:binding:physics = </PremierAV_AV34_817e78/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double size = 1
+                float3 xformOp:scale = (0.6096, 0.4572, 0.0254)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "shelf_1"
+        {
+            double3 xformOp:translate = (0, 0, 0.4826)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                rel material:binding = </PremierAV_AV34_817e78/Looks/painted_steel_dark>
+                rel material:binding:physics = </PremierAV_AV34_817e78/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double size = 1
+                float3 xformOp:scale = (0.6096, 0.4572, 0.0254)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "shelf_2"
+        {
+            double3 xformOp:translate = (0, 0, 0.8509000000000001)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                rel material:binding = </PremierAV_AV34_817e78/Looks/painted_steel_dark>
+                rel material:binding:physics = </PremierAV_AV34_817e78/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double size = 1
+                float3 xformOp:scale = (0.6096, 0.4572, 0.0254)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+    }
+
+    def Scope "KeyPoints"
+    {
+        def Xform "shelf_0_center" (
+            customData = {
+                double3 normal = (0, 0, 1)
+                bool support = 1
+            }
+        )
+        {
+            double3 xformOp:translate = (0, 0, 0.127)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "shelf_1_center" (
+            customData = {
+                double3 normal = (0, 0, 1)
+                bool support = 1
+            }
+        )
+        {
+            double3 xformOp:translate = (0, 0, 0.49529999999999996)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "shelf_2_center" (
+            customData = {
+                double3 normal = (0, 0, 1)
+                bool support = 1
+            }
+        )
+        {
+            double3 xformOp:translate = (0, 0, 0.8636)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+    }
+}
+

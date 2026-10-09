@@ -1,0 +1,197 @@
+#usda 1.0
+(
+    defaultPrim = "Newport_ATS_HS_12_baa14b"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "Newport_ATS_HS_12_baa14b" (
+    prepend apiSchemas = ["SemanticsLabelsAPI:class"]
+    assetInfo = {
+        asset identifier = @Newport_ATS_HS_12_baa14b.usda@
+        string name = "Newport_ATS_HS_12_baa14b"
+        string version = "fd76bbcc5007"
+    }
+    customData = {
+        dictionary lab_twin = {
+            string body = "static"
+            string expected_bbox_mm = "[[-292.1, -254.0, 0.0], [292.1, 254.0, 323.85]]"
+            string family = "hanging_shelf"
+            string manufacturer = "Newport"
+            double mass_kg = -1
+            string part_number = "ATS-HS-12"
+            string provisional_params = "shelf_t,rod_dia,physics.mass_kg"
+            string route = "PARAMETRIC_PRIMITIVE"
+            string spec_sha = "fd76bbcc5007"
+        }
+    }
+    kind = "component"
+)
+{
+    token[] semantics:labels:class = ["hanging_shelf"]
+
+    def Scope "Looks"
+    {
+        def Material "PhysicsMaterial" (
+            prepend apiSchemas = ["PhysicsMaterialAPI"]
+        )
+        {
+            float physics:dynamicFriction = 0.5
+            float physics:restitution = 0
+            float physics:staticFriction = 0.6
+        }
+
+        def Material "painted_steel_grey"
+        {
+            token outputs:surface.connect = </Newport_ATS_HS_12_baa14b/Looks/painted_steel_grey/PreviewSurface.outputs:surface>
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.72, 0.73, 0.74)
+                float inputs:metallic = 0.1
+                float inputs:roughness = 0.6
+                token outputs:surface
+            }
+        }
+
+        def Material "stainless_steel"
+        {
+            token outputs:surface.connect = </Newport_ATS_HS_12_baa14b/Looks/stainless_steel/PreviewSurface.outputs:surface>
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.45, 0.46, 0.47)
+                float inputs:metallic = 0.8
+                float inputs:roughness = 0.45
+                token outputs:surface
+            }
+        }
+    }
+
+    def Scope "Geometry"
+    {
+        def Xform "shelf"
+        {
+            double3 xformOp:translate = (0, 0, 0.009525)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cube "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                rel material:binding = </Newport_ATS_HS_12_baa14b/Looks/painted_steel_grey>
+                rel material:binding:physics = </Newport_ATS_HS_12_baa14b/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double size = 1
+                float3 xformOp:scale = (0.5842, 0.508, 0.01905)
+                uniform token[] xformOpOrder = ["xformOp:scale"]
+            }
+        }
+
+        def Xform "rod_00"
+        {
+            double3 xformOp:translate = (-0.2671, -0.229, 0.17145000000000002)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cylinder "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                uniform token axis = "Z"
+                double height = 0.3048
+                rel material:binding = </Newport_ATS_HS_12_baa14b/Looks/stainless_steel>
+                rel material:binding:physics = </Newport_ATS_HS_12_baa14b/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double radius = 0.00635
+            }
+        }
+
+        def Xform "rod_01"
+        {
+            double3 xformOp:translate = (-0.2671, 0.229, 0.17145000000000002)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cylinder "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                uniform token axis = "Z"
+                double height = 0.3048
+                rel material:binding = </Newport_ATS_HS_12_baa14b/Looks/stainless_steel>
+                rel material:binding:physics = </Newport_ATS_HS_12_baa14b/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double radius = 0.00635
+            }
+        }
+
+        def Xform "rod_10"
+        {
+            double3 xformOp:translate = (0.2671, -0.229, 0.17145000000000002)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cylinder "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                uniform token axis = "Z"
+                double height = 0.3048
+                rel material:binding = </Newport_ATS_HS_12_baa14b/Looks/stainless_steel>
+                rel material:binding:physics = </Newport_ATS_HS_12_baa14b/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double radius = 0.00635
+            }
+        }
+
+        def Xform "rod_11"
+        {
+            double3 xformOp:translate = (0.2671, 0.229, 0.17145000000000002)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+
+            def Cylinder "shape" (
+                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI"]
+            )
+            {
+                uniform token axis = "Z"
+                double height = 0.3048
+                rel material:binding = </Newport_ATS_HS_12_baa14b/Looks/stainless_steel>
+                rel material:binding:physics = </Newport_ATS_HS_12_baa14b/Looks/PhysicsMaterial> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                double radius = 0.00635
+            }
+        }
+    }
+
+    def Scope "KeyPoints"
+    {
+        def Xform "shelf_top_center" (
+            customData = {
+                double3 normal = (0, 0, 1)
+                bool support = 1
+            }
+        )
+        {
+            double3 xformOp:translate = (0, 0, 0.01905)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "hang_plane_center" (
+            customData = {
+                double3 normal = (0, 0, 1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (0, 0, 0.32385)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+    }
+}
+

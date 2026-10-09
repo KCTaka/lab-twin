@@ -1,0 +1,54 @@
+{
+  "asset_id": "FIXTURE_cad_tr2_like_post",
+  "inventory": {
+    "manufacturer": "FIXTURE",
+    "part_number": "TR2-like",
+    "description": "Synthetic 12.7 mm x 50.8 mm post, STEP made by tests/make_fixture_step.py",
+    "qty": 1,
+    "instances": 1
+  },
+  "route": "VENDOR_STEP",
+  "family": "cad",
+  "params": {},
+  "physics": {
+    "body": "dynamic",
+    "collision": "convexHull",
+    "density_kg_m3": 7930,
+    "mass_kg": {
+      "value": null,
+      "src": "vendor_cad"
+    }
+  },
+  "semantic_class": "optical_post",
+  "notes": "pipeline self-test for the STEP route",
+  "cad": {
+    "file": "tests/fixtures/tr2_like_post.step",
+    "units": "mm"
+  },
+  "key_points": {
+    "top_face_center": {
+      "pos_mm": [
+        0,
+        0,
+        50.8
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ]
+    },
+    "bottom_face_center": {
+      "pos_mm": [
+        0,
+        0,
+        0
+      ],
+      "normal": [
+        0,
+        0,
+        -1
+      ]
+    }
+  }
+}
