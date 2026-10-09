@@ -1,0 +1,34 @@
+{
+  "asset_id": "FIXTURE_cad_ph_like_holder",
+  "inventory": {
+    "manufacturer": "FIXTURE",
+    "part_number": "ph_like_holder",
+    "description": "Synthetic post holder: 12.7 mm bore, 1/4-20 base tap, side screw hole",
+    "qty": 1,
+    "instances": 1
+  },
+  "route": "VENDOR_STEP",
+  "family": "cad",
+  "physics": {
+    "body": "dynamic",
+    "collision": "auto",
+    "density_kg_m3": {
+      "value": 2700,
+      "unit": "kg/m^3",
+      "src": "assumed",
+      "note": "fixture",
+      "material": "aluminium"
+    },
+    "mass_kg": {
+      "value": null,
+      "src": "vendor_cad"
+    }
+  },
+  "semantic_class": "optomechanics",
+  "notes": "pipeline self-test: synthetic STEP from tests/make_cad_fixtures.py with known features",
+  "cad": {
+    "file": "tests/fixtures/ph_like_holder.step",
+    "units": "mm"
+  },
+  "params": {}
+}

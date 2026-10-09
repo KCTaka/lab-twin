@@ -67,8 +67,14 @@ def check(spec: dict) -> list[str]:
     phys = spec.get("physics", {})
     if phys.get("body") not in ("static", "dynamic"):
         errs.append("R5 physics.body must be static or dynamic")
+    rho = phys.get("density_kg_m3")
+    rho_v = rho.get("value") if isinstance(rho, dict) else rho
     if phys.get("body") == "dynamic" and not (phys.get("mass_kg") or {}).get("value"):
-        errs.append("R5 dynamic body needs physics.mass_kg.value")
+        # CAD route: S4 computes mass = B-rep volume x density, so a sourced density suffices
+        if not (fam == "cad" and rho_v):
+            errs.append("R5 dynamic body needs physics.mass_kg.value (or, for family cad, density_kg_m3)")
+    if isinstance(rho, dict) and rho.get("src") not in PROVENANCE:
+        errs.append(f"R5 density src {rho.get('src')!r} not in {PROVENANCE}")
     if not errs and fam != "cad":
         try:
             parts, _ = generators.build(spec)

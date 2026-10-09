@@ -48,6 +48,26 @@ flowchart LR
 4. If no source exists after a reasonable search, set
    `s2_source = blocked:no_source` and add what you tried to `notes`.
 
+## Bulk: ingest a downloads folder
+
+When many CAD files have been downloaded (e.g. the worklists in `docs/worklists/`):
+
+```bash
+.venv/bin/python pipeline/s2_ingest_downloads.py ~/Downloads/lab-twin-cad --dry-run   # show matches
+.venv/bin/python pipeline/s2_ingest_downloads.py ~/Downloads/lab-twin-cad
+```
+
+Part numbers are read from file names (`TR1-Step.zip`, `TR20_M-Step.stp`, ...); pack
+variants share one file (`TR1-P5` uses `TR1`). Matched rows join scope `cad_ingested`
+with `family: cad`, and the density is inferred from the description (provenance
+recorded). Unmatched or ambiguous files are only reported, never guessed.
+
+**Vendor policy (checked 2026-10-09):** Thorlabs' robots.txt disallows automated
+fetching of `*.step`/`*.zip` and sets `Crawl-delay: 30`; Newport answers scripts with
+403. Downloads are therefore made in a browser by a person or a supervised agent at
+human pace. Part numbers can be verified without crawling from Thorlabs' products
+sitemap (allowed): 435 of 455 Thorlabs rows matched.
+
 ## Do not
 
 - commit anything under `sources/` (vendor licences); the hash in

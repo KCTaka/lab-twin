@@ -23,9 +23,15 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from common import DATA, MANIFEST, SPECS, STAGES, spec_path, write_manifest  # noqa: E402
+from common import DATA, MANIFEST, SOURCES, SPECS, STAGES, spec_path, write_manifest  # noqa: E402
 
-ACTIVE_SCOPES = {"layout_L1", "pipeline_test"}
+
+def has_cad_source(asset_id: str) -> bool:
+    """Data-driven activation: an asset with a recorded STEP/IGES (s2) joins the CAD route."""
+    rec = SOURCES / asset_id / "SOURCE.json"
+    return rec.exists() and any(x.get("kind") in ("step", "iges") for x in json.loads(rec.read_text()))
+
+ACTIVE_SCOPES = {"layout_L1", "pipeline_test", "cad_ingested"}
 
 # Synthetic rows that exercise routes end to end (not inventory items).
 FIXTURES = [{
@@ -33,7 +39,13 @@ FIXTURES = [{
     "family": "cad", "category": "Optomechanics", "manufacturer": "FIXTURE",
     "part_number": "TR2-like", "description": "Synthetic 12.7 mm x 50.8 mm post, STEP made by tests/make_fixture_step.py",
     "qty": 1, "pack_size": 1, "instances": 1, "notes": "pipeline self-test for the STEP route",
-}]
+}] + [{
+    "asset_id": f"FIXTURE_cad_{n}", "scope": "pipeline_test", "route": "VENDOR_STEP", "family": "cad",
+    "category": "Optomechanics", "manufacturer": "FIXTURE", "part_number": n, "description": d,
+    "qty": 1, "pack_size": 1, "instances": 1,
+    "notes": "pipeline self-test: synthetic STEP from tests/make_cad_fixtures.py with known features",
+} for n, d in (("ph_like_holder", "Synthetic post holder: 12.7 mm bore, 1/4-20 base tap, side screw hole"),
+               ("cp_like_cage_plate", "Synthetic 30 mm cage plate: SM1 bore, 4 rod holes, 8-32 base tap"))]
 
 # (manufacturer regex, part-number regex, scope, family, route override or None, note)
 RULES = [
@@ -101,6 +113,8 @@ def normalize(triage_rows):
             if len(pns) > 1:
                 flags = [f for f in flags if f != "grouped_row"] + ["split_from_group", "qty_uncertain"]
             scope, fam, route_override, note = classify(r["Manufacturer"], pn, r["priority"], r["Category"])
+            if scope not in ("layout_L1", "pipeline_test") and has_cad_source(aid):
+                scope, fam, route_override = "cad_ingested", "cad", "VENDOR_STEP"
             route = r["route"]
             if len(pns) > 1 and route == "SPLIT_ROW_FIRST":
                 route = "UNROUTED_AFTER_SPLIT"

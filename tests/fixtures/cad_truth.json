@@ -1,0 +1,88 @@
+{
+  "ph_like_holder": {
+    "bbox": [
+      19.05,
+      19.05,
+      76.2
+    ],
+    "mount_holes": [
+      {
+        "pos": [
+          0,
+          0,
+          0
+        ],
+        "thread": "1/4-20"
+      }
+    ],
+    "top_holes": [
+      {
+        "pos": [
+          0,
+          0,
+          76.2
+        ],
+        "d": 12.7
+      }
+    ],
+    "optical_axis": null,
+    "top_surface": false
+  },
+  "cp_like_cage_plate": {
+    "bbox": [
+      41,
+      8.9,
+      41
+    ],
+    "mount_holes": [
+      {
+        "pos": [
+          0,
+          0,
+          0
+        ],
+        "thread": "8-32"
+      }
+    ],
+    "top_holes": [],
+    "optical_axis": {
+      "pos": [
+        0,
+        0,
+        20.5
+      ],
+      "axis": "y",
+      "thread": "SM1 (1.035-40)"
+    },
+    "top_surface": true
+  },
+  "tr2_like_post": {
+    "bbox": [
+      12.7,
+      12.7,
+      50.8
+    ],
+    "mount_holes": [
+      {
+        "pos": [
+          0,
+          0,
+          0
+        ],
+        "thread": "M4"
+      }
+    ],
+    "top_holes": [
+      {
+        "pos": [
+          0,
+          0,
+          50.8
+        ],
+        "thread": "M4"
+      }
+    ],
+    "optical_axis": null,
+    "top_surface": false
+  }
+}

@@ -88,4 +88,7 @@ def provisional_params(spec: dict) -> list[str]:
     m = spec.get("physics", {}).get("mass_kg")
     if isinstance(m, dict) and m.get("src") == "assumed":
         out.append("physics.mass_kg")
+    rho = spec.get("physics", {}).get("density_kg_m3")
+    if isinstance(rho, dict) and rho.get("src") == "assumed":   # mass derived from it is provisional too
+        out.append("physics.density_kg_m3")
     return out

@@ -148,12 +148,33 @@ def author_parametric(spec):
     return stage, root, out, parts
 
 
+CONVEXITY_SPLIT = 0.80   # mesh volume / convex-hull volume below this -> convex decomposition
+
+
+def _mesh_volume(pts, idx):
+    """|signed volume| of a closed triangle mesh (divergence theorem); same units^3 as pts."""
+    import numpy as np
+    tri = pts[idx.reshape(-1, 3)]
+    return abs(np.einsum("ij,ij->i", tri[:, 0], np.cross(tri[:, 1], tri[:, 2])).sum()) / 6.0
+
+
 def author_cad(spec):
-    """Wrap converter output (mm, Z-up) into a metre-scale asset with collision + mass."""
+    """Wrap converter output into a metre-scale asset with collision, mass and key points.
+
+    Uses build/<id>/cad_analysis.json (OpenCASCADE reading of the same STEP) for the
+    expected bbox, the exact volume and the automatic key points; the converter mesh
+    is used for rendering and collision, and its volume is kept as a cross-check.
+    """
+    import shutil
+    import numpy as np
+    from scipy.spatial import ConvexHull
+
     aid = spec["asset_id"]
     raw = BUILD / aid / "cad_raw.usda"
     if not raw.exists():
         raise FileNotFoundError(f"{raw} (run s3_step_convert first)")
+    ana_path = BUILD / aid / "cad_analysis.json"
+    ana = json.loads(ana_path.read_text()) if ana_path.exists() else None
     raw_stage = Usd.Stage.Open(str(raw))
     raw_mpu = UsdGeom.GetStageMetersPerUnit(raw_stage)
     bb = UsdGeom.BBoxCache(Usd.TimeCode.Default(), ["default", "render"]).ComputeWorldBound(
@@ -165,41 +186,68 @@ def author_cad(spec):
     UsdGeom.Scope.Define(stage, rp.AppendChild("Looks"))
     pmat = _physics_material(stage, rp)
     geo = UsdGeom.Xform.Define(stage, rp.AppendChild("Geometry"))
-    # recenter: footprint centre to origin, lowest point to z = 0; then convert units
-    s = raw_mpu
+    s = raw_mpu   # recentre (footprint centre to origin, lowest point to z = 0), then convert units
     geo.AddTranslateOp().Set(Gf.Vec3d(-(lo[0] + hi[0]) / 2 * s, -(lo[1] + hi[1]) / 2 * s, -lo[2] * s))
     geo.AddScaleOp().Set(Gf.Vec3f(s, s, s))
     cad = stage.DefinePrim(rp.AppendPath("Geometry/cad"))
-    # copy converter output next to the asset so the asset folder is self-contained
-    import shutil
-    (ASSETS / aid / "cad").mkdir(parents=True, exist_ok=True)
+    (ASSETS / aid / "cad").mkdir(parents=True, exist_ok=True)       # self-contained asset folder
     shutil.copy2(raw, ASSETS / aid / "cad" / "cad_raw.usda")
     cad.GetReferences().AddReference("./cad/cad_raw.usda")
-    approx = spec["physics"].get("collision", "convexHull")
-    total_vol = 0.0
-    import numpy as np
+
+    want = spec["physics"].get("collision", "auto")
+    mesh_vol, n_tri, per_mesh = 0.0, 0, []
     for p in Usd.PrimRange(cad):
-        if p.IsA(UsdGeom.Mesh):
-            UsdPhysics.CollisionAPI.Apply(p)
-            UsdPhysics.MeshCollisionAPI.Apply(p).CreateApproximationAttr(approx)
-            _bind(p, _material(stage, rp, "cad_default"), pmat)
-            m = UsdGeom.Mesh(p)
-            pts = np.array(m.GetPointsAttr().Get(), dtype=float)
-            fvc = np.array(m.GetFaceVertexCountsAttr().Get())
-            if (fvc == 3).all():   # signed volume of a closed triangle mesh (divergence theorem)
-                tri = pts[np.array(m.GetFaceVertexIndicesAttr().Get()).reshape(-1, 3)]
-                total_vol += abs(np.einsum("ij,ij->i", tri[:, 0], np.cross(tri[:, 1], tri[:, 2])).sum()) / 6.0
-    kps = [generators.KeyPoint(k, tuple(v["pos_mm"]), tuple(v.get("normal", (0, 0, 1))), v.get("data", {}))
-           for k, v in spec.get("key_points", {}).items()]
+        if not p.IsA(UsdGeom.Mesh):
+            continue
+        m = UsdGeom.Mesh(p)
+        pts = np.array(m.GetPointsAttr().Get(), dtype=float)
+        fvc = np.array(m.GetFaceVertexCountsAttr().Get())
+        idx = np.array(m.GetFaceVertexIndicesAttr().Get())
+        tri_ok = bool((fvc == 3).all())
+        v = _mesh_volume(pts, idx) if tri_ok else float("nan")
+        try:
+            hull = ConvexHull(pts).volume
+        except Exception:
+            hull = float("nan")
+        ratio = v / hull if tri_ok and hull > 0 else float("nan")
+        approx = want if want != "auto" else (
+            "convexDecomposition" if not (ratio >= CONVEXITY_SPLIT) else "convexHull")
+        UsdPhysics.CollisionAPI.Apply(p)
+        UsdPhysics.MeshCollisionAPI.Apply(p).CreateApproximationAttr(approx)
+        _bind(p, _material(stage, rp, "cad_default"), pmat)
+        mesh_vol += 0.0 if np.isnan(v) else v
+        n_tri += int(len(idx) / 3) if tri_ok else int(fvc.sum())
+        per_mesh.append({"prim": str(p.GetPath()).split("/Geometry/cad", 1)[-1], "triangles": int(len(idx) / 3),
+                         "convexity": None if np.isnan(ratio) else round(float(ratio), 3), "collision": approx})
+
+    # key points: automatic ones from the B-rep, overridden by any given in the spec
+    kp_src = dict((ana or {}).get("key_points", {}))
+    kp_src.update(spec.get("key_points", {}))
+    kps = [generators.KeyPoint(k, tuple(v["pos_mm"]), tuple(v.get("normal", (0, 0, 1))), v.get("data", {}),
+                               v.get("support")) for k, v in kp_src.items()]
     _keypoints(stage, rp, kps)
-    vol_m3 = total_vol * s ** 3
-    rho = spec["physics"].get("density_kg_m3")
-    if rho and spec["physics"].get("mass_kg", {}).get("value") is None:
-        spec["physics"]["mass_kg"] = {"value": round(vol_m3 * rho, 6), "src": "vendor_cad",
-                                      "quote": f"mesh volume {vol_m3:.3e} m^3 x density {rho} kg/m^3"}
-    # after recentering, the CAD bbox is centred in X/Y and starts at z = 0 (sizes in mm)
-    size_mm = tuple((hi[i] - lo[i]) * s / MM for i in range(3))
+
+    rho_spec = spec["physics"].get("density_kg_m3")
+    rho = rho_spec["value"] if isinstance(rho_spec, dict) else rho_spec
+    mesh_m3 = mesh_vol * s ** 3
+    exact_m3 = ana["volume_mm3"] * 1e-9 if ana else None
+    if rho and (spec["physics"].get("mass_kg") or {}).get("value") is None:
+        vol = exact_m3 if exact_m3 else mesh_m3
+        spec["physics"]["mass_kg"] = {"value": round(vol * rho, 6), "src": "vendor_cad",
+                                      "quote": f"{'B-rep' if exact_m3 else 'mesh'} volume {vol:.4e} m^3 x {rho} kg/m^3"
+                                               + (f" ({rho_spec.get('src')}: {rho_spec.get('material')})" if isinstance(rho_spec, dict) else "")}
+    # expected bbox: the independent OpenCASCADE reading if available (else the converter's own)
+    size_mm = tuple(ana["bbox_mm"]["size"]) if ana else tuple((hi[i] - lo[i]) * s / MM for i in range(3))
     parts = [generators.Part("cad", "box", (0.0, 0.0, size_mm[2] / 2), size_mm, "cad_default")]
+    spec["_authored_cad"] = {
+        "expected_bbox_source": "opencascade" if ana else "converter",
+        "converter_bbox_mm": [round((hi[i] - lo[i]) * s / MM, 4) for i in range(3)],
+        "volume_brep_m3": exact_m3, "volume_mesh_m3": mesh_m3,
+        "volume_mesh_vs_brep": round(mesh_m3 / exact_m3 - 1, 5) if exact_m3 else None,
+        "triangles": n_tri, "meshes": per_mesh,
+        "key_points_auto": sorted((ana or {}).get("key_points", {})),
+        "key_points_spec": sorted(spec.get("key_points", {})),
+    }
     return stage, root, out, parts
 
 
@@ -229,7 +277,8 @@ def author(asset_id):
     })
     stage.GetRootLayer().Save()
     rec = {"asset_id": asset_id, "spec_sha": spec_sha, "gen_sha": GEN_SHA, "usd": str(out.relative_to(ASSETS.parent)),
-           "mass_kg": phys.get("mass_kg"), "expected_bbox_mm": [lo, hi]}
+           "mass_kg": phys.get("mass_kg"), "expected_bbox_mm": [lo, hi],
+           **({"cad": spec["_authored_cad"]} if "_authored_cad" in spec else {})}
     (BUILD / asset_id).mkdir(parents=True, exist_ok=True)
     (BUILD / asset_id / "authored.json").write_text(json.dumps(rec, indent=2))
     return out

@@ -48,15 +48,6 @@
           "drift_mm": 0.0,
           "speed_mm_s": 0.0,
           "ok": true
-        },
-        {
-          "probe": "top_face_center",
-          "probe_edge_mm": 6.3,
-          "probe_kg": 0.0099,
-          "z0_mm": 74.0,
-          "z_err_mm": 0.0,
-          "speed_mm_s": 0.0,
-          "ok": true
         }
       ],
       "note": ""

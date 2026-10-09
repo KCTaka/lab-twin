@@ -41,6 +41,26 @@ sequenceDiagram
     A->>A: CollisionAPI + MeshCollisionAPI per mesh, mass = volume x density
 ```
 
+After a successful conversion, S3a also reads the STEP with OpenCASCADE
+(`pipeline/cad_analyze.py`, independent of the converter) and writes
+`build/<id>/cad_analysis.json`:
+
+- **ground-truth bbox**: S5 check C2 compares the authored USD against it, which catches unit
+  and axis-permutation errors that a self-referential check would miss;
+- **exact B-rep volume**: mass = volume x density (the mesh volume is kept as a
+  cross-check; on the fixtures they agree within 0.2 %);
+- **automatic key points**: `mount_hole_k` and `top_hole_k` (with a thread guess from
+  the modelled diameter), `optical_axis` (the largest horizontal through-bore) and
+  `top_surface` (a point on the top face, drop-tested in S5). Each carries
+  `data.auto = true`; key points given in the spec override them.
+
+S4 then picks collision per mesh from measured convexity (mesh volume / convex-hull
+volume): `convexHull` at 0.80 or above, otherwise `convexDecomposition`. For example,
+the post scored 0.97 and the post holder 0.59.
+
+Regression test for the analyser: `.venv/bin/python tests/test_cad_analyze.py`
+(synthetic parts with known features from `tests/make_cad_fixtures.py`).
+
 ## Check
 
 `build/<asset_id>/cad_convert.json` must have `"ok": true`. Known converter

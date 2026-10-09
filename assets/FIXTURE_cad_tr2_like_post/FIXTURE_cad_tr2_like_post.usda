@@ -11,25 +11,25 @@ def Xform "FIXTURE_cad_tr2_like_post" (
     assetInfo = {
         asset identifier = @FIXTURE_cad_tr2_like_post.usda@
         string name = "FIXTURE_cad_tr2_like_post"
-        string version = "429415f50fc4"
+        string version = "f2f3146065ef"
     }
     customData = {
         dictionary lab_twin = {
             string body = "dynamic"
-            string expected_bbox_mm = "[[-6.349999904632568, -6.349999904632568, 0.0], [6.349999904632568, 6.349999904632568, 50.79999923706055]]"
+            string expected_bbox_mm = "[[-6.35, -6.35, 0.0], [6.35, 6.35, 50.8]]"
             string family = "cad"
             string manufacturer = "FIXTURE"
-            double mass_kg = 0.049365
+            double mass_kg = 0.049437
             string part_number = "TR2-like"
             string provisional_params = ""
             string route = "VENDOR_STEP"
-            string spec_sha = "429415f50fc4"
+            string spec_sha = "f2f3146065ef"
         }
     }
     kind = "component"
 )
 {
-    float physics:mass = 0.049365
+    float physics:mass = 0.049437
     token[] semantics:labels:class = ["optical_post"]
 
     def Scope "Looks"
@@ -86,25 +86,27 @@ def Xform "FIXTURE_cad_tr2_like_post" (
 
     def Scope "KeyPoints"
     {
-        def Xform "top_face_center" (
+        def Xform "mount_hole_0" (
             customData = {
-                double3 normal = (0, 0, 1)
-                bool support = 1
-            }
-        )
-        {
-            double3 xformOp:translate = (0, 0, 0.0508)
-            uniform token[] xformOpOrder = ["xformOp:translate"]
-        }
-
-        def Xform "bottom_face_center" (
-            customData = {
+                string data = '{"auto": true, "diameter_mm": 4.0, "thread_guess": {"thread": "M4", "matched": "major", "err_mm": 0.0}}'
                 double3 normal = (0, 0, -1)
                 bool support = 0
             }
         )
         {
             double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "top_hole_0" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 4.0, "thread_guess": {"thread": "M4", "matched": "major", "err_mm": 0.0}}'
+                double3 normal = (0, 0, 1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (0, 0, 0.0508)
             uniform token[] xformOpOrder = ["xformOp:translate"]
         }
     }

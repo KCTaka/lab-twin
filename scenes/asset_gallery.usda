@@ -22,7 +22,7 @@ def Xform "World"
         {
             color3f[] primvars:displayColor = [(0.55, 0.56, 0.58)]
             double size = 1
-            float3 xformOp:scale = (30.38765, 8, 0.02)
+            float3 xformOp:scale = (31.4477, 8, 0.02)
             uniform token[] xformOpOrder = ["xformOp:scale"]
         }
     }
@@ -42,7 +42,7 @@ def Xform "World"
 
     def Xform "Gallery"
     {
-        double3 xformOp:translate = (-13.193825000000002, 0, 0)
+        double3 xformOp:translate = (-13.72385, 0, 0)
         uniform token[] xformOpOrder = ["xformOp:translate"]
 
         def Xform "Newport_OTS_UT2_48_12_I_6fd189" (
@@ -149,11 +149,27 @@ def Xform "World"
             uniform token[] xformOpOrder = ["xformOp:translate"]
         }
 
+        def Xform "FIXTURE_cad_cp_like_cage_plate" (
+            prepend references = @../assets/FIXTURE_cad_cp_like_cage_plate/FIXTURE_cad_cp_like_cage_plate.usda@
+        )
+        {
+            double3 xformOp:translate = (26.39545, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "FIXTURE_cad_ph_like_holder" (
+            prepend references = @../assets/FIXTURE_cad_ph_like_holder/FIXTURE_cad_ph_like_holder.usda@
+        )
+        {
+            double3 xformOp:translate = (26.925475, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
         def Xform "FIXTURE_cad_tr2_like_post" (
             prepend references = @../assets/FIXTURE_cad_tr2_like_post/FIXTURE_cad_tr2_like_post.usda@
         )
         {
-            double3 xformOp:translate = (26.381300000000003, 0, 0)
+            double3 xformOp:translate = (27.44135, 0, 0)
             uniform token[] xformOpOrder = ["xformOp:translate"]
         }
     }

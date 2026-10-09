@@ -33,6 +33,9 @@ for r in rows:
     for k in prov:
         if k == "physics.mass_kg":
             out.append(f"- [ ] mass (kg): {spec['physics']['mass_kg'].get('note', '')}")
+        elif k == "physics.density_kg_m3":
+            d = spec["physics"]["density_kg_m3"]
+            out.append(f"- [ ] material / density = {d.get('material')} {d['value']} kg/m^3 (assumed): {d.get('note', '')}")
         else:
             p = spec["params"][k]
             out.append(f"- [ ] `{k}` = {p['value']} mm (assumed): {p.get('note', '')}")

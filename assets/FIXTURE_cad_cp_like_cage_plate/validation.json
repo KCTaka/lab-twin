@@ -1,0 +1,69 @@
+{
+  "asset_id": "FIXTURE_cad_cp_like_cage_plate",
+  "pass": true,
+  "checks": {
+    "C1_metrics": {
+      "pass": true,
+      "mpu": 1.0,
+      "up": "Z"
+    },
+    "C2_bbox": {
+      "pass": true,
+      "axes": [
+        {
+          "axis": "x",
+          "expected_mm": 41.0,
+          "got_mm": 41.0,
+          "ok": true
+        },
+        {
+          "axis": "y",
+          "expected_mm": 8.9,
+          "got_mm": 8.9,
+          "ok": true
+        },
+        {
+          "axis": "z",
+          "expected_mm": 41.0,
+          "got_mm": 41.0,
+          "ok": true
+        }
+      ]
+    },
+    "C3_floor_origin": {
+      "pass": true,
+      "min_z_mm": 0.0
+    },
+    "C4_collision": {
+      "pass": true,
+      "shapes": 1,
+      "collidable": 1
+    },
+    "C5_physics_settle": {
+      "pass": true,
+      "applicable": true,
+      "probes": [
+        {
+          "probe": "asset_itself",
+          "drift_mm": 0.0,
+          "speed_mm_s": 0.0,
+          "ok": true
+        },
+        {
+          "probe": "top_surface",
+          "probe_edge_mm": 4.5,
+          "probe_kg": 0.005,
+          "z0_mm": 63.2,
+          "z_err_mm": 0.62,
+          "speed_mm_s": 0.0,
+          "ok": true
+        }
+      ],
+      "note": ""
+    },
+    "C6_provenance": {
+      "pass": true,
+      "provisional": []
+    }
+  }
+}

@@ -32,9 +32,14 @@ def entry(row):
         _, kp_list = generators.build(spec)
         kps = {k.name: {"pos_m": [round(c / 1000, 5) for c in k.pos], "normal": list(k.normal), "support": k.is_support(),
                         **({"data": k.data} if k.data else {})} for k in kp_list}
-    else:
-        kps = {k: {"pos_m": [c / 1000 for c in v["pos_mm"]], "normal": v.get("normal", [0, 0, 1])}
-               for k, v in spec.get("key_points", {}).items()}
+    else:   # automatic B-rep key points (S3a), overridden by any given in the spec
+        ana = BUILD / aid / "cad_analysis.json"
+        src = dict(json.loads(ana.read_text())["key_points"]) if ana.exists() else {}
+        src.update(spec.get("key_points", {}))
+        kps = {k: {"pos_m": [round(c / 1000, 6) for c in v["pos_mm"]], "normal": v.get("normal", [0, 0, 1]),
+                   "support": v.get("support", list(v.get("normal", [0, 0, 1])) == [0, 0, 1]),
+                   **({"data": v["data"]} if v.get("data") else {})}
+               for k, v in src.items()}
     authored = json.loads((BUILD / aid / "authored.json").read_text())
     mass = (authored.get("mass_kg") or {}).get("value")   # stage 4 may compute it (CAD volume x density)
     return {

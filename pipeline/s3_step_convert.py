@@ -64,6 +64,15 @@ def convert(aid: str, isaac: Path) -> dict:
     rec = {"asset_id": aid, "source": str(src.relative_to(ROOT)), "source_sha256": sha256(src),
            "options": opts, "returncode": rc, "ok": ok, "seconds": round(time.time() - t0, 1),
            "log": str(log.relative_to(ROOT)), "converter_script": str(script)}
+    if ok:   # independent B-rep reading: ground-truth bbox, exact volume, auto key points
+        from cad_analyze import analyze
+        t1 = time.time()
+        res = analyze(src)
+        res["source_sha256"] = rec["source_sha256"]
+        (out_dir / "cad_analysis.json").write_text(json.dumps(res, indent=2))
+        rec["analysis_seconds"] = round(time.time() - t1, 1)
+        rec["analysis"] = {"n_solids": res["n_solids"], "bbox_mm": res["bbox_mm"]["size"],
+                           "volume_mm3": res["volume_mm3"], "key_points": sorted(res["key_points"])}
     (out_dir / "cad_convert.json").write_text(json.dumps(rec, indent=2))
     return rec
 

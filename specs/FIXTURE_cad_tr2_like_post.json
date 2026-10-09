@@ -12,8 +12,14 @@
   "params": {},
   "physics": {
     "body": "dynamic",
-    "collision": "convexHull",
-    "density_kg_m3": 7930,
+    "collision": "auto",
+    "density_kg_m3": {
+      "value": 7930,
+      "unit": "kg/m^3",
+      "src": "assumed",
+      "note": "fixture: stainless 303",
+      "material": "stainless"
+    },
     "mass_kg": {
       "value": null,
       "src": "vendor_cad"
@@ -25,30 +31,5 @@
     "file": "tests/fixtures/tr2_like_post.step",
     "units": "mm"
   },
-  "key_points": {
-    "top_face_center": {
-      "pos_mm": [
-        0,
-        0,
-        50.8
-      ],
-      "normal": [
-        0,
-        0,
-        1
-      ]
-    },
-    "bottom_face_center": {
-      "pos_mm": [
-        0,
-        0,
-        0
-      ],
-      "normal": [
-        0,
-        0,
-        -1
-      ]
-    }
-  }
+  "key_points": {}
 }
