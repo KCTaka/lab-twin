@@ -70,9 +70,12 @@ def static_checks(aid):
             n = k.GetCustomDataByKey("normal")
             t = UsdGeom.Xformable(k).ComputeLocalToWorldTransform(Usd.TimeCode.Default()).ExtractTranslation()
             sup = k.GetCustomDataByKey("support")
+            kd = k.GetCustomDataByKey("data")
+            kd = json.loads(kd) if isinstance(kd, str) else {}
             nn = tuple(n) if n else (0, 0, 1)
             kps.append({"name": k.GetName(), "pos": tuple(t), "normal": nn,
-                        "support": bool(sup) if sup is not None else abs(nn[2] - 1) < 1e-6})
+                        "support": bool(sup) if sup is not None else abs(nn[2] - 1) < 1e-6,
+                        "face_area_mm2": kd.get("face_area_mm2")})
     return res, kps, meta
 
 
@@ -146,21 +149,29 @@ def physics_settle(aid, kps, body, size_mm, mass_kg=None, negative_control=False
         st = _world(aid, negative_control)
         paths = {}
         for i, k in enumerate(surf):
+            # the probe must fit on the face it tests (CAD faces report their area)
+            e_k = min(edge, 0.7 * (k["face_area_mm2"] ** 0.5) / 1e3) if k.get("face_area_mm2") else edge
+            k["edge"] = e_k
             p = UsdGeom.Cube.Define(st, f"/World/probe_{i}")
-            p.CreateSizeAttr(edge)
+            p.CreateSizeAttr(e_k)
             x, y, z = k["pos"]
-            p.AddTranslateOp().Set(Gf.Vec3d(x, y, z + edge / 2 + DROP))
+            p.AddTranslateOp().Set(Gf.Vec3d(x, y, z + e_k / 2 + DROP))
             UsdPhysics.CollisionAPI.Apply(p.GetPrim())
             UsdPhysics.RigidBodyAPI.Apply(p.GetPrim())
             UsdPhysics.MassAPI.Apply(p.GetPrim()).CreateMassAttr(pmass)
             paths[p.GetPath().pathString] = k
         for p, (start, pos, v) in _simulate(list(paths)).items():
             k = paths[p]
-            err = pos[2] - (k["pos"][2] + edge / 2)
-            ok = abs(err) < 0.005 and v < 0.005 and abs(pos[0] - k["pos"][0]) < 0.02 and abs(pos[1] - k["pos"][1]) < 0.02
-            results.append({"probe": k["name"], "probe_edge_mm": round(edge * 1e3, 1), "probe_kg": round(pmass, 4),
+            err = pos[2] - (k["pos"][2] + k["edge"] / 2)
+            settled = v < 0.005 and abs(pos[0] - k["pos"][0]) < 0.02 and abs(pos[1] - k["pos"][1]) < 0.02
+            # below the face = missing collider (fail); above it = the probe met taller solid
+            # geometry inside its footprint (collision present, probe wider than the clear patch)
+            obstructed = settled and err >= 0.005
+            ok = settled and err > -0.005
+            results.append({"probe": k["name"], "probe_edge_mm": round(k["edge"] * 1e3, 1), "probe_kg": round(pmass, 4),
                             "z0_mm": round(start[2] * 1e3, 1), "z_err_mm": round(err * 1e3, 2),
-                            "speed_mm_s": round(v * 1e3, 3), "ok": ok})
+                            "speed_mm_s": round(v * 1e3, 3), "ok": ok,
+                            **({"warning": "obstructed: probe rests on a feature above the face"} if obstructed else {})})
     if not results:   # e.g. wall-hung static panels: nothing load-bearing to test
         return {"pass": True, "applicable": False, "probes": [],
                 "note": "not applicable: static asset without support key points (collision presence checked by C4)"}

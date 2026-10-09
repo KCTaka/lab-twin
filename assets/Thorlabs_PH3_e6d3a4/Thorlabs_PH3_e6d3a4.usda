@@ -1,0 +1,164 @@
+#usda 1.0
+(
+    defaultPrim = "Thorlabs_PH3_e6d3a4"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "Thorlabs_PH3_e6d3a4" (
+    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "SemanticsLabelsAPI:class"]
+    assetInfo = {
+        asset identifier = @Thorlabs_PH3_e6d3a4.usda@
+        string name = "Thorlabs_PH3_e6d3a4"
+        string version = "ae83c01e2899"
+    }
+    customData = {
+        dictionary lab_twin = {
+            string body = "dynamic"
+            string expected_bbox_mm = "[[-12.500000119000001, -17.707000119000003, 0.0], [12.500000119000001, 17.707000119000003, 76.20000010000001]]"
+            string family = "cad"
+            string manufacturer = "Thorlabs"
+            double mass_kg = 0.077922
+            string part_number = "PH3"
+            string provisional_params = "physics.density_kg_m3"
+            string route = "VENDOR_STEP"
+            string spec_sha = "ae83c01e2899"
+        }
+    }
+    kind = "component"
+)
+{
+    float physics:mass = 0.077922
+    token[] semantics:labels:class = ["optomechanics"]
+
+    def Scope "Looks"
+    {
+        def Material "PhysicsMaterial" (
+            prepend apiSchemas = ["PhysicsMaterialAPI"]
+        )
+        {
+            float physics:dynamicFriction = 0.5
+            float physics:restitution = 0
+            float physics:staticFriction = 0.6
+        }
+
+        def Material "cad_default"
+        {
+            token outputs:surface.connect = </Thorlabs_PH3_e6d3a4/Looks/cad_default/PreviewSurface.outputs:surface>
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.75, 0.75, 0.75)
+                float inputs:metallic = 0.5
+                float inputs:roughness = 0.5
+                token outputs:surface
+            }
+        }
+    }
+
+    def Xform "Geometry"
+    {
+        float xformOp:rotateX = 90
+        float3 xformOp:scale = (0.0254, 0.0254, 0.0254)
+        double3 xformOp:translate = (-0, 0.005206999999999998, 0.0381)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateX", "xformOp:scale"]
+
+        def "cad" (
+            prepend references = @./cad/cad_raw.usda@
+        )
+        {
+            over "tn__0495E0W_sA"
+            {
+                over "tn__03500011solid1_xK8A"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PH3_e6d3a4/Looks/cad_default>
+                        rel material:binding:physics = </Thorlabs_PH3_e6d3a4/Looks/PhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "convexDecomposition"
+                    }
+                }
+
+                over "tn__02690011solid1_xK8A"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PH3_e6d3a4/Looks/cad_default>
+                        rel material:binding:physics = </Thorlabs_PH3_e6d3a4/Looks/PhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "convexHull"
+                    }
+                }
+
+                over "tn__202509991202500011solid1_jZ09GKMe1"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PH3_e6d3a4/Looks/cad_default>
+                        rel material:binding:physics = </Thorlabs_PH3_e6d3a4/Looks/PhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "convexHull"
+                    }
+                }
+
+                over "tn__202509991202500021solid1_jZ09GKMe1"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PH3_e6d3a4/Looks/cad_default>
+                    }
+                }
+
+                over "tn__202509991SocketSetScrewCupPoint_AI1solid1_vg0JPTjI9e0g0n2"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PH3_e6d3a4/Looks/cad_default>
+                    }
+                }
+
+                over "tn__202509991C0120018350M1solid1_df09GKOQSq1"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PH3_e6d3a4/Looks/cad_default>
+                    }
+                }
+            }
+        }
+    }
+
+    def Scope "KeyPoints"
+    {
+        def Xform "mount_hole_0" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 15.875}'
+                double3 normal = (0, 0, -1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (0, 0.005207, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+    }
+}
+

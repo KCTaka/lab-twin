@@ -1,0 +1,40 @@
+{
+  "asset_id": "Thorlabs_TR1_P5_61fc70",
+  "inventory": {
+    "manufacturer": "Thorlabs",
+    "part_number": "TR1-P5",
+    "description": "Optical post, pack of 5 (no description on PO); quote TQ0189320",
+    "qty": "7",
+    "instances": "35"
+  },
+  "params": {},
+  "notes": "",
+  "route": "VENDOR_STEP",
+  "family": "cad",
+  "semantic_class": "optomechanics",
+  "cad": {
+    "file": "sources/Thorlabs_TR1_P5_61fc70/TR1-Step.step",
+    "sha256": "e5c48e86afd43c040464663f136158d2d27ddbb3b7ea22cd259d7707420a1936",
+    "orientation_review": {
+      "by": "Claude (agent, visual review of orientation_sheet.png)",
+      "date": "2026-10-09",
+      "basis": "accepted: stands on the tapped end, 8-32 setscrew stud up",
+      "status": "agent_reviewed"
+    }
+  },
+  "physics": {
+    "body": "dynamic",
+    "collision": "auto",
+    "density_kg_m3": {
+      "value": 7930,
+      "unit": "kg/m^3",
+      "src": "assumed",
+      "note": "Thorlabs TR posts, RS pillars and ER cage rods are stainless steel",
+      "material": "stainless"
+    },
+    "mass_kg": {
+      "value": null,
+      "src": "vendor_cad"
+    }
+  }
+}

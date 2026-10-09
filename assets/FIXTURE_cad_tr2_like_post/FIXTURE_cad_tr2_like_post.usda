@@ -21,7 +21,7 @@ def Xform "FIXTURE_cad_tr2_like_post" (
             string manufacturer = "FIXTURE"
             double mass_kg = 0.049437
             string part_number = "TR2-like"
-            string provisional_params = ""
+            string provisional_params = "physics.density_kg_m3"
             string route = "VENDOR_STEP"
             string spec_sha = "f2f3146065ef"
         }
@@ -71,7 +71,7 @@ def Xform "FIXTURE_cad_tr2_like_post" (
             over "tn__OpenCASCADESTEPtranslator791_XTCHSV0fF"
             {
                 over "Mesh" (
-                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                    prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
                 )
                 {
                     rel material:binding = </FIXTURE_cad_tr2_like_post/Looks/cad_default>

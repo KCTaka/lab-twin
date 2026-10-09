@@ -1,0 +1,40 @@
+{
+  "asset_id": "Thorlabs_SM1L10_7396b5",
+  "inventory": {
+    "manufacturer": "Thorlabs",
+    "part_number": "SM1L10",
+    "description": "SM1 lens tube, 1.00 in thread depth, one retaining ring",
+    "qty": "5",
+    "instances": "5"
+  },
+  "params": {},
+  "notes": "",
+  "route": "VENDOR_STEP",
+  "family": "cad",
+  "semantic_class": "optomechanics",
+  "cad": {
+    "file": "sources/Thorlabs_SM1L10_7396b5/SM1L10-Step.step",
+    "sha256": "5181d8290934b88544161ef59e6259ccf8772c4e60d607ea5c68b46176a527a6",
+    "orientation_review": {
+      "by": "Claude (agent, visual review of orientation_sheet.png)",
+      "date": "2026-10-09",
+      "basis": "accepted as REST pose (standing on end); as-used axis is horizontal in a holder",
+      "status": "agent_reviewed"
+    }
+  },
+  "physics": {
+    "body": "dynamic",
+    "collision": "auto",
+    "density_kg_m3": {
+      "value": 2700,
+      "unit": "kg/m^3",
+      "src": "assumed",
+      "note": "no material stated; anodised 6061 aluminium is the common optomechanics default",
+      "material": "aluminium"
+    },
+    "mass_kg": {
+      "value": null,
+      "src": "vendor_cad"
+    }
+  }
+}

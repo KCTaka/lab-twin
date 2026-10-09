@@ -67,7 +67,7 @@ def convert(aid: str, isaac: Path) -> dict:
     if ok:   # independent B-rep reading: ground-truth bbox, exact volume, auto key points
         from cad_analyze import analyze
         t1 = time.time()
-        res = analyze(src)
+        res = analyze(src, spec["cad"].get("down_axis"))
         res["source_sha256"] = rec["source_sha256"]
         (out_dir / "cad_analysis.json").write_text(json.dumps(res, indent=2))
         rec["analysis_seconds"] = round(time.time() - t1, 1)

@@ -1,0 +1,109 @@
+#usda 1.0
+(
+    defaultPrim = "Thorlabs_TR1_00d2ae"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "Thorlabs_TR1_00d2ae" (
+    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "SemanticsLabelsAPI:class"]
+    assetInfo = {
+        asset identifier = @Thorlabs_TR1_00d2ae.usda@
+        string name = "Thorlabs_TR1_00d2ae"
+        string version = "ff488f16c9c0"
+    }
+    customData = {
+        dictionary lab_twin = {
+            string body = "dynamic"
+            string expected_bbox_mm = "[[-6.337300100000001, -6.337300100000002, 0.0], [6.337300100000001, 6.337300100000002, 29.527500100000005]]"
+            string family = "cad"
+            string manufacturer = "Thorlabs"
+            double mass_kg = 0.022423
+            string part_number = "TR1"
+            string provisional_params = ""
+            string route = "VENDOR_STEP"
+            string spec_sha = "ff488f16c9c0"
+        }
+    }
+    kind = "component"
+)
+{
+    float physics:mass = 0.022423
+    token[] semantics:labels:class = ["optomechanics"]
+
+    def Scope "Looks"
+    {
+        def Material "PhysicsMaterial" (
+            prepend apiSchemas = ["PhysicsMaterialAPI"]
+        )
+        {
+            float physics:dynamicFriction = 0.5
+            float physics:restitution = 0
+            float physics:staticFriction = 0.6
+        }
+
+        def Material "cad_default"
+        {
+            token outputs:surface.connect = </Thorlabs_TR1_00d2ae/Looks/cad_default/PreviewSurface.outputs:surface>
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.75, 0.75, 0.75)
+                float inputs:metallic = 0.5
+                float inputs:roughness = 0.5
+                token outputs:surface
+            }
+        }
+    }
+
+    def Xform "Geometry"
+    {
+        float xformOp:rotateX = 90
+        float3 xformOp:scale = (0.001, 0.001, 0.001)
+        double3 xformOp:translate = (-0, -4.440892098500626e-19, 6.471823077447425e-19)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateX", "xformOp:scale"]
+
+        def "cad" (
+            prepend references = @./cad/cad_raw.usda@
+        )
+        {
+            over "tn__0333E0W_sA"
+            {
+                over "tn__03330011solid1_xK8A"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_TR1_00d2ae/Looks/cad_default>
+                        rel material:binding:physics = </Thorlabs_TR1_00d2ae/Looks/PhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "convexHull"
+                    }
+                }
+
+                over "tn__211090011solid1_hM9B"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_TR1_00d2ae/Looks/cad_default>
+                        rel material:binding:physics = </Thorlabs_TR1_00d2ae/Looks/PhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "convexHull"
+                    }
+                }
+            }
+        }
+    }
+
+    def Scope "KeyPoints"
+    {
+    }
+}
+

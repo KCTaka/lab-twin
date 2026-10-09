@@ -1,0 +1,1128 @@
+#usda 1.0
+(
+    defaultPrim = "Thorlabs_PT1_6c80ea"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "Thorlabs_PT1_6c80ea" (
+    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "SemanticsLabelsAPI:class"]
+    assetInfo = {
+        asset identifier = @Thorlabs_PT1_6c80ea.usda@
+        string name = "Thorlabs_PT1_6c80ea"
+        string version = "6a449de4daf2"
+    }
+    customData = {
+        dictionary lab_twin = {
+            string body = "dynamic"
+            string expected_bbox_mm = "[[-38.1000001, -88.64600000000002, 0.0], [38.1000001, 88.64600000000002, 20.32000000000012]]"
+            string family = "cad"
+            string manufacturer = "Thorlabs"
+            double mass_kg = 0.334466
+            string part_number = "PT1"
+            string provisional_params = "physics.density_kg_m3"
+            string route = "VENDOR_STEP"
+            string spec_sha = "6a449de4daf2"
+        }
+    }
+    kind = "component"
+)
+{
+    float physics:mass = 0.334466
+    token[] semantics:labels:class = ["stage_positioner"]
+
+    def Scope "Looks"
+    {
+        def Material "PhysicsMaterial" (
+            prepend apiSchemas = ["PhysicsMaterialAPI"]
+        )
+        {
+            float physics:dynamicFriction = 0.5
+            float physics:restitution = 0
+            float physics:staticFriction = 0.6
+        }
+
+        def Material "cad_default"
+        {
+            token outputs:surface.connect = </Thorlabs_PT1_6c80ea/Looks/cad_default/PreviewSurface.outputs:surface>
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.75, 0.75, 0.75)
+                float inputs:metallic = 0.5
+                float inputs:roughness = 0.5
+                token outputs:surface
+            }
+        }
+    }
+
+    def Xform "Geometry"
+    {
+        float xformOp:rotateX = 90
+        float3 xformOp:scale = (0.001, 0.001, 0.001)
+        double3 xformOp:translate = (0.026419970967180195, -0.06774180000000002, 7.105427357601002e-18)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateX", "xformOp:scale"]
+
+        def "cad" (
+            prepend references = @./cad/cad_raw.usda@
+        )
+        {
+            over "tn__2824E0W_sA"
+            {
+                over "tn__28240021solid1_xK8A"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                        rel material:binding:physics = </Thorlabs_PT1_6c80ea/Looks/PhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "convexDecomposition"
+                    }
+                }
+
+                over "tn__TTN1258561solid1_zNB"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                        rel material:binding:physics = </Thorlabs_PT1_6c80ea/Looks/PhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "convexDecomposition"
+                    }
+                }
+
+                over "tn__SS4S013113solid1_xN9C"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__SS4S013114solid1_xN9C"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__SS4S013115solid1_xN9C"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__28240041solid1_xK8A"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                        rel material:binding:physics = </Thorlabs_PT1_6c80ea/Looks/PhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "convexDecomposition"
+                    }
+                }
+
+                over "tn__W25H0421solid1_VL9"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__28240031solid1_xK8A"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                        rel material:binding:physics = </Thorlabs_PT1_6c80ea/Looks/PhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "convexHull"
+                    }
+                }
+
+                over "tn__SH4A03111solid1_jM9B"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__SH4A02511solid1_jM9B"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__SH4A02512solid1_jM9B"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__SH4A02513solid1_jM9B"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__SH4A02514solid1_jM9B"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__SH4A02515solid1_jM9B"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__SH4A02516solid1_jM9B"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__SH4A02517solid1_jM9B"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__SH4A02518solid1_jM9B"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__28240111solid1_xK8A"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                        rel material:binding:physics = </Thorlabs_PT1_6c80ea/Looks/PhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "convexHull"
+                    }
+                }
+
+                over "tn__28240112solid1_xK8A"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                        rel material:binding:physics = </Thorlabs_PT1_6c80ea/Looks/PhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "convexHull"
+                    }
+                }
+
+                over "tn__28240113solid1_xK8A"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                        rel material:binding:physics = </Thorlabs_PT1_6c80ea/Looks/PhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "convexHull"
+                    }
+                }
+
+                over "tn__28240114solid1_xK8A"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                        rel material:binding:physics = </Thorlabs_PT1_6c80ea/Looks/PhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "convexHull"
+                    }
+                }
+
+                over "tn__Ball156GR4402solid1_iSE"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__28240131solid1_xK8A"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__28240132solid1_xK8A"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__SS2S05011solid1_jM9B"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__SS2S05013solid1_jM9B"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__Ball156GR4409solid1_iSE"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__Ball156GR44010solid1_wTF"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__Ball156GR44011solid1_wTF"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__Ball156GR44012solid1_wTF"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__Ball156GR44013solid1_wTF"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__Ball156GR44014solid1_wTF"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__Ball156GR44015solid1_wTF"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__Ball156GR44016solid1_wTF"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__Ball156GR44017solid1_wTF"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__Ball156GR44018solid1_wTF"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__Ball156GR44019solid1_wTF"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__Ball156GR44020solid1_wTF"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__Ball156GR44021solid1_wTF"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__Ball156GR44022solid1_wTF"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__Ball156GR44023solid1_wTF"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__150811MOUNTINGBARREL1solid1_gSdB7NP"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                        rel material:binding:physics = </Thorlabs_PT1_6c80ea/Looks/PhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "convexHull"
+                    }
+                }
+
+                over "tn__134320011solid1_hM9B"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                        rel material:binding:physics = </Thorlabs_PT1_6c80ea/Looks/PhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "convexDecomposition"
+                    }
+                }
+
+                over "tn__PT1SPRING1solid1_zNB"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__DOWEL0625X5001solid1_xTF"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__DOWEL0625X5002solid1_xTF"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__DOWEL0625X3131solid1_xTF"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__DOWEL0625X3132solid1_xTF"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__PT1SPRING2solid1_zNB"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__28240115solid1_xK8A"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                        rel material:binding:physics = </Thorlabs_PT1_6c80ea/Looks/PhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "convexHull"
+                    }
+                }
+
+                over "tn__28240116solid1_xK8A"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                        rel material:binding:physics = </Thorlabs_PT1_6c80ea/Looks/PhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "convexHull"
+                    }
+                }
+
+                over "tn__28240117solid1_xK8A"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                        rel material:binding:physics = </Thorlabs_PT1_6c80ea/Looks/PhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "convexHull"
+                    }
+                }
+
+                over "tn__28240118solid1_xK8A"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                        rel material:binding:physics = </Thorlabs_PT1_6c80ea/Looks/PhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "convexHull"
+                    }
+                }
+
+                over "tn__282401110solid1_gM8B"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                        rel material:binding:physics = </Thorlabs_PT1_6c80ea/Looks/PhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "convexHull"
+                    }
+                }
+
+                over "tn__SS2S05015solid1_jM9B"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__SS2S05016solid1_jM9B"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__SS2S05017solid1_jM9B"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__SS2S05018solid1_jM9B"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__SS2S05019solid1_jM9B"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__SS2S050110solid1_xN9C"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__SS4S013116solid1_xN9C"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__SS4S013117solid1_xN9C"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__SS2S03811solid1_jM9B"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+
+                over "tn__SS2S03812solid1_jM9B"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_PT1_6c80ea/Looks/cad_default>
+                    }
+                }
+            }
+        }
+    }
+
+    def Scope "KeyPoints"
+    {
+        def Xform "top_hole_0" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 6.35, "thread_guess": {"thread": "1/4-20", "matched": "major", "err_mm": 0.0}}'
+                double3 normal = (0, 0, 1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (-0.0254, -0.075946, 0.02032)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "top_hole_1" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 6.35, "thread_guess": {"thread": "1/4-20", "matched": "major", "err_mm": 0.0}}'
+                double3 normal = (0, 0, 1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (-0.0254, -0.050546, 0.02032)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "top_hole_2" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 6.35, "thread_guess": {"thread": "1/4-20", "matched": "major", "err_mm": 0.0}}'
+                double3 normal = (0, 0, 1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (-0.0254, -0.025146, 0.02032)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "top_hole_3" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 6.35, "thread_guess": {"thread": "1/4-20", "matched": "major", "err_mm": 0.0}}'
+                double3 normal = (0, 0, 1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (-0.0254, 0.000254, 0.02032)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "top_hole_4" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 3.2, "thread_guess": {"thread": "8-32", "matched": "minor", "err_mm": 0.02}}'
+                double3 normal = (0, 0, 1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (-0.0254, -0.037846, 0.02032)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "mount_hole_0" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 2.184, "thread_guess": {"thread": "4-40", "matched": "tap_drill", "err_mm": 0.076}}'
+                double3 normal = (0, 0, -1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (-0.024888000000000004, -0.0664718, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "mount_hole_1" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 2.184, "thread_guess": {"thread": "4-40", "matched": "tap_drill", "err_mm": 0.076}}'
+                double3 normal = (0, 0, -1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (-0.024888000000000004, -0.0080518, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "top_hole_5" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 6.35, "thread_guess": {"thread": "1/4-20", "matched": "major", "err_mm": 0.0}}'
+                double3 normal = (0, 0, 1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (-0.0127, -0.063246, 0.02032)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "top_hole_6" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 6.35, "thread_guess": {"thread": "1/4-20", "matched": "major", "err_mm": 0.0}}'
+                double3 normal = (0, 0, 1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (-0.0127, -0.037846, 0.02032)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "top_hole_7" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 6.35, "thread_guess": {"thread": "1/4-20", "matched": "major", "err_mm": 0.0}}'
+                double3 normal = (0, 0, 1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (-0.0127, -0.012446, 0.02032)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "top_hole_8" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 6.35, "thread_guess": {"thread": "1/4-20", "matched": "major", "err_mm": 0.0}}'
+                double3 normal = (0, 0, 1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (-0, 0.000254, 0.02032)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "top_hole_9" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 6.35, "thread_guess": {"thread": "1/4-20", "matched": "major", "err_mm": 0.0}}'
+                double3 normal = (0, 0, 1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (-0, -0.075946, 0.02032)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "top_hole_10" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 11.125}'
+                double3 normal = (0, 0, 1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (0, -0.025146, 0.02032)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "top_hole_11" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 11.125}'
+                double3 normal = (0, 0, 1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (0, -0.050546, 0.02032)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "mount_hole_2" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 3.2, "thread_guess": {"thread": "8-32", "matched": "minor", "err_mm": 0.02}}'
+                double3 normal = (0, 0, -1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (0.000004, -0.0626618, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "mount_hole_3" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 6.731}'
+                double3 normal = (0, 0, -1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (0.000004, -0.0499618, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "mount_hole_4" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 6.731}'
+                double3 normal = (0, 0, -1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (0.000004, -0.0245618, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "mount_hole_5" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 3.2, "thread_guess": {"thread": "8-32", "matched": "minor", "err_mm": 0.02}}'
+                double3 normal = (0, 0, -1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (0.000004, -0.0118618, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "top_hole_12" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 6.35, "thread_guess": {"thread": "1/4-20", "matched": "major", "err_mm": 0.0}}'
+                double3 normal = (0, 0, 1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (0.0127, -0.012446, 0.02032)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "top_hole_13" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 6.35, "thread_guess": {"thread": "1/4-20", "matched": "major", "err_mm": 0.0}}'
+                double3 normal = (0, 0, 1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (0.0127, -0.037846, 0.02032)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "top_hole_14" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 6.35, "thread_guess": {"thread": "1/4-20", "matched": "major", "err_mm": 0.0}}'
+                double3 normal = (0, 0, 1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (0.0127, -0.063246, 0.02032)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "mount_hole_6" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 2.184, "thread_guess": {"thread": "4-40", "matched": "tap_drill", "err_mm": 0.076}}'
+                double3 normal = (0, 0, -1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (0.024896, -0.0080518, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "mount_hole_7" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 2.184, "thread_guess": {"thread": "4-40", "matched": "tap_drill", "err_mm": 0.076}}'
+                double3 normal = (0, 0, -1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (0.024896, -0.0664718, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "top_hole_15" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 6.35, "thread_guess": {"thread": "1/4-20", "matched": "major", "err_mm": 0.0}}'
+                double3 normal = (0, 0, 1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (0.0254, 0.000254, 0.02032)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "top_hole_16" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 6.35, "thread_guess": {"thread": "1/4-20", "matched": "major", "err_mm": 0.0}}'
+                double3 normal = (0, 0, 1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (0.0254, -0.050546, 0.02032)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "top_hole_17" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 6.35, "thread_guess": {"thread": "1/4-20", "matched": "major", "err_mm": 0.0}}'
+                double3 normal = (0, 0, 1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (0.0254, -0.025146, 0.02032)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "top_hole_18" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 6.35, "thread_guess": {"thread": "1/4-20", "matched": "major", "err_mm": 0.0}}'
+                double3 normal = (0, 0, 1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (0.0254, -0.075946, 0.02032)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "top_hole_19" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 3.2, "thread_guess": {"thread": "8-32", "matched": "minor", "err_mm": 0.02}}'
+                double3 normal = (0, 0, 1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (0.0254, -0.037846, 0.02032)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "top_surface" (
+            customData = {
+                string data = '{"auto": true, "face_area_mm2": 6916.72}'
+                double3 normal = (0, 0, 1)
+                bool support = 1
+            }
+        )
+        {
+            double3 xformOp:translate = (-0, -0.037846, 0.02032)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+    }
+}
+

@@ -1,0 +1,40 @@
+{
+  "asset_id": "Thorlabs_CP02_48c523",
+  "inventory": {
+    "manufacturer": "Thorlabs",
+    "part_number": "CP02",
+    "description": "SM1-threaded 30 mm cage plate, 0.35 in thick, 2 retaining rings, 8-32 tap",
+    "qty": "7",
+    "instances": "7"
+  },
+  "params": {},
+  "notes": "",
+  "route": "VENDOR_STEP",
+  "family": "cad",
+  "semantic_class": "optomechanics",
+  "cad": {
+    "file": "sources/Thorlabs_CP02_48c523/CP02-Step.step",
+    "sha256": "0d0dc5ec183a203031945cb54538429e2e674f235a4f3b5228931cd536a6a9e9",
+    "orientation_review": {
+      "by": "Claude (agent, visual review of orientation_sheet.png)",
+      "date": "2026-10-09",
+      "basis": "accepted: plate upright, bore horizontal, 8-32 edge tap at bottom",
+      "status": "agent_reviewed"
+    }
+  },
+  "physics": {
+    "body": "dynamic",
+    "collision": "auto",
+    "density_kg_m3": {
+      "value": 2700,
+      "unit": "kg/m^3",
+      "src": "assumed",
+      "note": "no material stated; anodised 6061 aluminium is the common optomechanics default",
+      "material": "aluminium"
+    },
+    "mass_kg": {
+      "value": null,
+      "src": "vendor_cad"
+    }
+  }
+}

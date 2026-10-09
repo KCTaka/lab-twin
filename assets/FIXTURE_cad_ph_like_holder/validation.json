@@ -54,7 +54,9 @@
     },
     "C6_provenance": {
       "pass": true,
-      "provisional": []
+      "provisional": [
+        "physics.density_kg_m3"
+      ]
     }
   }
 }

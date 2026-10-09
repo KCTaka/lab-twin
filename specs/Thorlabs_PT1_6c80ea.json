@@ -1,0 +1,41 @@
+{
+  "asset_id": "Thorlabs_PT1_6c80ea",
+  "inventory": {
+    "manufacturer": "Thorlabs",
+    "part_number": "PT1",
+    "description": "1 in translation stage with standard micrometer, 1/4-20 taps",
+    "qty": "9",
+    "instances": "9"
+  },
+  "params": {},
+  "notes": "",
+  "route": "VENDOR_STEP",
+  "family": "cad",
+  "semantic_class": "stage_positioner",
+  "cad": {
+    "file": "sources/Thorlabs_PT1_6c80ea/PT1-Step.step",
+    "sha256": "d69fc9a7fc8db3a87b3bdd393cdb83b4b19abe36c3d529292182edf5a2224164",
+    "down_axis": "-Y",
+    "orientation_review": {
+      "by": "Claude (agent, visual review of orientation_sheet.png)",
+      "date": "2026-10-09",
+      "basis": "override: proposal (+Y) showed the underside; -Y puts the tapped top platform up",
+      "status": "agent_reviewed"
+    }
+  },
+  "physics": {
+    "body": "dynamic",
+    "collision": "auto",
+    "density_kg_m3": {
+      "value": 2700,
+      "unit": "kg/m^3",
+      "src": "assumed",
+      "note": "no material stated; anodised 6061 aluminium is the common optomechanics default",
+      "material": "aluminium"
+    },
+    "mass_kg": {
+      "value": null,
+      "src": "vendor_cad"
+    }
+  }
+}

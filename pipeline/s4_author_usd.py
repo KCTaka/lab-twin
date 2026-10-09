@@ -149,6 +149,8 @@ def author_parametric(spec):
 
 
 CONVEXITY_SPLIT = 0.80   # mesh volume / convex-hull volume below this -> convex decomposition
+SMALL_PART_SHARE = 0.005  # meshes below this share of the assembly volume get no collider
+DECOMP_SHARE = 0.05       # only meshes at least this large are worth a convex decomposition
 
 
 def _mesh_volume(pts, idx):
@@ -186,16 +188,32 @@ def author_cad(spec):
     UsdGeom.Scope.Define(stage, rp.AppendChild("Looks"))
     pmat = _physics_material(stage, rp)
     geo = UsdGeom.Xform.Define(stage, rp.AppendChild("Geometry"))
-    s = raw_mpu   # recentre (footprint centre to origin, lowest point to z = 0), then convert units
-    geo.AddTranslateOp().Set(Gf.Vec3d(-(lo[0] + hi[0]) / 2 * s, -(lo[1] + hi[1]) / 2 * s, -lo[2] * s))
-    geo.AddScaleOp().Set(Gf.Vec3f(s, s, s))
+    s = raw_mpu
+    if ana:
+        # the converter mesh and the OpenCASCADE B-rep must share the file frame, else the
+        # analysis rotation/recentring would be applied to the wrong geometry
+        fb = ana["bbox_file_mm"]
+        conv = [lo[i] * s / MM for i in range(3)] + [hi[i] * s / MM for i in range(3)]
+        occ = fb["min"] + fb["max"]
+        if max(abs(a - b) for a, b in zip(conv, occ)) > 0.1:
+            raise ValueError(f"converter and B-rep frames differ: {conv} vs {occ} mm")
+        o = ana["orientation"]
+        bmin, bmax = ana["bbox_mm"]["min"], ana["bbox_mm"]["max"]       # after rotation, mm
+        geo.AddTranslateOp().Set(Gf.Vec3d(-(bmin[0] + bmax[0]) / 2 * MM, -(bmin[1] + bmax[1]) / 2 * MM, -bmin[2] * MM))
+        if o["rotate_deg"]:
+            (geo.AddRotateXOp() if o["rotate_axis"] == "X" else geo.AddRotateYOp()).Set(float(o["rotate_deg"]))
+        geo.AddScaleOp().Set(Gf.Vec3f(s, s, s))
+    else:   # recentre (footprint centre to origin, lowest point to z = 0), then convert units
+        geo.AddTranslateOp().Set(Gf.Vec3d(-(lo[0] + hi[0]) / 2 * s, -(lo[1] + hi[1]) / 2 * s, -lo[2] * s))
+        geo.AddScaleOp().Set(Gf.Vec3f(s, s, s))
     cad = stage.DefinePrim(rp.AppendPath("Geometry/cad"))
     (ASSETS / aid / "cad").mkdir(parents=True, exist_ok=True)       # self-contained asset folder
     shutil.copy2(raw, ASSETS / aid / "cad" / "cad_raw.usda")
     cad.GetReferences().AddReference("./cad/cad_raw.usda")
 
     want = spec["physics"].get("collision", "auto")
-    mesh_vol, n_tri, per_mesh = 0.0, 0, []
+    # pass 1: measure every mesh (volume, convexity); pass 2: assign colliders on a budget
+    meas = []
     for p in Usd.PrimRange(cad):
         if not p.IsA(UsdGeom.Mesh):
             continue
@@ -209,15 +227,29 @@ def author_cad(spec):
             hull = ConvexHull(pts).volume
         except Exception:
             hull = float("nan")
-        ratio = v / hull if tri_ok and hull > 0 else float("nan")
-        approx = want if want != "auto" else (
-            "convexDecomposition" if not (ratio >= CONVEXITY_SPLIT) else "convexHull")
-        UsdPhysics.CollisionAPI.Apply(p)
-        UsdPhysics.MeshCollisionAPI.Apply(p).CreateApproximationAttr(approx)
-        _bind(p, _material(stage, rp, "cad_default"), pmat)
+        meas.append((p, v, hull, int(len(idx) / 3) if tri_ok else int(fvc.sum())))
+    vsum = sum(v for _, v, _, _ in meas if not np.isnan(v)) or 1.0
+    mesh_vol, n_tri, per_mesh, n_col = 0.0, 0, [], 0
+    for p, v, hull, ntri in meas:
+        share = (v / vsum) if not np.isnan(v) else 0.0
+        ratio = v / hull if not np.isnan(v) and hull > 0 else float("nan")
+        if want != "auto":
+            approx = want
+        elif len(meas) > 1 and share < SMALL_PART_SHARE:
+            approx = None                                    # fasteners, pins, balls: visual only
+        elif share >= DECOMP_SHARE and not (ratio >= CONVEXITY_SPLIT):
+            approx = "convexDecomposition"
+        else:
+            approx = "convexHull"
+        _bind(p, _material(stage, rp, "cad_default"), pmat if approx else None)
+        if approx:
+            UsdPhysics.CollisionAPI.Apply(p)
+            UsdPhysics.MeshCollisionAPI.Apply(p).CreateApproximationAttr(approx)
+            n_col += 1
         mesh_vol += 0.0 if np.isnan(v) else v
-        n_tri += int(len(idx) / 3) if tri_ok else int(fvc.sum())
-        per_mesh.append({"prim": str(p.GetPath()).split("/Geometry/cad", 1)[-1], "triangles": int(len(idx) / 3),
+        n_tri += ntri
+        per_mesh.append({"prim": str(p.GetPath()).split("/Geometry/cad", 1)[-1], "triangles": ntri,
+                         "volume_share": round(share, 5),
                          "convexity": None if np.isnan(ratio) else round(float(ratio), 3), "collision": approx})
 
     # key points: automatic ones from the B-rep, overridden by any given in the spec
@@ -241,14 +273,28 @@ def author_cad(spec):
     parts = [generators.Part("cad", "box", (0.0, 0.0, size_mm[2] / 2), size_mm, "cad_default")]
     spec["_authored_cad"] = {
         "expected_bbox_source": "opencascade" if ana else "converter",
+        "orientation": (ana or {}).get("orientation", {}).get("down_in_file"),
+        "orientation_confidence": (ana or {}).get("orientation", {}).get("confidence"),
+        "mass_basis": (ana or {}).get("mass_basis", "mesh"),
         "converter_bbox_mm": [round((hi[i] - lo[i]) * s / MM, 4) for i in range(3)],
         "volume_brep_m3": exact_m3, "volume_mesh_m3": mesh_m3,
         "volume_mesh_vs_brep": round(mesh_m3 / exact_m3 - 1, 5) if exact_m3 else None,
-        "triangles": n_tri, "meshes": per_mesh,
+        "triangles": n_tri, "n_meshes": len(per_mesh), "n_colliders": n_col,
+        "n_decomposition": sum(1 for m in per_mesh if m["collision"] == "convexDecomposition"),
+        "meshes": per_mesh,
         "key_points_auto": sorted((ana or {}).get("key_points", {})),
         "key_points_spec": sorted(spec.get("key_points", {})),
     }
     return stage, root, out, parts
+
+
+def _inputs_sha(asset_id):
+    """Hash of the derived inputs S4 reads besides the spec (CAD analysis, converter output)."""
+    h = hashlib.sha256()
+    for f in (BUILD / asset_id / "cad_analysis.json", BUILD / asset_id / "cad_raw.usda"):
+        if f.exists():
+            h.update(f.read_bytes())
+    return h.hexdigest()[:12]
 
 
 def author(asset_id):
@@ -276,7 +322,7 @@ def author(asset_id):
         "manufacturer": spec["inventory"]["manufacturer"], "part_number": spec["inventory"]["part_number"],
     })
     stage.GetRootLayer().Save()
-    rec = {"asset_id": asset_id, "spec_sha": spec_sha, "gen_sha": GEN_SHA, "usd": str(out.relative_to(ASSETS.parent)),
+    rec = {"asset_id": asset_id, "spec_sha": spec_sha, "gen_sha": GEN_SHA, "inputs_sha": _inputs_sha(asset_id), "usd": str(out.relative_to(ASSETS.parent)),
            "mass_kg": phys.get("mass_kg"), "expected_bbox_mm": [lo, hi],
            **({"cad": spec["_authored_cad"]} if "_authored_cad" in spec else {})}
     (BUILD / asset_id).mkdir(parents=True, exist_ok=True)
@@ -292,7 +338,7 @@ def main(ids):
             if not rec.exists():
                 return True
             old = json.loads(rec.read_text())
-            return old["spec_sha"] != cur or old.get("gen_sha") != GEN_SHA
+            return old["spec_sha"] != cur or old.get("gen_sha") != GEN_SHA or old.get("inputs_sha") != _inputs_sha(aid)
         ids = [r["asset_id"] for r in read_manifest() if r["s3_geometry"] == "done"
                and (r["s4_usd"] == "todo" or r["s4_usd"].startswith("blocked") or stale(r["asset_id"]))]
     for aid in ids:

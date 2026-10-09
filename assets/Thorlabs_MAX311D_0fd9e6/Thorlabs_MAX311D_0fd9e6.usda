@@ -1,0 +1,4099 @@
+#usda 1.0
+(
+    defaultPrim = "Thorlabs_MAX311D_0fd9e6"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "Thorlabs_MAX311D_0fd9e6" (
+    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "SemanticsLabelsAPI:class"]
+    assetInfo = {
+        asset identifier = @Thorlabs_MAX311D_0fd9e6.usda@
+        string name = "Thorlabs_MAX311D_0fd9e6"
+        string version = "5290332913f1"
+    }
+    customData = {
+        dictionary lab_twin = {
+            string body = "dynamic"
+            string expected_bbox_mm = "[[-79.81999804839839, -80.57500005000017, 0.0], [79.81999804839839, 80.57500005000017, 63.000000100000086]]"
+            string family = "cad"
+            string manufacturer = "Thorlabs"
+            double mass_kg = 0.779084
+            string part_number = "MAX311D"
+            string provisional_params = "physics.density_kg_m3"
+            string route = "VENDOR_STEP"
+            string spec_sha = "5290332913f1"
+        }
+    }
+    kind = "component"
+)
+{
+    float physics:mass = 0.779084
+    token[] semantics:labels:class = ["stage_positioner"]
+
+    def Scope "Looks"
+    {
+        def Material "PhysicsMaterial" (
+            prepend apiSchemas = ["PhysicsMaterialAPI"]
+        )
+        {
+            float physics:dynamicFriction = 0.5
+            float physics:restitution = 0
+            float physics:staticFriction = 0.6
+        }
+
+        def Material "cad_default"
+        {
+            token outputs:surface.connect = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default/PreviewSurface.outputs:surface>
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.75, 0.75, 0.75)
+                float inputs:metallic = 0.5
+                float inputs:roughness = 0.5
+                token outputs:surface
+            }
+        }
+    }
+
+    def Xform "Geometry"
+    {
+        float3 xformOp:scale = (0.001, 0.001, 0.001)
+        double3 xformOp:translate = (0.03616804274113582, -0.06659771875819362, 4.611348062403085e-20)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+
+        def "cad" (
+            prepend references = @./cad/cad_raw.usda@
+        )
+        {
+            over "tn__MAX311DNanoMaxStagewithPiezoelectricandSensor_rk0FLQe0i0"
+            {
+                over "tn__BB0086SMCSocket236THK_xL7BIZAKo0"
+                {
+                    over "tn__CutExtrude7_lG"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__135464MovingX_pD7y5"
+                {
+                    over "tn__202DiameterHole1_oG4Dd4Qn2ZW3"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            rel material:binding:physics = </Thorlabs_MAX311D_0fd9e6/Looks/PhysicsMaterial> (
+                                bindMaterialAs = "weakerThanDescendants"
+                            )
+                            uniform token physics:approximation = "convexHull"
+                        }
+                    }
+                }
+
+                over "tn__131496TopPlateImperial_yM7BHmA"
+                {
+                    over "tn__CutExtrude3_lG"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            rel material:binding:physics = </Thorlabs_MAX311D_0fd9e6/Looks/PhysicsMaterial> (
+                                bindMaterialAs = "weakerThanDescendants"
+                            )
+                            uniform token physics:approximation = "convexHull"
+                        }
+                    }
+                }
+
+                over "tn__DB0162M3x5SktButton109SteelBrightNP_M3x5_lf07CGNRX0e0tJk1"
+                {
+                    over "Hex"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__260598SpringretainerY_xL7ENZA"
+                {
+                    over "tn__M3x05TappedHole1_rGCr7"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__135398ExtensionTube_vJ7Hw8"
+                {
+                    over "tn__CutExtrude5_lG"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DB0016M3x6SktCap_sG7ACEIw8"
+                {
+                    over "Chamfer1"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DB0016M3x6SktCap_1_uI7ACEIr9"
+                {
+                    over "Chamfer1"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DE0002M25NUTGRADE6STEELBRIGHTZN_cW07BFLNTa0VGq0"
+                {
+                    over "Mirror1"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__135475Strap_nB7Y5"
+                {
+                    over "Extrude2"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__134861MAX300PCBAssy_vJ7EIe9"
+                {
+                    over "tn__134086InsulationPad_vJ7Iw8"
+                    {
+                        over "tn__404DiameterHole1_oG4Dd4Qn2ZW3"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__134760NGSHeadAmplifierIss5_XR78CHRXDZ1"
+                    {
+                        over "NONE"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_2"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_3"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_4"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_5"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_6"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_7"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_8"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_9"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_10"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_11"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_12"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_13"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_14"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_15"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_16"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_17"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_18"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_19"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_20"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_21"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_22"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_23"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_24"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_25"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_26"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_27"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_28"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_29"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_30"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+                }
+
+                over "tn__260591TopCover_qE7Bt6"
+                {
+                    over "tn__CutExtrude8_lG"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            rel material:binding:physics = </Thorlabs_MAX311D_0fd9e6/Looks/PhysicsMaterial> (
+                                bindMaterialAs = "weakerThanDescendants"
+                            )
+                            uniform token physics:approximation = "convexDecomposition"
+                        }
+                    }
+                }
+
+                over "tn__135659MountingbushZ_vJ7GLe9"
+                {
+                    over "Fillet1"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            rel material:binding:physics = </Thorlabs_MAX311D_0fd9e6/Looks/PhysicsMaterial> (
+                                bindMaterialAs = "weakerThanDescendants"
+                            )
+                            uniform token physics:approximation = "convexHull"
+                        }
+                    }
+                }
+
+                over "tn__135353DiscFlexure_tH7CW8"
+                {
+                    over "CirPattern1"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DB0163M3x6SktButton109SteelClearZinc_hb07CGNRX0d0YIg1"
+                {
+                    over "tn__CutExtrude1_lG"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__BB0014Lemo_mA7q4"
+                {
+                    over "tn__BossExtrude1_VI"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__135398ExtensionTube_1_xL7Hr9"
+                {
+                    over "tn__CutExtrude5_lG"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DB0163M3x6SktButton109SteelClearZinc_1_jd07CGNRX0d0yIi1"
+                {
+                    over "tn__CutExtrude1_lG"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DB0006M25x5SocketCapBZP_zN7BDFMQcCh0"
+                {
+                    over "Chamfer1"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DB0164M3x8SktBtn_sG7ACEIw8"
+                {
+                    over "tn__CutExtrude1_lG"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__135389Mountingbush_uI7Gj8"
+                {
+                    over "Fillet1"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            rel material:binding:physics = </Thorlabs_MAX311D_0fd9e6/Looks/PhysicsMaterial> (
+                                bindMaterialAs = "weakerThanDescendants"
+                            )
+                            uniform token physics:approximation = "convexHull"
+                        }
+                    }
+                }
+
+                over "tn__DB0006M25x5SocketCapBZP_1_WQ7BDFMQXDj0"
+                {
+                    over "Chamfer1"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DB0006M25x5SocketCapBZP_2_WQ7BDFMQXDj0"
+                {
+                    over "Chamfer1"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__135381Mountingbush_uI7Gj8"
+                {
+                    over "Fillet1"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            rel material:binding:physics = </Thorlabs_MAX311D_0fd9e6/Looks/PhysicsMaterial> (
+                                bindMaterialAs = "weakerThanDescendants"
+                            )
+                            uniform token physics:approximation = "convexHull"
+                        }
+                    }
+                }
+
+                over "tn__DRV3CoarseScale_pF5CZ7"
+                {
+                    over "tn__136326FulcrumKnob_tH7FW8"
+                    {
+                        over "Fillet4"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                                rel material:binding:physics = </Thorlabs_MAX311D_0fd9e6/Looks/PhysicsMaterial> (
+                                    bindMaterialAs = "weakerThanDescendants"
+                                )
+                                uniform token physics:approximation = "convexHull"
+                            }
+                        }
+                    }
+
+                    over "tn__DG00851x3StainlesssteelDowel_ZT79BDNTfE"
+                    {
+                        over "Extrude1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__135953LockScrewAdapter_yM7CImA"
+                    {
+                        over "Chamfer2"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__DA0161M16x2sktsetscrew_yM7BDFJNuBg0"
+                    {
+                        over "Chamfer1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__136322Nose_mA7q4"
+                    {
+                        over "Chamfer5"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__135931drivescrew34mm_wK7DJr9"
+                    {
+                        over "Chamfer2"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__131028DRV34mmHardPad_wK7CGLZA"
+                    {
+                        over "Extrude1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__136328MainDriveBush_vJ7CIe9"
+                    {
+                        over "Fillet1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__DB0204M3x5SktSet_sG7CGW8"
+                    {
+                        over "Hex"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__DG0029CrescentRing3mmShaft_XR7GLMORkDN"
+                    {
+                        over "Fillet1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__138701DowelPin15x58m660HRc_XR7DHNQXDs0O"
+                    {
+                        over "Revolve1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__CF00032mmBall_pD7Bg6"
+                    {
+                        over "tn__BaseRevolve_mG"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__136592FulcrumDiffBodyCoarseScale_dX07FKPQX0VGR"
+                    {
+                        over "Fillet3"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                                rel material:binding:physics = </Thorlabs_MAX311D_0fd9e6/Looks/PhysicsMaterial> (
+                                    bindMaterialAs = "weakerThanDescendants"
+                                )
+                                uniform token physics:approximation = "convexHull"
+                            }
+                        }
+                    }
+
+                    over "tn__136358Driverod485mm_vJ7DHe9k0"
+                    {
+                        over "tn__CutExtrude1_lG"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__CF00032mmBall_1_rF7Bb7"
+                    {
+                        over "tn__BaseRevolve_mG"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__136323Plunger_pD7y5"
+                    {
+                        over "Fillet1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__1359597mmlockscrew_uI7BGw8"
+                    {
+                        over "Fillet3"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__136324Plate_nB7Y5"
+                    {
+                        over "Chamfer2"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__138701DowelPin15x58m660HRc_1_ZT7DHNQxDu0O"
+                    {
+                        over "Revolve1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__CF00032mmBall_2_rF7Bb7"
+                    {
+                        over "tn__BaseRevolve_mG"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__DG01061mmdiax4mmdowelpin_VP7BFHLRpC"
+                    {
+                        over "Extrude1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__135407LockRing_qE7Ct6"
+                    {
+                        over "Chamfer2"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__DG00851x3StainlesssteelDowel_1_bV079BDNTaF"
+                    {
+                        over "Extrude1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__136321FulcrumNut_sG7Fo7"
+                    {
+                        over "Fillet2"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                                rel material:binding:physics = </Thorlabs_MAX311D_0fd9e6/Looks/PhysicsMaterial> (
+                                    bindMaterialAs = "weakerThanDescendants"
+                                )
+                                uniform token physics:approximation = "convexHull"
+                            }
+                        }
+                    }
+
+                    over "tn__138701DowelPin15x58m660HRc_2_ZT7DHNQxDu0O"
+                    {
+                        over "Revolve1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__136325FulcrumFineDriveScrew_YS7FKQXD"
+                    {
+                        over "Chamfer5"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__DA0161M16x2sktsetscrew_1_VP7BDFJNpCi0"
+                    {
+                        over "Chamfer1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__DG01061mmdiax4mmdowelpin_1_XR7BFHLRkD"
+                    {
+                        over "Extrude1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__136593MicrometerCoverCoarseScale_dX07IOPW0nFQ"
+                    {
+                        over "Fillet1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                                rel material:binding:physics = </Thorlabs_MAX311D_0fd9e6/Looks/PhysicsMaterial> (
+                                    bindMaterialAs = "weakerThanDescendants"
+                                )
+                                uniform token physics:approximation = "convexHull"
+                            }
+                        }
+                    }
+
+                    over "tn__CF00032mmBall_3_rF7Bb7"
+                    {
+                        over "tn__BaseRevolve_mG"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__DG01061mmdiax4mmdowelpin_2_XR7BFHLRkD"
+                    {
+                        over "Extrude1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__135949RubberGrip_sG7Eo7"
+                    {
+                        over "Revolve1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+                }
+
+                over "tn__BB0086SMCSocket236THK_1_zN7BIzAKq0"
+                {
+                    over "tn__CutExtrude7_lG"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__120782EndPiece_qE7Bt6"
+                {
+                    over "Revolve1"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__1310226mmHardPad_sG7Bo7"
+                {
+                    over "Chamfer1"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DB0016M3x6SktCap_2_uI7ACEIr9"
+                {
+                    over "Chamfer1"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DB0164M3x8SktBtn_1_uI7ACEIr9"
+                {
+                    over "tn__CutExtrude1_lG"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__135475Strap_1_pD7y5"
+                {
+                    over "Extrude2"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DB0014M25x10SktCap_uI7BDGKr9b0"
+                {
+                    over "tn__CutExtrude1_lG"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DB0006M25x5SocketCapBZP_3_WQ7BDFMQXDj0"
+                {
+                    over "Chamfer1"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DA0036M2x5PoziCskBlack_yM7ACEJNuB"
+                {
+                    over "tn__CutExtrude1_lG"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__134861MAX300PCBAssy_1_xL7EIZA"
+                {
+                    over "tn__134086InsulationPad_vJ7Iw8"
+                    {
+                        over "tn__404DiameterHole1_oG4Dd4Qn2ZW3"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__134760NGSHeadAmplifierIss5_XR78CHRXDZ1"
+                    {
+                        over "NONE"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_2"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_3"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_4"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_5"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_6"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_7"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_8"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_9"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_10"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_11"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_12"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_13"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_14"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_15"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_16"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_17"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_18"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_19"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_20"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_21"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_22"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_23"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_24"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_25"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_26"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_27"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_28"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_29"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_30"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+                }
+
+                over "tn__DB0164M3x8SktBtn_2_uI7ACEIr9"
+                {
+                    over "tn__CutExtrude1_lG"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__1310226mmHardPad_1_uI7Bj8"
+                {
+                    over "Chamfer1"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__135474StrapXAxis_sG7DFW8"
+                {
+                    over "Fillet1"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__135277BottomCover_tH7EW8"
+                {
+                    over "tn__CutExtrude2_lG"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            rel material:binding:physics = </Thorlabs_MAX311D_0fd9e6/Looks/PhysicsMaterial> (
+                                bindMaterialAs = "weakerThanDescendants"
+                            )
+                            uniform token physics:approximation = "convexHull"
+                        }
+                    }
+                }
+
+                over "tn__135465Movingworld_tH7EW8"
+                {
+                    over "tn__4242DiameterHole2_pH5El4Ss26Yh3"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            rel material:binding:physics = </Thorlabs_MAX311D_0fd9e6/Looks/PhysicsMaterial> (
+                                bindMaterialAs = "weakerThanDescendants"
+                            )
+                            uniform token physics:approximation = "convexDecomposition"
+                        }
+                    }
+                }
+
+                over "tn__DB0203M3x4coneSktSet_wK7ACEJNzA"
+                {
+                    over "Chamfer2"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__135352LockNut_pD7Cg6"
+                {
+                    over "tn__CutExtrude2_lG"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__135471FlexureLong_tH7o7"
+                {
+                    over "Fillet1"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DRV3CoarseScale_1_rH5Cz7"
+                {
+                    over "tn__136322Nose_mA7q4"
+                    {
+                        over "Chamfer5"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__135407LockRing_qE7Ct6"
+                    {
+                        over "Chamfer2"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__138701DowelPin15x58m660HRc_XR7DHNQXDs0O"
+                    {
+                        over "Revolve1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__136358Driverod485mm_vJ7DHe9k0"
+                    {
+                        over "tn__CutExtrude1_lG"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__1359597mmlockscrew_uI7BGw8"
+                    {
+                        over "Fillet3"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__138701DowelPin15x58m660HRc_1_ZT7DHNQxDu0O"
+                    {
+                        over "Revolve1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__CF00032mmBall_pD7Bg6"
+                    {
+                        over "tn__BaseRevolve_mG"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__DG01061mmdiax4mmdowelpin_VP7BFHLRpC"
+                    {
+                        over "Extrude1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__DG01061mmdiax4mmdowelpin_1_XR7BFHLRkD"
+                    {
+                        over "Extrude1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__DG00851x3StainlesssteelDowel_ZT79BDNTfE"
+                    {
+                        over "Extrude1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__136323Plunger_pD7y5"
+                    {
+                        over "Fillet1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__136321FulcrumNut_sG7Fo7"
+                    {
+                        over "Fillet2"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                                rel material:binding:physics = </Thorlabs_MAX311D_0fd9e6/Looks/PhysicsMaterial> (
+                                    bindMaterialAs = "weakerThanDescendants"
+                                )
+                                uniform token physics:approximation = "convexHull"
+                            }
+                        }
+                    }
+
+                    over "tn__131028DRV34mmHardPad_wK7CGLZA"
+                    {
+                        over "Extrude1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__135931drivescrew34mm_wK7DJr9"
+                    {
+                        over "Chamfer2"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__136328MainDriveBush_vJ7CIe9"
+                    {
+                        over "Fillet1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__CF00032mmBall_1_rF7Bb7"
+                    {
+                        over "tn__BaseRevolve_mG"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__CF00032mmBall_2_rF7Bb7"
+                    {
+                        over "tn__BaseRevolve_mG"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__DB0204M3x5SktSet_sG7CGW8"
+                    {
+                        over "Hex"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__136592FulcrumDiffBodyCoarseScale_dX07FKPQX0VGR"
+                    {
+                        over "Fillet3"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                                rel material:binding:physics = </Thorlabs_MAX311D_0fd9e6/Looks/PhysicsMaterial> (
+                                    bindMaterialAs = "weakerThanDescendants"
+                                )
+                                uniform token physics:approximation = "convexHull"
+                            }
+                        }
+                    }
+
+                    over "tn__DG00851x3StainlesssteelDowel_1_bV079BDNTaF"
+                    {
+                        over "Extrude1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__138701DowelPin15x58m660HRc_2_ZT7DHNQxDu0O"
+                    {
+                        over "Revolve1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__135953LockScrewAdapter_yM7CImA"
+                    {
+                        over "Chamfer2"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__136325FulcrumFineDriveScrew_YS7FKQXD"
+                    {
+                        over "Chamfer5"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__CF00032mmBall_3_rF7Bb7"
+                    {
+                        over "tn__BaseRevolve_mG"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__DA0161M16x2sktsetscrew_yM7BDFJNuBg0"
+                    {
+                        over "Chamfer1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__136326FulcrumKnob_tH7FW8"
+                    {
+                        over "Fillet4"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                                rel material:binding:physics = </Thorlabs_MAX311D_0fd9e6/Looks/PhysicsMaterial> (
+                                    bindMaterialAs = "weakerThanDescendants"
+                                )
+                                uniform token physics:approximation = "convexHull"
+                            }
+                        }
+                    }
+
+                    over "tn__135949RubberGrip_sG7Eo7"
+                    {
+                        over "Revolve1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__DG01061mmdiax4mmdowelpin_2_XR7BFHLRkD"
+                    {
+                        over "Extrude1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__DG0029CrescentRing3mmShaft_XR7GLMORkDN"
+                    {
+                        over "Fillet1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__136593MicrometerCoverCoarseScale_dX07IOPW0nFQ"
+                    {
+                        over "Fillet1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                                rel material:binding:physics = </Thorlabs_MAX311D_0fd9e6/Looks/PhysicsMaterial> (
+                                    bindMaterialAs = "weakerThanDescendants"
+                                )
+                                uniform token physics:approximation = "convexHull"
+                            }
+                        }
+                    }
+
+                    over "tn__136324Plate_nB7Y5"
+                    {
+                        over "Chamfer2"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__DA0161M16x2sktsetscrew_1_VP7BDFJNpCi0"
+                    {
+                        over "Chamfer1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+                }
+
+                over "tn__DB0163M3x6SktButton109SteelClearZinc_2_jd07CGNRX0d0yIi1"
+                {
+                    over "tn__CutExtrude1_lG"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DB0164M3x8SktBtn_3_uI7ACEIr9"
+                {
+                    over "tn__CutExtrude1_lG"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__120782EndPiece_1_sG7Bo7"
+                {
+                    over "Revolve1"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__135353DiscFlexure_1_vJ7Cw8"
+                {
+                    over "CirPattern1"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DE0002M25NUTGRADE6STEELBRIGHTZN_1_eY07BFLNTa0vGs0"
+                {
+                    over "Mirror1"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__260597FixedWorld_sG7Do7"
+                {
+                    over "tn__2525DiameterHole2_pH5El4Ss26Yh3"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            rel material:binding:physics = </Thorlabs_MAX311D_0fd9e6/Looks/PhysicsMaterial> (
+                                bindMaterialAs = "weakerThanDescendants"
+                            )
+                            uniform token physics:approximation = "convexDecomposition"
+                        }
+                    }
+                }
+
+                over "tn__DB0006M25x5SocketCapBZP_4_WQ7BDFMQXDj0"
+                {
+                    over "Chamfer1"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DA0036M2x5PoziCskBlack_1_VP7ACEJNpC"
+                {
+                    over "tn__CutExtrude1_lG"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__260598SpringretainerY_1_zN7ENzA"
+                {
+                    over "tn__M3x05TappedHole1_rGCr7"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DB0164M3x8SktBtn_4_uI7ACEIr9"
+                {
+                    over "tn__CutExtrude1_lG"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DB0014M25x10SktCap_1_wK7BDGKmAd0"
+                {
+                    over "tn__CutExtrude1_lG"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DB0016M3x6SktCap_3_uI7ACEIr9"
+                {
+                    over "Chamfer1"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DB0203M3x4coneSktSet_1_yM7ACEJNuB"
+                {
+                    over "Chamfer2"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__135472Flexure_pD7y5"
+                {
+                    over "Fillet1"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DB0164M3x8SktBtn_5_uI7ACEIr9"
+                {
+                    over "tn__CutExtrude1_lG"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__135994M6x12HexSetScrew_yM7DHLzA"
+                {
+                    over "Chamfer4"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DB0164M3x8SktBtn_6_uI7ACEIr9"
+                {
+                    over "tn__CutExtrude1_lG"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DB0163M3x6SktButton109SteelClearZinc_3_jd07CGNRX0d0yIi1"
+                {
+                    over "tn__CutExtrude1_lG"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__135474StrapXAxis_1_uI7DFw8"
+                {
+                    over "Fillet1"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DB0006M25x5SocketCapBZP_5_WQ7BDFMQXDj0"
+                {
+                    over "Chamfer1"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__134861MAX300PCBAssy_2_xL7EIZA"
+                {
+                    over "tn__134760NGSHeadAmplifierIss5_XR78CHRXDZ1"
+                    {
+                        over "NONE"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_2"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_3"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_4"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_5"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_6"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_7"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_8"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_9"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_10"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_11"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_12"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_13"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_14"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_15"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_16"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_17"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_18"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_19"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_20"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_21"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_22"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_23"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_24"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_25"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_26"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_27"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_28"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_29"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+
+                        over "NONE_30"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__134086InsulationPad_vJ7Iw8"
+                    {
+                        over "tn__404DiameterHole1_oG4Dd4Qn2ZW3"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+                }
+
+                over "tn__135471FlexureLong_1_vJ7j8"
+                {
+                    over "Fillet1"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DB0164M3x8SktBtn_7_uI7ACEIr9"
+                {
+                    over "tn__CutExtrude1_lG"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__135473Flexure_pD7y5"
+                {
+                    over "tn__2828DiameterHole1_pH5El4Ss26Yh3"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DB0006M25x5SocketCapBZP_6_WQ7BDFMQXDj0"
+                {
+                    over "Chamfer1"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DB0203M3x4coneSktSet_2_yM7ACEJNuB"
+                {
+                    over "Chamfer2"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DB0162M3x5SktButton109SteelBrightNP_M3x5_1_nh07CGNRX0e0oKm1"
+                {
+                    over "Hex"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__135625MovingY_pD7y5"
+                {
+                    over "tn__CutExtrude6_lG"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            rel material:binding:physics = </Thorlabs_MAX311D_0fd9e6/Looks/PhysicsMaterial> (
+                                bindMaterialAs = "weakerThanDescendants"
+                            )
+                            uniform token physics:approximation = "convexDecomposition"
+                        }
+                    }
+                }
+
+                over "tn__135472Flexure_1_rF7t6"
+                {
+                    over "Fillet1"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DB0006M25x5SocketCapBZP_7_WQ7BDFMQXDj0"
+                {
+                    over "Chamfer1"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__260595ConnectorPlate301_zN7HNzA"
+                {
+                    over "tn__CutExtrude7_lG"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            rel material:binding:physics = </Thorlabs_MAX311D_0fd9e6/Looks/PhysicsMaterial> (
+                                bindMaterialAs = "weakerThanDescendants"
+                            )
+                            uniform token physics:approximation = "convexHull"
+                        }
+                    }
+                }
+
+                over "tn__BB0014Lemo_1_oC7l5"
+                {
+                    over "tn__BossExtrude1_VI"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__BB0014Lemo_2_oC7l5"
+                {
+                    over "tn__BossExtrude1_VI"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__CG0119LC051F05MLeeSprings_WQ7HLuB"
+                {
+                    over "Extrude1"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DB0006M25x5SocketCapBZP_8_WQ7BDFMQXDj0"
+                {
+                    over "Chamfer1"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DB0006M25x5SocketCapBZP_9_WQ7BDFMQXDj0"
+                {
+                    over "Chamfer1"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DB0006M25x5SocketCapBZP_10_XR7BDFMQkDk0"
+                {
+                    over "Chamfer1"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__136917MAX300ZSPRING_vJ7EGe9"
+                {
+                    over "tn__138426ExtnSpring45ODx30mm_WQ7CJKPRXDLx0"
+                    {
+                        over "Sweep1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__DB0223M4x8SocketSetScrewCupPoint_DB0223_ke07CJNTX0yI"
+                    {
+                        over "Hex"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__131144Screw_nB7Y5"
+                    {
+                        over "tn__CutExtrude2_lG"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+                }
+
+                over "tn__DB0162M3x5SktButton109SteelBrightNP_M3x5_2_nh07CGNRX0e0oKm1"
+                {
+                    over "Hex"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DB0164M3x8SktBtn_8_uI7ACEIr9"
+                {
+                    over "tn__CutExtrude1_lG"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__135350TreadedPlug_tH7FW8"
+                {
+                    over "tn__M232300000DiameterHole1_wNBKY6e0s37"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__135474StrapXAxis_2_uI7DFw8"
+                {
+                    over "Fillet1"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DB0164M3x8SktBtn_9_uI7ACEIr9"
+                {
+                    over "tn__CutExtrude1_lG"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__135473Flexure_1_rF7t6"
+                {
+                    over "tn__2828DiameterHole1_pH5El4Ss26Yh3"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__135463MovingZ_pD7y5"
+                {
+                    over "tn__M25x045TappedHole2_vIEm86"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            rel material:binding:physics = </Thorlabs_MAX311D_0fd9e6/Looks/PhysicsMaterial> (
+                                bindMaterialAs = "weakerThanDescendants"
+                            )
+                            uniform token physics:approximation = "convexHull"
+                        }
+                    }
+                }
+
+                over "tn__DB0162M3x5SktButton109SteelBrightNP_M3x5_3_nh07CGNRX0e0oKm1"
+                {
+                    over "Hex"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__CG0118LC047F05M_rF7t6"
+                {
+                    over "Extrude1"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DB0162M3x5SktButton109SteelBrightNP_M3x5_4_nh07CGNRX0e0oKm1"
+                {
+                    over "Hex"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DB0006M25x5SocketCapBZP_11_XR7BDFMQkDk0"
+                {
+                    over "Chamfer1"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__CG0120LC047EF11M_sG7AGW8"
+                {
+                    over "Extrude1"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DB0006M25x5SocketCapBZP_12_XR7BDFMQkDk0"
+                {
+                    over "Chamfer1"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DB0016M3x6SktCap_4_uI7ACEIr9"
+                {
+                    over "Chamfer1"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DB0006M25x5SocketCapBZP_13_XR7BDFMQkDk0"
+                {
+                    over "Chamfer1"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__135466Lever_nB7Y5"
+                {
+                    over "tn__202DiameterHole1_oG4Dd4Qn2ZW3"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            rel material:binding:physics = </Thorlabs_MAX311D_0fd9e6/Looks/PhysicsMaterial> (
+                                bindMaterialAs = "weakerThanDescendants"
+                            )
+                            uniform token physics:approximation = "convexHull"
+                        }
+                    }
+                }
+
+                over "tn__135474StrapXAxis_3_uI7DFw8"
+                {
+                    over "Fillet1"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DB0203M3x4coneSktSet_3_yM7ACEJNuB"
+                {
+                    over "Chamfer2"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__135350TreadedPlug_1_vJ7Fw8"
+                {
+                    over "tn__M232300000DiameterHole1_wNBKY6e0s37"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__135426SpringPlug_sG7Eo7"
+                {
+                    over "tn__CutRevolve2_lG"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DB0016M3x6SktCap_5_uI7ACEIr9"
+                {
+                    over "Chamfer1"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__135475Strap_2_pD7y5"
+                {
+                    over "Extrude2"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DB0203M3x4coneSktSet_4_yM7ACEJNuB"
+                {
+                    over "Chamfer2"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DB0203M3x4coneSktSet_5_yM7ACEJNuB"
+                {
+                    over "Chamfer2"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__135352LockNut_1_rF7Cb7"
+                {
+                    over "tn__CutExtrude2_lG"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DRV3CoarseScale_2_rH5Cz7"
+                {
+                    over "tn__138701DowelPin15x58m660HRc_XR7DHNQXDs0O"
+                    {
+                        over "Revolve1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__136592FulcrumDiffBodyCoarseScale_dX07FKPQX0VGR"
+                    {
+                        over "Fillet3"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                                rel material:binding:physics = </Thorlabs_MAX311D_0fd9e6/Looks/PhysicsMaterial> (
+                                    bindMaterialAs = "weakerThanDescendants"
+                                )
+                                uniform token physics:approximation = "convexHull"
+                            }
+                        }
+                    }
+
+                    over "tn__136321FulcrumNut_sG7Fo7"
+                    {
+                        over "Fillet2"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                                rel material:binding:physics = </Thorlabs_MAX311D_0fd9e6/Looks/PhysicsMaterial> (
+                                    bindMaterialAs = "weakerThanDescendants"
+                                )
+                                uniform token physics:approximation = "convexHull"
+                            }
+                        }
+                    }
+
+                    over "tn__DG01061mmdiax4mmdowelpin_VP7BFHLRpC"
+                    {
+                        over "Extrude1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__136325FulcrumFineDriveScrew_YS7FKQXD"
+                    {
+                        over "Chamfer5"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__138701DowelPin15x58m660HRc_1_ZT7DHNQxDu0O"
+                    {
+                        over "Revolve1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__136593MicrometerCoverCoarseScale_dX07IOPW0nFQ"
+                    {
+                        over "Fillet1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                                rel material:binding:physics = </Thorlabs_MAX311D_0fd9e6/Looks/PhysicsMaterial> (
+                                    bindMaterialAs = "weakerThanDescendants"
+                                )
+                                uniform token physics:approximation = "convexHull"
+                            }
+                        }
+                    }
+
+                    over "tn__DB0204M3x5SktSet_sG7CGW8"
+                    {
+                        over "Hex"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__136322Nose_mA7q4"
+                    {
+                        over "Chamfer5"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__136324Plate_nB7Y5"
+                    {
+                        over "Chamfer2"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__135953LockScrewAdapter_yM7CImA"
+                    {
+                        over "Chamfer2"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__135949RubberGrip_sG7Eo7"
+                    {
+                        over "Revolve1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__CF00032mmBall_pD7Bg6"
+                    {
+                        over "tn__BaseRevolve_mG"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__136323Plunger_pD7y5"
+                    {
+                        over "Fillet1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__DA0161M16x2sktsetscrew_yM7BDFJNuBg0"
+                    {
+                        over "Chamfer1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__DG01061mmdiax4mmdowelpin_1_XR7BFHLRkD"
+                    {
+                        over "Extrude1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__CF00032mmBall_1_rF7Bb7"
+                    {
+                        over "tn__BaseRevolve_mG"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__CF00032mmBall_2_rF7Bb7"
+                    {
+                        over "tn__BaseRevolve_mG"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__DG01061mmdiax4mmdowelpin_2_XR7BFHLRkD"
+                    {
+                        over "Extrude1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__DG00851x3StainlesssteelDowel_ZT79BDNTfE"
+                    {
+                        over "Extrude1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__135407LockRing_qE7Ct6"
+                    {
+                        over "Chamfer2"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__131028DRV34mmHardPad_wK7CGLZA"
+                    {
+                        over "Extrude1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__136328MainDriveBush_vJ7CIe9"
+                    {
+                        over "Fillet1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__136358Driverod485mm_vJ7DHe9k0"
+                    {
+                        over "tn__CutExtrude1_lG"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__CF00032mmBall_3_rF7Bb7"
+                    {
+                        over "tn__BaseRevolve_mG"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__135931drivescrew34mm_wK7DJr9"
+                    {
+                        over "Chamfer2"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__DA0161M16x2sktsetscrew_1_VP7BDFJNpCi0"
+                    {
+                        over "Chamfer1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__138701DowelPin15x58m660HRc_2_ZT7DHNQxDu0O"
+                    {
+                        over "Revolve1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__DG0029CrescentRing3mmShaft_XR7GLMORkDN"
+                    {
+                        over "Fillet1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__DG00851x3StainlesssteelDowel_1_bV079BDNTaF"
+                    {
+                        over "Extrude1"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__1359597mmlockscrew_uI7BGw8"
+                    {
+                        over "Fillet3"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            }
+                        }
+                    }
+
+                    over "tn__136326FulcrumKnob_tH7FW8"
+                    {
+                        over "Fillet4"
+                        {
+                            over "Mesh" (
+                                prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                            )
+                            {
+                                rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                                rel material:binding:physics = </Thorlabs_MAX311D_0fd9e6/Looks/PhysicsMaterial> (
+                                    bindMaterialAs = "weakerThanDescendants"
+                                )
+                                uniform token physics:approximation = "convexHull"
+                            }
+                        }
+                    }
+                }
+
+                over "tn__DB0162M3x5SktButton109SteelBrightNP_M3x5_5_nh07CGNRX0e0oKm1"
+                {
+                    over "Hex"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__DB0164M3x8SktBtn_10_vJ7ACEIZA"
+                {
+                    over "tn__CutExtrude1_lG"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__135468Block_nB7Y5"
+                {
+                    over "tn__M3x05TappedHole2_rGCr7"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                            rel material:binding:physics = </Thorlabs_MAX311D_0fd9e6/Looks/PhysicsMaterial> (
+                                bindMaterialAs = "weakerThanDescendants"
+                            )
+                            uniform token physics:approximation = "convexHull"
+                        }
+                    }
+                }
+
+                over "tn__BB0086SMCSocket236THK_2_zN7BIzAKq0"
+                {
+                    over "tn__CutExtrude7_lG"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+
+                over "tn__135475Strap_3_pD7y5"
+                {
+                    over "Extrude2"
+                    {
+                        over "Mesh" (
+                            prepend apiSchemas = ["MaterialBindingAPI"]
+                        )
+                        {
+                            rel material:binding = </Thorlabs_MAX311D_0fd9e6/Looks/cad_default>
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    def Scope "KeyPoints"
+    {
+        def Xform "mount_hole_0" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 8.0}'
+                double3 normal = (0, 0, -1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (-0.07353, 0.025025, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "mount_hole_1" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 8.0}'
+                double3 normal = (0, 0, -1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (-0.07133, -0.073575, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "mount_hole_2" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 8.0}'
+                double3 normal = (0, 0, -1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (-0.07133, -0.005575, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "mount_hole_3" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 5.308, "thread_guess": {"thread": "1/4-20", "matched": "minor", "err_mm": 0.042}}'
+                double3 normal = (0, 0, -1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (-0.06289800000000001, -0.014455, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "mount_hole_4" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 0.46}'
+                double3 normal = (0, 0, -1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (-0.06285199999999999, -0.0138627, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "mount_hole_5" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 5.0, "thread_guess": {"thread": "M6", "matched": "tap_drill", "err_mm": 0.0}}'
+                double3 normal = (0, 0, -1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (-0.062329999999999997, -0.020075, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "mount_hole_6" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 5.0, "thread_guess": {"thread": "M6", "matched": "tap_drill", "err_mm": 0.0}}'
+                double3 normal = (0, 0, -1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (-0.062329999999999997, -0.024360700000000002, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "mount_hole_7" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 0.368}'
+                double3 normal = (0, 0, -1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (-0.060414, -0.0136155, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "mount_hole_8" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 7.0}'
+                double3 normal = (0, 0, -1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (-0.05633, -0.049575, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "mount_hole_9" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 8.0}'
+                double3 normal = (0, 0, -1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (-0.04833, 0.025025, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "mount_hole_10" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 8.0}'
+                double3 normal = (0, 0, -1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (-0.03573, 0.012425, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "mount_hole_11" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 7.0}'
+                double3 normal = (0, 0, -1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (-0.02333, -0.049575, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "mount_hole_12" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 8.0}'
+                double3 normal = (0, 0, -1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (-0.00333, -0.073575, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "mount_hole_13" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 8.0}'
+                double3 normal = (0, 0, -1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (-0.00333, -0.005575, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "mount_hole_14" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 8.0}'
+                double3 normal = (0, 0, -1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (0.01467, -0.063175, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "mount_hole_15" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 8.0}'
+                double3 normal = (0, 0, -1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (0.01467, -0.037975, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "mount_hole_16" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 8.0}'
+                double3 normal = (0, 0, -1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (0.01467, 0.012425, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "mount_hole_17" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 8.0}'
+                double3 normal = (0, 0, -1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (0.02727, -0.07577500000000001, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "mount_hole_18" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 8.0}'
+                double3 normal = (0, 0, -1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (0.02727, -0.050575, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "mount_hole_19" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 8.0}'
+                double3 normal = (0, 0, -1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (0.02727, 0.025025, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "top_surface" (
+            customData = {
+                string data = '{"auto": true, "face_area_mm2": 3687.61}'
+                double3 normal = (0, 0, 1)
+                bool support = 1
+            }
+        )
+        {
+            double3 xformOp:translate = (-0.0250772, -0.026374500000000002, 0.0555)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+    }
+}
+

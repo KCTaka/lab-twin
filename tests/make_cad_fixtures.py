@@ -32,5 +32,9 @@ truth["cp_like_cage_plate"] = {"bbox": [41, 8.9, 41],
 truth["tr2_like_post"] = {"bbox": [12.7, 12.7, 50.8],
     "mount_holes": [{"pos": [0, 0, 0], "thread": "M4"}], "top_holes": [{"pos": [0, 0, 50.8], "thread": "M4"}],
     "optical_axis": None, "top_surface": False}
+# Y-up copy of the cage plate (as SolidWorks exports it): the analyser must rotate it back.
+# Rotating the Z-up part by -90 deg about X puts its "up" (+Z) along +Y.
+cq.exporters.export(cp.rotate((0, 0, 0), (1, 0, 0), -90), str(out / "cp_like_cage_plate_yup.step"))
+truth["cp_like_cage_plate_yup"] = {**truth["cp_like_cage_plate"], "down": "-Y", "rotate": ("X", 90.0)}
 (out / "cad_truth.json").write_text(json.dumps(truth, indent=2))
 print("fixtures:", sorted(truth))

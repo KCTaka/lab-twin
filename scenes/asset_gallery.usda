@@ -22,7 +22,7 @@ def Xform "World"
         {
             color3f[] primvars:displayColor = [(0.55, 0.56, 0.58)]
             double size = 1
-            float3 xformOp:scale = (31.4477, 8, 0.02)
+            float3 xformOp:scale = (37.01061, 8, 0.02)
             uniform token[] xformOpOrder = ["xformOp:scale"]
         }
     }
@@ -42,7 +42,7 @@ def Xform "World"
 
     def Xform "Gallery"
     {
-        double3 xformOp:translate = (-13.72385, 0, 0)
+        double3 xformOp:translate = (-16.505305, 0, 0)
         uniform token[] xformOpOrder = ["xformOp:translate"]
 
         def Xform "Newport_OTS_UT2_48_12_I_6fd189" (
@@ -133,11 +133,51 @@ def Xform "World"
             uniform token[] xformOpOrder = ["xformOp:translate"]
         }
 
+        def Xform "Thorlabs_MAX311D_0fd9e6" (
+            prepend references = @../assets/Thorlabs_MAX311D_0fd9e6/Thorlabs_MAX311D_0fd9e6.usda@
+        )
+        {
+            double3 xformOp:translate = (21.695570000000004, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
         def Xform "Quartet_QRT02304_5983b0" (
             prepend references = @../assets/Quartet_QRT02304_5983b0/Quartet_QRT02304_5983b0.usda@
         )
         {
-            double3 xformOp:translate = (22.225350000000002, 0, 0)
+            double3 xformOp:translate = (22.884990000000005, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "Thorlabs_PT1_6c80ea" (
+            prepend references = @../assets/Thorlabs_PT1_6c80ea/Thorlabs_PT1_6c80ea.usda@
+        )
+        {
+            double3 xformOp:translate = (24.032690000000006, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "Thorlabs_BA2_d7c9c2" (
+            prepend references = @../assets/Thorlabs_BA2_d7c9c2/Thorlabs_BA2_d7c9c2.usda@
+        )
+        {
+            double3 xformOp:translate = (24.608890000000006, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "Thorlabs_BA2_P5_48f0cc" (
+            prepend references = @../assets/Thorlabs_BA2_P5_48f0cc/Thorlabs_BA2_P5_48f0cc.usda@
+        )
+        {
+            double3 xformOp:translate = (25.185090000000006, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "Thorlabs_KM100_54b57b" (
+            prepend references = @../assets/Thorlabs_KM100_54b57b/Thorlabs_KM100_54b57b.usda@
+        )
+        {
+            double3 xformOp:translate = (25.749415000000006, 0, 0)
             uniform token[] xformOpOrder = ["xformOp:translate"]
         }
 
@@ -145,7 +185,31 @@ def Xform "World"
             prepend references = @../assets/Laservision_F5P06_f57242/Laservision_F5P06_f57242.usda@
         )
         {
-            double3 xformOp:translate = (24.604950000000002, 0, 0)
+            double3 xformOp:translate = (27.545640000000006, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "Thorlabs_SM1L10_7396b5" (
+            prepend references = @../assets/Thorlabs_SM1L10_7396b5/Thorlabs_SM1L10_7396b5.usda@
+        )
+        {
+            double3 xformOp:translate = (29.330880000000004, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "Thorlabs_PH3_e6d3a4" (
+            prepend references = @../assets/Thorlabs_PH3_e6d3a4/Thorlabs_PH3_e6d3a4.usda@
+        )
+        {
+            double3 xformOp:translate = (29.858620000000002, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "Thorlabs_CP02_48c523" (
+            prepend references = @../assets/Thorlabs_CP02_48c523/Thorlabs_CP02_48c523.usda@
+        )
+        {
+            double3 xformOp:translate = (30.391820000000003, 0, 0)
             uniform token[] xformOpOrder = ["xformOp:translate"]
         }
 
@@ -153,7 +217,7 @@ def Xform "World"
             prepend references = @../assets/FIXTURE_cad_cp_like_cage_plate/FIXTURE_cad_cp_like_cage_plate.usda@
         )
         {
-            double3 xformOp:translate = (26.39545, 0, 0)
+            double3 xformOp:translate = (30.933020000000003, 0, 0)
             uniform token[] xformOpOrder = ["xformOp:translate"]
         }
 
@@ -161,7 +225,7 @@ def Xform "World"
             prepend references = @../assets/FIXTURE_cad_ph_like_holder/FIXTURE_cad_ph_like_holder.usda@
         )
         {
-            double3 xformOp:translate = (26.925475, 0, 0)
+            double3 xformOp:translate = (31.463045, 0, 0)
             uniform token[] xformOpOrder = ["xformOp:translate"]
         }
 
@@ -169,7 +233,23 @@ def Xform "World"
             prepend references = @../assets/FIXTURE_cad_tr2_like_post/FIXTURE_cad_tr2_like_post.usda@
         )
         {
-            double3 xformOp:translate = (27.44135, 0, 0)
+            double3 xformOp:translate = (31.978920000000002, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "Thorlabs_TR1_00d2ae" (
+            prepend references = @../assets/Thorlabs_TR1_00d2ae/Thorlabs_TR1_00d2ae.usda@
+        )
+        {
+            double3 xformOp:translate = (32.491605, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "Thorlabs_TR1_P5_61fc70" (
+            prepend references = @../assets/Thorlabs_TR1_P5_61fc70/Thorlabs_TR1_P5_61fc70.usda@
+        )
+        {
+            double3 xformOp:translate = (33.004275, 0, 0)
             uniform token[] xformOpOrder = ["xformOp:translate"]
         }
     }

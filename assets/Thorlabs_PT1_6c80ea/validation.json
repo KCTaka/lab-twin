@@ -1,0 +1,71 @@
+{
+  "asset_id": "Thorlabs_PT1_6c80ea",
+  "pass": true,
+  "checks": {
+    "C1_metrics": {
+      "pass": true,
+      "mpu": 1.0,
+      "up": "Z"
+    },
+    "C2_bbox": {
+      "pass": true,
+      "axes": [
+        {
+          "axis": "x",
+          "expected_mm": 76.2,
+          "got_mm": 76.2,
+          "ok": true
+        },
+        {
+          "axis": "y",
+          "expected_mm": 177.29,
+          "got_mm": 177.29,
+          "ok": true
+        },
+        {
+          "axis": "z",
+          "expected_mm": 20.32,
+          "got_mm": 20.32,
+          "ok": true
+        }
+      ]
+    },
+    "C3_floor_origin": {
+      "pass": true,
+      "min_z_mm": -0.0
+    },
+    "C4_collision": {
+      "pass": true,
+      "shapes": 64,
+      "collidable": 15
+    },
+    "C5_physics_settle": {
+      "pass": true,
+      "applicable": true,
+      "probes": [
+        {
+          "probe": "asset_itself",
+          "drift_mm": 0.0,
+          "speed_mm_s": 0.0,
+          "ok": true
+        },
+        {
+          "probe": "top_surface",
+          "probe_edge_mm": 38.1,
+          "probe_kg": 0.0669,
+          "z0_mm": 59.4,
+          "z_err_mm": 1.99,
+          "speed_mm_s": 0.0,
+          "ok": true
+        }
+      ],
+      "note": ""
+    },
+    "C6_provenance": {
+      "pass": true,
+      "provisional": [
+        "physics.density_kg_m3"
+      ]
+    }
+  }
+}

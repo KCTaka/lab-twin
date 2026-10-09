@@ -108,26 +108,115 @@ def _merge_coaxial(cyls):
     return merged
 
 
-def top_support_point(shape, zmax):
-    """A point lying ON the largest upward planar face at the top of the part."""
+SUPPORT_MIN_FRACTION = 0.10   # a support face must cover >= 10 % of the part footprint
+
+
+def top_support_point(shape, bb):
+    """A point ON the highest upward planar face that is big enough to carry something
+    (>= SUPPORT_MIN_FRACTION of the footprint): a platform, not a knob or screw tip."""
+    min_area = SUPPORT_MIN_FRACTION * bb.xlen * bb.ylen
     best = None
     for f in shape.Faces():
-        if f.geomType() != "PLANE":
+        if f.geomType() != "PLANE" or f.Area() < min_area:
             continue
         c = f.Center()
-        n = f.normalAt(c)
-        if n.z < 0.999 or abs(c.z - zmax) > PLANE_TOL:
+        if f.normalAt(c).z < 0.999:
             continue
         u, v = f.paramAt(c)
-        inside = BRepClass_FaceClassifier(f.wrapped, gp_Pnt2d(u, v), 1e-6).State() == TopAbs_IN
-        if inside and (best is None or f.Area() > best[1]):
+        if BRepClass_FaceClassifier(f.wrapped, gp_Pnt2d(u, v), 1e-6).State() != TopAbs_IN:
+            continue
+        if best is None or c.z > best[0][2] + TOL or (abs(c.z - best[0][2]) <= TOL and f.Area() > best[1]):
             best = (c.toTuple(), f.Area())
     return best
 
 
-def analyze(step_path: Path) -> dict:
+# --- orientation ---------------------------------------------------------------------
+# Rotation that brings each candidate "down" direction (in the file frame) to -Z.
+DOWN_ROT = {"-Z": ("X", 0.0), "+Z": ("X", 180.0), "-Y": ("X", 90.0), "+Y": ("X", -90.0),
+            "-X": ("Y", -90.0), "+X": ("Y", 90.0)}
+POST_THREADS = {"8-32", "M4", "1/4-20", "M6"}
+W_TAP, W_NATIVE_PRIOR, STABLE_MARGIN = 0.5, 0.25, 2.0    # score weights; mm
+
+
+def _hull_contains(pts2d, q, margin):
+    from scipy.spatial import ConvexHull
+    try:
+        h = ConvexHull(pts2d)
+    except Exception:
+        return False
+    return all(eq[0] * q[0] + eq[1] * q[1] + eq[2] <= -margin for eq in h.equations)
+
+
+def choose_down(shape, cyls, header: str):
+    """PROPOSE a resting direction: a statically stable flat base, preferring a centred
+    post-mount tap and (weakly) the file's native up axis (SolidWorks: Y-up, else Z-up).
+    This is a proposal only: S3a renders all stable poses for review (orientation_sheet.py)
+    and the reviewer confirms it or sets cad.down_axis. Returns (down, evidence)."""
+    bb = shape.BoundingBox()
+    ext = {"-X": bb.xmin, "+X": bb.xmax, "-Y": bb.ymin, "+Y": bb.ymax, "-Z": bb.zmin, "+Z": bb.zmax}
+    solids = shape.Solids()
+    if solids:
+        vt = sum(abs(x.Volume()) for x in solids)
+        com = [sum(abs(x.Volume()) * x.Center().toTuple()[i] for x in solids) / vt for i in range(3)]
+    else:
+        com = [(bb.xmin + bb.xmax) / 2, (bb.ymin + bb.ymax) / 2, (bb.zmin + bb.zmax) / 2]
+    native_down = "-Y" if "solidworks" in header.lower() else "-Z"
+    cands = {}
+    for d, val in ext.items():
+        i = "XYZ".index(d[1])
+        sgn = 1 if d[0] == "+" else -1
+        faces = [f for f in shape.Faces() if f.geomType() == "PLANE"
+                 and abs(f.normalAt(f.Center()).toTuple()[i] - sgn) < 1e-3
+                 and abs(f.Center().toTuple()[i] - val) < PLANE_TOL]
+        area = sum(f.Area() for f in faces)
+        if area <= 0:
+            cands[d] = {"area": 0.0, "stable": False}
+            continue
+        j, k = [a for a in range(3) if a != i]
+        # footprint from points sampled along the face edges (a circle has one seam vertex only)
+        pts = [(q.toTuple()[j], q.toTuple()[k]) for f in faces for e in f.Edges()
+               for q in (e.positionAt(t / 16) for t in range(17))]
+        stable = _hull_contains(pts, (com[j], com[k]), STABLE_MARGIN)
+        fc = [sum(f.Area() * f.Center().toTuple()[a] for f in faces) / area for a in range(3)]
+        taps = [c for c in cyls if c["hole"] and abs(abs(c["axis_dir"][i]) - 1) < 1e-6
+                and (abs(c["bb"][i] - val) < PLANE_TOL or abs(c["bb"][i + 3] - val) < PLANE_TOL)
+                and (thread_guess(c["d"]) or {}).get("thread") in POST_THREADS]
+        centred = [c for c in taps if math.hypot(c["axis_pt"][j] - fc[j], c["axis_pt"][k] - fc[k]) < 0.2 * math.sqrt(area)]
+        # holes opening on this face: thread-matched (taps) vs not (clearance / counterbore)
+        opening = [c for c in cyls if c["hole"] and abs(abs(c["axis_dir"][i]) - 1) < 1e-6
+                   and (abs(c["bb"][i] - val) < PLANE_TOL or abs(c["bb"][i + 3] - val) < PLANE_TOL)]
+        n_tap = sum(1 for c in opening if thread_guess(c["d"]))
+        cands[d] = {"area": round(area, 2), "stable": stable, "centred_post_tap": len(centred) == 1,
+                    "n_tapped": n_tap, "n_other_holes": len(opening) - n_tap,
+                    "diams": sorted({round(c["d"], 2) for c in opening})[:8]}
+    amax = max((c["area"] for c in cands.values() if c["stable"]), default=0.0)
+    for d, c in cands.items():
+        c["score"] = round((c["area"] / amax if amax else 0) + W_TAP * c.get("centred_post_tap", False)
+                           + W_NATIVE_PRIOR * (d == native_down), 3) if c["stable"] else None
+    ranked = sorted([d for d in cands if cands[d]["score"] is not None], key=lambda d: -cands[d]["score"])
+    if not ranked:
+        return "-Z", {"rule": "no stable flat base found; file frame kept", "candidates": cands, "confidence": "low"}
+    margin = cands[ranked[0]]["score"] - (cands[ranked[1]]["score"] if len(ranked) > 1 else 0)
+    return ranked[0], {"rule": f"stable base: area/max + 0.5 centred post tap + 0.25 native down ({native_down})",
+                       "stable_candidates": ranked,
+                       "com_mm": [round(v, 3) for v in com], "candidates": cands,
+                       "runner_up": ranked[1] if len(ranked) > 1 else None, "margin": round(margin, 3),
+                       "confidence": "high" if margin >= 0.3 else "medium" if margin >= 0.1 else "low"}
+
+
+def analyze(step_path: Path, down: str | None = None) -> dict:
     wp = cq.importers.importStep(str(step_path))      # OCCT converts to mm on import
     shape = cq.Compound.makeCompound(wp.vals()) if len(wp.vals()) > 1 else wp.val()
+    header = Path(step_path).read_bytes()[:4000].decode("latin-1", "replace")
+    if down:
+        evidence = {"rule": "override from spec cad.down_axis", "confidence": "given"}
+    else:
+        down, evidence = choose_down(shape, _merge_coaxial(cylinders(shape)), header)
+    ax, deg = DOWN_ROT[down]
+    b0 = shape.BoundingBox()
+    bbox_file = {"min": [b0.xmin, b0.ymin, b0.zmin], "max": [b0.xmax, b0.ymax, b0.zmax]}
+    if deg:   # rotate the B-rep itself so every feature below is in the as-used frame
+        shape = shape.rotate((0, 0, 0), (1, 0, 0) if ax == "X" else (0, 1, 0), deg)
     solids = shape.Solids()
     bb = shape.BoundingBox()
     cx, cy, z0 = (bb.xmin + bb.xmax) / 2, (bb.ymin + bb.ymax) / 2, bb.zmin
@@ -157,10 +246,10 @@ def analyze(step_path: Path) -> dict:
     for c in cyls:
         if not c["hole"] or abs(c["axis_dir"][2]) > 1e-6:
             continue
-        ax = [i for i in range(3) if abs(c["axis_dir"][i]) > 0.999]
-        if not ax:
+        bore_axes = [i for i in range(3) if abs(c["axis_dir"][i]) > 0.999]
+        if not bore_axes:
             continue
-        i = ax[0]
+        i = bore_axes[0]
         span = (bb.xmin, bb.ymin, bb.zmin, bb.xmax, bb.ymax, bb.zmax)
         through = c["bb"][i] - span[i] < PLANE_TOL and span[i + 3] - c["bb"][i + 3] < PLANE_TOL
         if through and c["r"] > 2.0:
@@ -176,14 +265,17 @@ def analyze(step_path: Path) -> dict:
                                "support": False,
                                "data": {"auto": True, "bore_diameter_mm": round(c["d"], 3),
                                         **({"thread_guess": tg} if tg else {})}}
-    top = top_support_point(shape, bb.zmax)
+    top = top_support_point(shape, bb)
     if top:
         kps["top_surface"] = {"pos_mm": to_asset(top[0]), "normal": [0, 0, 1], "support": True,
                               "data": {"auto": True, "face_area_mm2": round(top[1], 2)}}
     return {
         "source": str(step_path),
         "units": "mm (OCCT import)",
+        "orientation": {"down_in_file": down, "rotate_axis": ax, "rotate_deg": deg, **evidence},
+        "bbox_file_mm": bbox_file,
         "n_solids": len(solids),
+        "mass_basis": "brep" if solids else "mesh (STEP has no closed solids)",
         "bbox_mm": {"min": [bb.xmin, bb.ymin, bb.zmin], "max": [bb.xmax, bb.ymax, bb.zmax],
                     "size": [bb.xlen, bb.ylen, bb.zlen]},
         "volume_mm3": round(sum(vols), 3),
@@ -202,7 +294,7 @@ def main():
         print(json.dumps(analyze(Path(a.file)), indent=2))
         return
     spec = load_spec(a.asset_id)
-    res = analyze(ROOT / spec["cad"]["file"])
+    res = analyze(ROOT / spec["cad"]["file"], spec["cad"].get("down_axis"))
     out = BUILD / a.asset_id / "cad_analysis.json"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(res, indent=2))

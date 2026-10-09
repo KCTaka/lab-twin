@@ -1,0 +1,40 @@
+{
+  "asset_id": "Thorlabs_MAX311D_0fd9e6",
+  "inventory": {
+    "manufacturer": "Thorlabs",
+    "part_number": "MAX311D",
+    "description": "3-axis NanoMax stage, differential drives, closed-loop piezos",
+    "qty": "2",
+    "instances": "2"
+  },
+  "params": {},
+  "notes": "",
+  "route": "VENDOR_STEP",
+  "family": "cad",
+  "semantic_class": "stage_positioner",
+  "cad": {
+    "file": "sources/Thorlabs_MAX311D_0fd9e6/MAX311D-Step.step",
+    "sha256": "6bf2a3d91c9c80960d111f2b436c5726d2eea3c62b6c1f4267c7b29718ca6b93",
+    "orientation_review": {
+      "by": "Claude (agent, visual review of orientation_sheet.png)",
+      "date": "2026-10-09",
+      "basis": "accepted: NanoMax upright, top platform up, drives horizontal",
+      "status": "agent_reviewed"
+    }
+  },
+  "physics": {
+    "body": "dynamic",
+    "collision": "auto",
+    "density_kg_m3": {
+      "value": 2700,
+      "unit": "kg/m^3",
+      "src": "assumed",
+      "note": "no material stated; anodised 6061 aluminium is the common optomechanics default",
+      "material": "aluminium"
+    },
+    "mass_kg": {
+      "value": null,
+      "src": "vendor_cad"
+    }
+  }
+}

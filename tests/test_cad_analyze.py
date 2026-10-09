@@ -13,7 +13,7 @@ def check(name, cond, msg):
     fails += not cond
 for name, t in truth.items():
     print(name)
-    r = analyze(fx / f"{name}.step")
+    r = analyze(fx / f"{name}.step", t.get("down"))   # rotated fixtures: test the rotation path
     kp = r["key_points"]
     check(name, all(abs(a - b) < 0.01 for a, b in zip(r["bbox_mm"]["size"], t["bbox"])), f"bbox {r['bbox_mm']['size']} == {t['bbox']}")
     mh = [v for k, v in kp.items() if k.startswith("mount_hole")]
@@ -32,5 +32,9 @@ for name, t in truth.items():
         check(name, oa is not None and abs(abs(oa["normal"]["xyz".index(e["axis"])]) - 1) < 1e-6, f"axis along {e['axis']}: {oa and oa['normal']}")
         check(name, oa is not None and oa["data"].get("thread_guess", {}).get("thread") == e["thread"], f"bore thread {oa and oa['data'].get('thread_guess')}")
     check(name, ("top_surface" in kp) == t["top_surface"], f"top_surface present = {'top_surface' in kp}")
+    o = r["orientation"]
+    check(name, isinstance(o["rotate_axis"], str) and o["rotate_axis"] in "XY", f"rotate_axis recorded as an axis name: {o['rotate_axis']!r}")
+    if "rotate" in t:
+        check(name, (o["rotate_axis"], o["rotate_deg"]) == tuple(t["rotate"]), f"rotation {o['rotate_axis']} {o['rotate_deg']} == {t['rotate']}")
 print("FAILURES:", fails)
 sys.exit(1 if fails else 0)

@@ -84,5 +84,38 @@
     ],
     "optical_axis": null,
     "top_surface": false
+  },
+  "cp_like_cage_plate_yup": {
+    "bbox": [
+      41,
+      8.9,
+      41
+    ],
+    "mount_holes": [
+      {
+        "pos": [
+          0,
+          0,
+          0
+        ],
+        "thread": "8-32"
+      }
+    ],
+    "top_holes": [],
+    "optical_axis": {
+      "pos": [
+        0,
+        0,
+        20.5
+      ],
+      "axis": "y",
+      "thread": "SM1 (1.035-40)"
+    },
+    "top_surface": true,
+    "down": "-Y",
+    "rotate": [
+      "X",
+      90.0
+    ]
   }
 }

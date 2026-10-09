@@ -725,6 +725,1851 @@
       "validation": "assets/TMCTechnical_784_655_02R_52b98b/validation.json",
       "thumbnail": "assets/TMCTechnical_784_655_02R_52b98b/thumb.png"
     },
+    "Thorlabs_MAX311D_0fd9e6": {
+      "usd": "assets/Thorlabs_MAX311D_0fd9e6/Thorlabs_MAX311D_0fd9e6.usda",
+      "family": "cad",
+      "semantic_class": "stage_positioner",
+      "manufacturer": "Thorlabs",
+      "part_number": "MAX311D",
+      "instances_owned": 2,
+      "size_m": [
+        0.15963999999999998,
+        0.16115000000000002,
+        0.063
+      ],
+      "body": "dynamic",
+      "mass_kg": 0.779084,
+      "key_points": {
+        "mount_hole_0": {
+          "pos_m": [
+            -0.07353,
+            0.025025,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 8.0
+          }
+        },
+        "mount_hole_1": {
+          "pos_m": [
+            -0.07133,
+            -0.073575,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 8.0
+          }
+        },
+        "mount_hole_2": {
+          "pos_m": [
+            -0.07133,
+            -0.005575,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 8.0
+          }
+        },
+        "mount_hole_3": {
+          "pos_m": [
+            -0.062898,
+            -0.014455,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 5.308,
+            "thread_guess": {
+              "thread": "1/4-20",
+              "matched": "minor",
+              "err_mm": 0.042
+            }
+          }
+        },
+        "mount_hole_4": {
+          "pos_m": [
+            -0.062852,
+            -0.013863,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 0.46
+          }
+        },
+        "mount_hole_5": {
+          "pos_m": [
+            -0.06233,
+            -0.020075,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 5.0,
+            "thread_guess": {
+              "thread": "M6",
+              "matched": "tap_drill",
+              "err_mm": 0.0
+            }
+          }
+        },
+        "mount_hole_6": {
+          "pos_m": [
+            -0.06233,
+            -0.024361,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 5.0,
+            "thread_guess": {
+              "thread": "M6",
+              "matched": "tap_drill",
+              "err_mm": 0.0
+            }
+          }
+        },
+        "mount_hole_7": {
+          "pos_m": [
+            -0.060414,
+            -0.013616,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 0.368
+          }
+        },
+        "mount_hole_8": {
+          "pos_m": [
+            -0.05633,
+            -0.049575,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 7.0
+          }
+        },
+        "mount_hole_9": {
+          "pos_m": [
+            -0.04833,
+            0.025025,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 8.0
+          }
+        },
+        "mount_hole_10": {
+          "pos_m": [
+            -0.03573,
+            0.012425,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 8.0
+          }
+        },
+        "mount_hole_11": {
+          "pos_m": [
+            -0.02333,
+            -0.049575,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 7.0
+          }
+        },
+        "mount_hole_12": {
+          "pos_m": [
+            -0.00333,
+            -0.073575,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 8.0
+          }
+        },
+        "mount_hole_13": {
+          "pos_m": [
+            -0.00333,
+            -0.005575,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 8.0
+          }
+        },
+        "mount_hole_14": {
+          "pos_m": [
+            0.01467,
+            -0.063175,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 8.0
+          }
+        },
+        "mount_hole_15": {
+          "pos_m": [
+            0.01467,
+            -0.037975,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 8.0
+          }
+        },
+        "mount_hole_16": {
+          "pos_m": [
+            0.01467,
+            0.012425,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 8.0
+          }
+        },
+        "mount_hole_17": {
+          "pos_m": [
+            0.02727,
+            -0.075775,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 8.0
+          }
+        },
+        "mount_hole_18": {
+          "pos_m": [
+            0.02727,
+            -0.050575,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 8.0
+          }
+        },
+        "mount_hole_19": {
+          "pos_m": [
+            0.02727,
+            0.025025,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 8.0
+          }
+        },
+        "top_surface": {
+          "pos_m": [
+            -0.025077,
+            -0.026375,
+            0.0555
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "support": true,
+          "data": {
+            "auto": true,
+            "face_area_mm2": 3687.61
+          }
+        }
+      },
+      "provisional": [
+        "physics.density_kg_m3"
+      ],
+      "validation": "assets/Thorlabs_MAX311D_0fd9e6/validation.json",
+      "thumbnail": "assets/Thorlabs_MAX311D_0fd9e6/thumb.png"
+    },
+    "Thorlabs_PT1_6c80ea": {
+      "usd": "assets/Thorlabs_PT1_6c80ea/Thorlabs_PT1_6c80ea.usda",
+      "family": "cad",
+      "semantic_class": "stage_positioner",
+      "manufacturer": "Thorlabs",
+      "part_number": "PT1",
+      "instances_owned": 9,
+      "size_m": [
+        0.0762,
+        0.17729,
+        0.02032
+      ],
+      "body": "dynamic",
+      "mass_kg": 0.334466,
+      "key_points": {
+        "top_hole_0": {
+          "pos_m": [
+            -0.0254,
+            -0.075946,
+            0.02032
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 6.35,
+            "thread_guess": {
+              "thread": "1/4-20",
+              "matched": "major",
+              "err_mm": 0.0
+            }
+          }
+        },
+        "top_hole_1": {
+          "pos_m": [
+            -0.0254,
+            -0.050546,
+            0.02032
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 6.35,
+            "thread_guess": {
+              "thread": "1/4-20",
+              "matched": "major",
+              "err_mm": 0.0
+            }
+          }
+        },
+        "top_hole_2": {
+          "pos_m": [
+            -0.0254,
+            -0.025146,
+            0.02032
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 6.35,
+            "thread_guess": {
+              "thread": "1/4-20",
+              "matched": "major",
+              "err_mm": 0.0
+            }
+          }
+        },
+        "top_hole_3": {
+          "pos_m": [
+            -0.0254,
+            0.000254,
+            0.02032
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 6.35,
+            "thread_guess": {
+              "thread": "1/4-20",
+              "matched": "major",
+              "err_mm": 0.0
+            }
+          }
+        },
+        "top_hole_4": {
+          "pos_m": [
+            -0.0254,
+            -0.037846,
+            0.02032
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 3.2,
+            "thread_guess": {
+              "thread": "8-32",
+              "matched": "minor",
+              "err_mm": 0.02
+            }
+          }
+        },
+        "mount_hole_0": {
+          "pos_m": [
+            -0.024888,
+            -0.066472,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 2.184,
+            "thread_guess": {
+              "thread": "4-40",
+              "matched": "tap_drill",
+              "err_mm": 0.076
+            }
+          }
+        },
+        "mount_hole_1": {
+          "pos_m": [
+            -0.024888,
+            -0.008052,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 2.184,
+            "thread_guess": {
+              "thread": "4-40",
+              "matched": "tap_drill",
+              "err_mm": 0.076
+            }
+          }
+        },
+        "top_hole_5": {
+          "pos_m": [
+            -0.0127,
+            -0.063246,
+            0.02032
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 6.35,
+            "thread_guess": {
+              "thread": "1/4-20",
+              "matched": "major",
+              "err_mm": 0.0
+            }
+          }
+        },
+        "top_hole_6": {
+          "pos_m": [
+            -0.0127,
+            -0.037846,
+            0.02032
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 6.35,
+            "thread_guess": {
+              "thread": "1/4-20",
+              "matched": "major",
+              "err_mm": 0.0
+            }
+          }
+        },
+        "top_hole_7": {
+          "pos_m": [
+            -0.0127,
+            -0.012446,
+            0.02032
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 6.35,
+            "thread_guess": {
+              "thread": "1/4-20",
+              "matched": "major",
+              "err_mm": 0.0
+            }
+          }
+        },
+        "top_hole_8": {
+          "pos_m": [
+            -0.0,
+            0.000254,
+            0.02032
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 6.35,
+            "thread_guess": {
+              "thread": "1/4-20",
+              "matched": "major",
+              "err_mm": 0.0
+            }
+          }
+        },
+        "top_hole_9": {
+          "pos_m": [
+            -0.0,
+            -0.075946,
+            0.02032
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 6.35,
+            "thread_guess": {
+              "thread": "1/4-20",
+              "matched": "major",
+              "err_mm": 0.0
+            }
+          }
+        },
+        "top_hole_10": {
+          "pos_m": [
+            0.0,
+            -0.025146,
+            0.02032
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 11.125
+          }
+        },
+        "top_hole_11": {
+          "pos_m": [
+            0.0,
+            -0.050546,
+            0.02032
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 11.125
+          }
+        },
+        "mount_hole_2": {
+          "pos_m": [
+            4e-06,
+            -0.062662,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 3.2,
+            "thread_guess": {
+              "thread": "8-32",
+              "matched": "minor",
+              "err_mm": 0.02
+            }
+          }
+        },
+        "mount_hole_3": {
+          "pos_m": [
+            4e-06,
+            -0.049962,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 6.731
+          }
+        },
+        "mount_hole_4": {
+          "pos_m": [
+            4e-06,
+            -0.024562,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 6.731
+          }
+        },
+        "mount_hole_5": {
+          "pos_m": [
+            4e-06,
+            -0.011862,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 3.2,
+            "thread_guess": {
+              "thread": "8-32",
+              "matched": "minor",
+              "err_mm": 0.02
+            }
+          }
+        },
+        "top_hole_12": {
+          "pos_m": [
+            0.0127,
+            -0.012446,
+            0.02032
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 6.35,
+            "thread_guess": {
+              "thread": "1/4-20",
+              "matched": "major",
+              "err_mm": 0.0
+            }
+          }
+        },
+        "top_hole_13": {
+          "pos_m": [
+            0.0127,
+            -0.037846,
+            0.02032
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 6.35,
+            "thread_guess": {
+              "thread": "1/4-20",
+              "matched": "major",
+              "err_mm": 0.0
+            }
+          }
+        },
+        "top_hole_14": {
+          "pos_m": [
+            0.0127,
+            -0.063246,
+            0.02032
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 6.35,
+            "thread_guess": {
+              "thread": "1/4-20",
+              "matched": "major",
+              "err_mm": 0.0
+            }
+          }
+        },
+        "mount_hole_6": {
+          "pos_m": [
+            0.024896,
+            -0.008052,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 2.184,
+            "thread_guess": {
+              "thread": "4-40",
+              "matched": "tap_drill",
+              "err_mm": 0.076
+            }
+          }
+        },
+        "mount_hole_7": {
+          "pos_m": [
+            0.024896,
+            -0.066472,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 2.184,
+            "thread_guess": {
+              "thread": "4-40",
+              "matched": "tap_drill",
+              "err_mm": 0.076
+            }
+          }
+        },
+        "top_hole_15": {
+          "pos_m": [
+            0.0254,
+            0.000254,
+            0.02032
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 6.35,
+            "thread_guess": {
+              "thread": "1/4-20",
+              "matched": "major",
+              "err_mm": 0.0
+            }
+          }
+        },
+        "top_hole_16": {
+          "pos_m": [
+            0.0254,
+            -0.050546,
+            0.02032
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 6.35,
+            "thread_guess": {
+              "thread": "1/4-20",
+              "matched": "major",
+              "err_mm": 0.0
+            }
+          }
+        },
+        "top_hole_17": {
+          "pos_m": [
+            0.0254,
+            -0.025146,
+            0.02032
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 6.35,
+            "thread_guess": {
+              "thread": "1/4-20",
+              "matched": "major",
+              "err_mm": 0.0
+            }
+          }
+        },
+        "top_hole_18": {
+          "pos_m": [
+            0.0254,
+            -0.075946,
+            0.02032
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 6.35,
+            "thread_guess": {
+              "thread": "1/4-20",
+              "matched": "major",
+              "err_mm": 0.0
+            }
+          }
+        },
+        "top_hole_19": {
+          "pos_m": [
+            0.0254,
+            -0.037846,
+            0.02032
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 3.2,
+            "thread_guess": {
+              "thread": "8-32",
+              "matched": "minor",
+              "err_mm": 0.02
+            }
+          }
+        },
+        "top_surface": {
+          "pos_m": [
+            -0.0,
+            -0.037846,
+            0.02032
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "support": true,
+          "data": {
+            "auto": true,
+            "face_area_mm2": 6916.72
+          }
+        }
+      },
+      "provisional": [
+        "physics.density_kg_m3"
+      ],
+      "validation": "assets/Thorlabs_PT1_6c80ea/validation.json",
+      "thumbnail": "assets/Thorlabs_PT1_6c80ea/thumb.png"
+    },
+    "Thorlabs_BA2_d7c9c2": {
+      "usd": "assets/Thorlabs_BA2_d7c9c2/Thorlabs_BA2_d7c9c2.usda",
+      "family": "cad",
+      "semantic_class": "optomechanics",
+      "manufacturer": "Thorlabs",
+      "part_number": "BA2",
+      "instances_owned": 9,
+      "size_m": [
+        0.0762,
+        0.0508,
+        0.009529999999999999
+      ],
+      "body": "dynamic",
+      "mass_kg": 0.080251,
+      "key_points": {
+        "mount_hole_0": {
+          "pos_m": [
+            -0.0254,
+            -0.015875,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 6.731
+          }
+        },
+        "top_hole_0": {
+          "pos_m": [
+            -0.0254,
+            -0.015875,
+            0.009525
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 6.731
+          }
+        },
+        "mount_hole_1": {
+          "pos_m": [
+            -0.0254,
+            0.015875,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 6.731
+          }
+        },
+        "top_hole_1": {
+          "pos_m": [
+            -0.0254,
+            0.015875,
+            0.009525
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 6.731
+          }
+        },
+        "top_hole_2": {
+          "pos_m": [
+            -0.0,
+            -0.0127,
+            0.009525
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 6.731
+          }
+        },
+        "top_hole_3": {
+          "pos_m": [
+            -0.0,
+            0.0,
+            0.009525
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 6.731
+          }
+        },
+        "top_hole_4": {
+          "pos_m": [
+            -0.0,
+            0.0127,
+            0.009525
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 6.731
+          }
+        },
+        "mount_hole_2": {
+          "pos_m": [
+            -0.0,
+            -0.0127,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 10.312
+          }
+        },
+        "mount_hole_3": {
+          "pos_m": [
+            -0.0,
+            0.0,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 10.312
+          }
+        },
+        "mount_hole_4": {
+          "pos_m": [
+            -0.0,
+            0.0127,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 10.312
+          }
+        },
+        "mount_hole_5": {
+          "pos_m": [
+            0.0254,
+            -0.015875,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 6.731
+          }
+        },
+        "top_hole_5": {
+          "pos_m": [
+            0.0254,
+            -0.015875,
+            0.009525
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 6.731
+          }
+        },
+        "mount_hole_6": {
+          "pos_m": [
+            0.0254,
+            0.015875,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 6.731
+          }
+        },
+        "top_hole_6": {
+          "pos_m": [
+            0.0254,
+            0.015875,
+            0.009525
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 6.731
+          }
+        }
+      },
+      "provisional": [
+        "physics.density_kg_m3"
+      ],
+      "validation": "assets/Thorlabs_BA2_d7c9c2/validation.json",
+      "thumbnail": "assets/Thorlabs_BA2_d7c9c2/thumb.png"
+    },
+    "Thorlabs_BA2_P5_48f0cc": {
+      "usd": "assets/Thorlabs_BA2_P5_48f0cc/Thorlabs_BA2_P5_48f0cc.usda",
+      "family": "cad",
+      "semantic_class": "optomechanics",
+      "manufacturer": "Thorlabs",
+      "part_number": "BA2-P5",
+      "instances_owned": 20,
+      "size_m": [
+        0.0762,
+        0.0508,
+        0.009529999999999999
+      ],
+      "body": "dynamic",
+      "mass_kg": 0.080251,
+      "key_points": {
+        "mount_hole_0": {
+          "pos_m": [
+            -0.0254,
+            -0.015875,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 6.731
+          }
+        },
+        "top_hole_0": {
+          "pos_m": [
+            -0.0254,
+            -0.015875,
+            0.009525
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 6.731
+          }
+        },
+        "mount_hole_1": {
+          "pos_m": [
+            -0.0254,
+            0.015875,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 6.731
+          }
+        },
+        "top_hole_1": {
+          "pos_m": [
+            -0.0254,
+            0.015875,
+            0.009525
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 6.731
+          }
+        },
+        "top_hole_2": {
+          "pos_m": [
+            -0.0,
+            -0.0127,
+            0.009525
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 6.731
+          }
+        },
+        "top_hole_3": {
+          "pos_m": [
+            -0.0,
+            0.0,
+            0.009525
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 6.731
+          }
+        },
+        "top_hole_4": {
+          "pos_m": [
+            -0.0,
+            0.0127,
+            0.009525
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 6.731
+          }
+        },
+        "mount_hole_2": {
+          "pos_m": [
+            -0.0,
+            -0.0127,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 10.312
+          }
+        },
+        "mount_hole_3": {
+          "pos_m": [
+            -0.0,
+            0.0,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 10.312
+          }
+        },
+        "mount_hole_4": {
+          "pos_m": [
+            -0.0,
+            0.0127,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 10.312
+          }
+        },
+        "mount_hole_5": {
+          "pos_m": [
+            0.0254,
+            -0.015875,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 6.731
+          }
+        },
+        "top_hole_5": {
+          "pos_m": [
+            0.0254,
+            -0.015875,
+            0.009525
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 6.731
+          }
+        },
+        "mount_hole_6": {
+          "pos_m": [
+            0.0254,
+            0.015875,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 6.731
+          }
+        },
+        "top_hole_6": {
+          "pos_m": [
+            0.0254,
+            0.015875,
+            0.009525
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 6.731
+          }
+        }
+      },
+      "provisional": [
+        "physics.density_kg_m3"
+      ],
+      "validation": "assets/Thorlabs_BA2_P5_48f0cc/validation.json",
+      "thumbnail": "assets/Thorlabs_BA2_P5_48f0cc/thumb.png"
+    },
+    "Thorlabs_CP02_48c523": {
+      "usd": "assets/Thorlabs_CP02_48c523/Thorlabs_CP02_48c523.usda",
+      "family": "cad",
+      "semantic_class": "optomechanics",
+      "manufacturer": "Thorlabs",
+      "part_number": "CP02",
+      "instances_owned": 7,
+      "size_m": [
+        0.0414,
+        0.00889,
+        0.04064
+      ],
+      "body": "dynamic",
+      "mass_kg": 0.024059,
+      "key_points": {
+        "mount_hole_0": {
+          "pos_m": [
+            0.0,
+            -0.0,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 4.166,
+            "thread_guess": {
+              "thread": "8-32",
+              "matched": "major",
+              "err_mm": 0.004
+            }
+          }
+        },
+        "optical_axis": {
+          "pos_m": [
+            -0.0,
+            0.0,
+            0.02032
+          ],
+          "normal": [
+            0.0,
+            -1.0,
+            0.0
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "bore_diameter_mm": 26.289,
+            "thread_guess": {
+              "thread": "SM1 (1.035-40)",
+              "matched": "major",
+              "err_mm": 0.001
+            }
+          }
+        },
+        "top_surface": {
+          "pos_m": [
+            -0.0,
+            0.0,
+            0.04064
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "support": true,
+          "data": {
+            "auto": true,
+            "face_area_mm2": 302.32
+          }
+        }
+      },
+      "provisional": [
+        "physics.density_kg_m3"
+      ],
+      "validation": "assets/Thorlabs_CP02_48c523/validation.json",
+      "thumbnail": "assets/Thorlabs_CP02_48c523/thumb.png"
+    },
+    "Thorlabs_KM100_54b57b": {
+      "usd": "assets/Thorlabs_KM100_54b57b/Thorlabs_KM100_54b57b.usda",
+      "family": "cad",
+      "semantic_class": "optomechanics",
+      "manufacturer": "Thorlabs",
+      "part_number": "KM100",
+      "instances_owned": 3,
+      "size_m": [
+        0.052450000000000004,
+        0.052450000000000004,
+        0.039310000000000005
+      ],
+      "body": "dynamic",
+      "mass_kg": 0.055749,
+      "key_points": {
+        "top_hole_0": {
+          "pos_m": [
+            0.018515,
+            -0.013664,
+            0.039311
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 2.032
+          }
+        },
+        "top_surface": {
+          "pos_m": [
+            -0.010554,
+            -0.010554,
+            0.021069
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "support": true,
+          "data": {
+            "auto": true,
+            "face_area_mm2": 702.05
+          }
+        }
+      },
+      "provisional": [
+        "physics.density_kg_m3"
+      ],
+      "validation": "assets/Thorlabs_KM100_54b57b/validation.json",
+      "thumbnail": "assets/Thorlabs_KM100_54b57b/thumb.png"
+    },
+    "Thorlabs_PH3_e6d3a4": {
+      "usd": "assets/Thorlabs_PH3_e6d3a4/Thorlabs_PH3_e6d3a4.usda",
+      "family": "cad",
+      "semantic_class": "optomechanics",
+      "manufacturer": "Thorlabs",
+      "part_number": "PH3",
+      "instances_owned": 9,
+      "size_m": [
+        0.025,
+        0.03541,
+        0.0762
+      ],
+      "body": "dynamic",
+      "mass_kg": 0.077922,
+      "key_points": {
+        "mount_hole_0": {
+          "pos_m": [
+            0.0,
+            0.005207,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 15.875
+          }
+        }
+      },
+      "provisional": [
+        "physics.density_kg_m3"
+      ],
+      "validation": "assets/Thorlabs_PH3_e6d3a4/validation.json",
+      "thumbnail": "assets/Thorlabs_PH3_e6d3a4/thumb.png"
+    },
+    "Thorlabs_SM1L10_7396b5": {
+      "usd": "assets/Thorlabs_SM1L10_7396b5/Thorlabs_SM1L10_7396b5.usda",
+      "family": "cad",
+      "semantic_class": "optomechanics",
+      "manufacturer": "Thorlabs",
+      "part_number": "SM1L10",
+      "instances_owned": 5,
+      "size_m": [
+        0.03048,
+        0.03048,
+        0.02921
+      ],
+      "body": "dynamic",
+      "mass_kg": 0.014561,
+      "key_points": {
+        "mount_hole_0": {
+          "pos_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 22.911
+          }
+        },
+        "mount_hole_1": {
+          "pos_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "normal": [
+            0,
+            0,
+            -1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 26.289,
+            "thread_guess": {
+              "thread": "SM1 (1.035-40)",
+              "matched": "major",
+              "err_mm": 0.001
+            }
+          }
+        },
+        "top_hole_0": {
+          "pos_m": [
+            0.0,
+            0.0,
+            0.02921
+          ],
+          "normal": [
+            0,
+            0,
+            1
+          ],
+          "support": false,
+          "data": {
+            "auto": true,
+            "diameter_mm": 24.003
+          }
+        }
+      },
+      "provisional": [
+        "physics.density_kg_m3"
+      ],
+      "validation": "assets/Thorlabs_SM1L10_7396b5/validation.json",
+      "thumbnail": "assets/Thorlabs_SM1L10_7396b5/thumb.png"
+    },
+    "Thorlabs_TR1_00d2ae": {
+      "usd": "assets/Thorlabs_TR1_00d2ae/Thorlabs_TR1_00d2ae.usda",
+      "family": "cad",
+      "semantic_class": "optomechanics",
+      "manufacturer": "Thorlabs",
+      "part_number": "TR1",
+      "instances_owned": 8,
+      "size_m": [
+        0.01267,
+        0.01267,
+        0.02953
+      ],
+      "body": "dynamic",
+      "mass_kg": 0.022423,
+      "key_points": {},
+      "provisional": [],
+      "validation": "assets/Thorlabs_TR1_00d2ae/validation.json",
+      "thumbnail": "assets/Thorlabs_TR1_00d2ae/thumb.png"
+    },
+    "Thorlabs_TR1_P5_61fc70": {
+      "usd": "assets/Thorlabs_TR1_P5_61fc70/Thorlabs_TR1_P5_61fc70.usda",
+      "family": "cad",
+      "semantic_class": "optomechanics",
+      "manufacturer": "Thorlabs",
+      "part_number": "TR1-P5",
+      "instances_owned": 35,
+      "size_m": [
+        0.01267,
+        0.01267,
+        0.02953
+      ],
+      "body": "dynamic",
+      "mass_kg": 0.022423,
+      "key_points": {},
+      "provisional": [
+        "physics.density_kg_m3"
+      ],
+      "validation": "assets/Thorlabs_TR1_P5_61fc70/validation.json",
+      "thumbnail": "assets/Thorlabs_TR1_P5_61fc70/thumb.png"
+    },
     "FIXTURE_cad_tr2_like_post": {
       "usd": "assets/FIXTURE_cad_tr2_like_post/FIXTURE_cad_tr2_like_post.usda",
       "family": "cad",
@@ -785,7 +2630,9 @@
           }
         }
       },
-      "provisional": [],
+      "provisional": [
+        "physics.density_kg_m3"
+      ],
       "validation": "assets/FIXTURE_cad_tr2_like_post/validation.json",
       "thumbnail": "assets/FIXTURE_cad_tr2_like_post/thumb.png"
     },
@@ -849,7 +2696,9 @@
           }
         }
       },
-      "provisional": [],
+      "provisional": [
+        "physics.density_kg_m3"
+      ],
       "validation": "assets/FIXTURE_cad_ph_like_holder/validation.json",
       "thumbnail": "assets/FIXTURE_cad_ph_like_holder/thumb.png"
     },
@@ -930,7 +2779,9 @@
           }
         }
       },
-      "provisional": [],
+      "provisional": [
+        "physics.density_kg_m3"
+      ],
       "validation": "assets/FIXTURE_cad_cp_like_cage_plate/validation.json",
       "thumbnail": "assets/FIXTURE_cad_cp_like_cage_plate/thumb.png"
     }

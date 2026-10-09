@@ -1,0 +1,144 @@
+#usda 1.0
+(
+    defaultPrim = "Thorlabs_SM1L10_7396b5"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "Thorlabs_SM1L10_7396b5" (
+    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "SemanticsLabelsAPI:class"]
+    assetInfo = {
+        asset identifier = @Thorlabs_SM1L10_7396b5.usda@
+        string name = "Thorlabs_SM1L10_7396b5"
+        string version = "bac95b1ab06b"
+    }
+    customData = {
+        dictionary lab_twin = {
+            string body = "dynamic"
+            string expected_bbox_mm = "[[-15.239999999999998, -15.239999999999995, 0.0], [15.239999999999998, 15.239999999999995, 29.210000100000002]]"
+            string family = "cad"
+            string manufacturer = "Thorlabs"
+            double mass_kg = 0.014561
+            string part_number = "SM1L10"
+            string provisional_params = "physics.density_kg_m3"
+            string route = "VENDOR_STEP"
+            string spec_sha = "bac95b1ab06b"
+        }
+    }
+    kind = "component"
+)
+{
+    float physics:mass = 0.014561
+    token[] semantics:labels:class = ["optomechanics"]
+
+    def Scope "Looks"
+    {
+        def Material "PhysicsMaterial" (
+            prepend apiSchemas = ["PhysicsMaterialAPI"]
+        )
+        {
+            float physics:dynamicFriction = 0.5
+            float physics:restitution = 0
+            float physics:staticFriction = 0.6
+        }
+
+        def Material "cad_default"
+        {
+            token outputs:surface.connect = </Thorlabs_SM1L10_7396b5/Looks/cad_default/PreviewSurface.outputs:surface>
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.75, 0.75, 0.75)
+                float inputs:metallic = 0.5
+                float inputs:roughness = 0.5
+                token outputs:surface
+            }
+        }
+    }
+
+    def Xform "Geometry"
+    {
+        float xformOp:rotateY = 90
+        float3 xformOp:scale = (0.0254, 0.0254, 0.0254)
+        double3 xformOp:translate = (8.881784197001253e-19, -0, 1.0000000155431223e-10)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateY", "xformOp:scale"]
+
+        def "cad" (
+            prepend references = @./cad/cad_raw.usda@
+        )
+        {
+            over "tn__0371E0W_sA"
+            {
+                over "tn__03710021solid1_xK8A"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_SM1L10_7396b5/Looks/cad_default>
+                        rel material:binding:physics = </Thorlabs_SM1L10_7396b5/Looks/PhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "convexDecomposition"
+                    }
+                }
+
+                over "tn__00820011solid1_xK8A"
+                {
+                    over "Mesh" (
+                        prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+                    )
+                    {
+                        rel material:binding = </Thorlabs_SM1L10_7396b5/Looks/cad_default>
+                        rel material:binding:physics = </Thorlabs_SM1L10_7396b5/Looks/PhysicsMaterial> (
+                            bindMaterialAs = "weakerThanDescendants"
+                        )
+                        uniform token physics:approximation = "convexHull"
+                    }
+                }
+            }
+        }
+    }
+
+    def Scope "KeyPoints"
+    {
+        def Xform "mount_hole_0" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 22.911}'
+                double3 normal = (0, 0, -1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "mount_hole_1" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 26.289, "thread_guess": {"thread": "SM1 (1.035-40)", "matched": "major", "err_mm": 0.001}}'
+                double3 normal = (0, 0, -1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "top_hole_0" (
+            customData = {
+                string data = '{"auto": true, "diameter_mm": 24.003}'
+                double3 normal = (0, 0, 1)
+                bool support = 0
+            }
+        )
+        {
+            double3 xformOp:translate = (0, 0, 0.02921)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+    }
+}
+

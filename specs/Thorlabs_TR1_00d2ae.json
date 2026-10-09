@@ -1,0 +1,40 @@
+{
+  "asset_id": "Thorlabs_TR1_00d2ae",
+  "inventory": {
+    "manufacturer": "Thorlabs",
+    "part_number": "TR1",
+    "description": "1/2 in optical post, SS, 8-32 setscrew, 1/4-20 tap, L=1 in",
+    "qty": "8",
+    "instances": "8"
+  },
+  "params": {},
+  "notes": "",
+  "route": "VENDOR_STEP",
+  "family": "cad",
+  "semantic_class": "optomechanics",
+  "cad": {
+    "file": "sources/Thorlabs_TR1_00d2ae/TR1-Step.step",
+    "sha256": "e5c48e86afd43c040464663f136158d2d27ddbb3b7ea22cd259d7707420a1936",
+    "orientation_review": {
+      "by": "Claude (agent, visual review of orientation_sheet.png)",
+      "date": "2026-10-09",
+      "basis": "accepted: stands on the tapped end, 8-32 setscrew stud up",
+      "status": "agent_reviewed"
+    }
+  },
+  "physics": {
+    "body": "dynamic",
+    "collision": "auto",
+    "density_kg_m3": {
+      "value": 7930,
+      "unit": "kg/m^3",
+      "src": "inventory",
+      "quote": "1/2 in optical post, SS, 8-32 setscrew, 1/4-20 tap, L",
+      "material": "stainless"
+    },
+    "mass_kg": {
+      "value": null,
+      "src": "vendor_cad"
+    }
+  }
+}

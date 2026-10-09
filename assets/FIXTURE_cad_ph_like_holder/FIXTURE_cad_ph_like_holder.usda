@@ -21,7 +21,7 @@ def Xform "FIXTURE_cad_ph_like_holder" (
             string manufacturer = "FIXTURE"
             double mass_kg = 0.034237
             string part_number = "ph_like_holder"
-            string provisional_params = ""
+            string provisional_params = "physics.density_kg_m3"
             string route = "VENDOR_STEP"
             string spec_sha = "c3f8a74408b8"
         }
@@ -61,7 +61,7 @@ def Xform "FIXTURE_cad_ph_like_holder" (
     def Xform "Geometry"
     {
         float3 xformOp:scale = (0.001, 0.001, 0.001)
-        double3 xformOp:translate = (-0, -0, -0)
+        double3 xformOp:translate = (-0, -0, 1e-10)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
 
         def "cad" (
@@ -71,7 +71,7 @@ def Xform "FIXTURE_cad_ph_like_holder" (
             over "tn__OpenCASCADESTEPtranslator791_XTCHSV0fF"
             {
                 over "Mesh" (
-                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                    prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
                 )
                 {
                     rel material:binding = </FIXTURE_cad_ph_like_holder/Looks/cad_default>

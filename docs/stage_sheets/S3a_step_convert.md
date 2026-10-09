@@ -58,6 +58,44 @@ S4 then picks collision per mesh from measured convexity (mesh volume / convex-h
 volume): `convexHull` at 0.80 or above, otherwise `convexDecomposition`. For example,
 the post scored 0.97 and the post holder 0.59.
 
+### Orientation (a reviewed decision)
+
+Vendor files do not share an up axis: in the Thorlabs pilot, 7 of 8 SolidWorks files were
+Y-up and one was Z-up. The analyser *proposes* a resting direction (stable flat base area
++ 0.5 for a centred post tap + 0.25 for the file's native down axis), rotates the B-rep,
+and records `orientation` in `cad_analysis.json`. Then:
+
+```bash
+~/isaacsim/python.sh scenes/orientation_sheet.py <asset_id>      # all 6 poses, proposal outlined
+```
+
+Open `build/<asset_id>/orientation_sheet.png` and compare with the vendor's product photo
+or drawing. If the proposal is wrong, set it in the spec and re-run S3a:
+
+```json
+"cad": {"down_axis": "-Y",
+        "orientation_review": {"by": "<name>", "date": "YYYY-MM-DD", "basis": "matches product photo",
+                               "status": "human_reviewed"}}
+```
+
+The as-used pose need not be stable on its own (a mirror mount on a post), so the sheet
+shows all six directions. The pilot record is in `docs/reports/cad_pilot_2026-10-09.md`.
+
+### Other behaviour verified on real vendor files
+
+- Thorlabs' download button shows a drawing number (`0333-E0W.step`), but the saved file
+  is `<PN>-Step.step`, which is what the ingest matches.
+- File units vary (4 of 8 pilot files are inches); both readers are compared in mm.
+- Surface-only exports (no closed solids) fall back to mesh volume for mass (`mass_basis`).
+- **Collision budget:** meshes under 0.5 % of the assembly volume get no collider;
+  convex decomposition is used only for meshes of at least 5 % that are concave
+  (convexity < 0.80).
+- **Support key point:** the highest upward planar face of at least 10 % of the footprint;
+  S5 sizes the probe to it, and reports "obstructed" (pass with warning) when taller
+  geometry inside the probe footprint holds it up.
+- **Thread guesses** come from hole diameter only and cannot tell pitches apart
+  (1/4-20 and 1/4-80 share 6.35 mm).
+
 Regression test for the analyser: `.venv/bin/python tests/test_cad_analyze.py`
 (synthetic parts with known features from `tests/make_cad_fixtures.py`).
 

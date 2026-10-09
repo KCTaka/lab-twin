@@ -1,0 +1,62 @@
+{
+  "asset_id": "Thorlabs_SM1L10_7396b5",
+  "pass": true,
+  "checks": {
+    "C1_metrics": {
+      "pass": true,
+      "mpu": 1.0,
+      "up": "Z"
+    },
+    "C2_bbox": {
+      "pass": true,
+      "axes": [
+        {
+          "axis": "x",
+          "expected_mm": 30.48,
+          "got_mm": 30.48,
+          "ok": true
+        },
+        {
+          "axis": "y",
+          "expected_mm": 30.48,
+          "got_mm": 30.48,
+          "ok": true
+        },
+        {
+          "axis": "z",
+          "expected_mm": 29.21,
+          "got_mm": 29.21,
+          "ok": true
+        }
+      ]
+    },
+    "C3_floor_origin": {
+      "pass": true,
+      "min_z_mm": 0.0
+    },
+    "C4_collision": {
+      "pass": true,
+      "shapes": 2,
+      "collidable": 2
+    },
+    "C5_physics_settle": {
+      "pass": true,
+      "applicable": true,
+      "probes": [
+        {
+          "probe": "asset_itself",
+          "drift_mm": 0.35,
+          "speed_mm_s": 0.0,
+          "ok": true
+        }
+      ],
+      "note": ""
+    },
+    "C6_provenance": {
+      "pass": true,
+      "provisional": [
+        "physics.density_kg_m3"
+      ]
+    }
+  }
+}

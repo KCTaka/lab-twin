@@ -92,3 +92,10 @@ def provisional_params(spec: dict) -> list[str]:
     if isinstance(rho, dict) and rho.get("src") == "assumed":   # mass derived from it is provisional too
         out.append("physics.density_kg_m3")
     return out
+
+
+# HTTP identity for the few vendor requests the pipeline makes (sitemaps, product pages).
+# Contact address given by the group for this purpose (2026-10-09). Honour robots.txt:
+# Thorlabs asks for Crawl-delay 30 and disallows *.step / *.zip for automated agents.
+USER_AGENT = "lab-twin-asset-pipeline/0.1 (University of Toronto research; contact: kc.takahashi@mail.utoronto.ca)"
+CRAWL_DELAY_S = {"www.thorlabs.com": 30}

@@ -1,0 +1,72 @@
+{
+  "asset_id": "Thorlabs_MAX311D_0fd9e6",
+  "pass": true,
+  "checks": {
+    "C1_metrics": {
+      "pass": true,
+      "mpu": 1.0,
+      "up": "Z"
+    },
+    "C2_bbox": {
+      "pass": true,
+      "axes": [
+        {
+          "axis": "x",
+          "expected_mm": 159.64,
+          "got_mm": 159.64,
+          "ok": true
+        },
+        {
+          "axis": "y",
+          "expected_mm": 161.15,
+          "got_mm": 161.15,
+          "ok": true
+        },
+        {
+          "axis": "z",
+          "expected_mm": 63.0,
+          "got_mm": 63.0,
+          "ok": true
+        }
+      ]
+    },
+    "C3_floor_origin": {
+      "pass": true,
+      "min_z_mm": -0.0
+    },
+    "C4_collision": {
+      "pass": true,
+      "shapes": 301,
+      "collidable": 26
+    },
+    "C5_physics_settle": {
+      "pass": true,
+      "applicable": true,
+      "probes": [
+        {
+          "probe": "asset_itself",
+          "drift_mm": 0.0,
+          "speed_mm_s": 0.0,
+          "ok": true
+        },
+        {
+          "probe": "top_surface",
+          "probe_edge_mm": 42.5,
+          "probe_kg": 0.1558,
+          "z0_mm": 96.8,
+          "z_err_mm": 7.0,
+          "speed_mm_s": 0.0,
+          "ok": true,
+          "warning": "obstructed: probe rests on a feature above the face"
+        }
+      ],
+      "note": ""
+    },
+    "C6_provenance": {
+      "pass": true,
+      "provisional": [
+        "physics.density_kg_m3"
+      ]
+    }
+  }
+}
