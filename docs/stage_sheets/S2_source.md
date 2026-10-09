@@ -16,6 +16,18 @@ Tested 2026-10-09 from the lab machine:
 So a person (or a browser-driving agent) downloads the file, then runs one
 command to register it.
 
+```mermaid
+flowchart LR
+    page["product_page<br/>(verify if url_unverified)"] --> who{"vendor site<br/>scriptable?"}
+    who -->|"no: Newport 403,<br/>Thorlabs JS app"| manual["person / browser agent<br/>downloads file"]
+    who -->|yes| manual
+    manual --> rec["s2_record_source.py<br/>--url ... --done"]
+    rec --> store[("sources/id/file<br/>(git-ignored)")]
+    rec --> log[("sources/id/SOURCE.json<br/>url, date, sha256")]
+    rec --> st["manifest: s2_source = done"]
+    page -->|"nothing found"| blk["s2_source =<br/>blocked:no_source"]
+```
+
 ## Steps
 
 1. Pick a row with `s2_source = todo`. Open its `product_page`. If the

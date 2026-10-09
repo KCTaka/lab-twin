@@ -23,6 +23,24 @@ This launches Isaac Sim's Kit with `--no-window` and the HOOPS converter
 (`omni.kit.converter.hoops_core`), so it works over plain ssh. A cold start takes
 about 20 s and a warm one about 2 s per file.
 
+```mermaid
+sequenceDiagram
+    participant C as s3_step_convert.py
+    participant K as kit --no-window
+    participant H as hoops_main.py (HOOPS Exchange)
+    participant A as s4_author_usd.py
+    C->>C: read spec cad.file, write cad_options.json
+    C->>K: subprocess: --enable omni.kit.converter.hoops_core --exec hoops_main.py
+    K->>H: --input-path STEP --output-path cad_raw.usda
+    H-->>K: "File conversion is successful"
+    K-->>C: exit code + log
+    C->>C: cad_convert.json (sha256, options, seconds, ok)
+    Note over C,A: later, in S4
+    A->>A: copy to assets/id/cad/, reference it
+    A->>A: recentre (footprint centre, min z = 0), scale 0.001
+    A->>A: CollisionAPI + MeshCollisionAPI per mesh, mass = volume x density
+```
+
 ## Check
 
 `build/<asset_id>/cad_convert.json` must have `"ok": true`. Known converter

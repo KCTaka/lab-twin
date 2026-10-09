@@ -11,6 +11,29 @@ S4 re-runs automatically when a spec changes (spec hash differs from
 `build/<id>/authored.json`), and S5 re-runs when the USD is newer than its
 validation report.
 
+```mermaid
+flowchart TD
+    usd["assets/id/id.usda"] --> c1{"C1 mpu = 1, Z-up,<br/>defaultPrim"}
+    c1 --> c2{"C2 bbox = expected<br/>max(1 mm, 2 %)"}
+    c2 --> c3{"C3 min z = 0"}
+    c3 --> c4{"C4 colliders<br/>present"}
+    c4 --> dyn{"dynamic body?"}
+    dyn -->|yes| self["asset alone 1.5 s:<br/>drift and speed < 5 mm(/s)"]
+    dyn -->|no| sup
+    self --> sup{"support<br/>key points?"}
+    sup -->|yes| probe["probe cube per point,<br/>dropped 20 mm:<br/>rests within 5 mm"]
+    sup -->|no| na["C5 not applicable<br/>(wall-hung panels)"]
+    probe --> c6["C6 list assumed params"]
+    na --> c6
+    c6 --> res{"all pass?"}
+    res -->|"yes, none assumed"| done["done"]
+    res -->|"yes, some assumed"| prov["done:provisional"]
+    res -->|no| blk["blocked:failed_Cn<br/>see validation.json"]
+```
+
+Any failing C1-C4 check also ends in `blocked`; the chart shows the order in which
+checks run, not early exits.
+
 ## What S5 checks (assets/<id>/validation.json)
 
 | Check | Pass condition | Usual cause of failure |

@@ -9,6 +9,31 @@ documents recorded in `sources/<asset_id>/SOURCE.json` (see S2).
 **You must not:** write USD, edit generator code, or change ranges in
 `pipeline/generators/__init__.py` to make a check pass.
 
+## Where each number comes from
+
+```mermaid
+flowchart TD
+    p(["required parameter<br/>(REQUIRED in generators)"]) --> m{"measured<br/>in the lab?"}
+    m -->|yes| M["src: measured<br/>+ by, date"]
+    m -->|no| d{"datasheet or<br/>drawing?"}
+    d -->|yes| D["src: datasheet<br/>+ url, quote, page"]
+    d -->|no| i{"in the inventory<br/>description?"}
+    i -->|yes| I["src: inventory<br/>+ quote"]
+    i -->|no| c{"vendor CAD?"}
+    c -->|yes| C["src: vendor_cad<br/>+ url"]
+    c -->|no| A["src: assumed + note<br/>asset becomes provisional"]
+    M --> chk
+    D --> chk
+    I --> chk
+    C --> chk
+    A --> chk
+    chk["s3_check_spec.py id"] --> ok{"S3 OK?"}
+    ok -->|"no: R1-R5 lines"| fix["fix the reported lines<br/>(never edit ranges)"]
+    fix --> chk
+    ok -->|yes| mark["--mark: s3_geometry = done"]
+    ok -->|"source conflict, no family,<br/>most values assumed"| esc["blocked: escalate to a human"]
+```
+
 ## Steps
 
 1. Open the spec. Read `family`. If `family` is empty, **stop**: set

@@ -32,6 +32,20 @@ Which inventory rows are in which room is not recorded anywhere we found; a
 - The group also has a `digital-twin-lab` project on an Omniverse Nucleus server (address
   not yet known to this repo).
 
+### From room data to a scene
+
+```mermaid
+flowchart LR
+    plan["floor plan<br/>(PDF / DWG)"] --> yaml
+    survey["tape-measure survey<br/>+ room column"] --> yaml
+    scan["phone LiDAR scan"] -.->|"shell; scale checked<br/>against survey"| yaml
+    lib[("assets/library.json<br/>validated assets")] --> build
+    yaml["scenes/layouts/room.yaml<br/>status: draft / measured"] --> build["build_layout.py"]
+    build --> usd[("scenes/lab_layout_room.usda")]
+    build --> png["top + perspective renders"]
+    build --> warn["warnings: overlaps,<br/>outside room"]
+```
+
 ## Layout file
 
 Copy `scenes/layouts/EXAMPLE_not_the_lab.yaml` to `scenes/layouts/<room>.yaml`.
@@ -52,6 +66,22 @@ placements:
   - {id: table_A, asset: <asset_id>, at: [x, y], yaw: 0}
   - {id: board_1, asset: <asset_id>, wall: 2, offset: 3.0, z: 0.9}
   - {id: shelf_A, asset: <asset_id>, host: table_A.surface_center, at: [0, 0.45]}   # not `on:` (YAML boolean)
+```
+
+### How a placement is resolved
+
+```mermaid
+flowchart TD
+    pl["placement entry"] --> keys{"only known keys?"}
+    keys -->|no| stop["exit with error<br/>(a silently ignored key<br/>misplaces an asset)"]
+    keys -->|yes| w{"wall?"}
+    w -->|yes| W["point at offset along wall i;<br/>back face on the inner wall;<br/>yaw = wall direction + 180 deg; z given"]
+    w -->|no| h{"host?"}
+    h -->|yes| H["host key point in world<br/>+ at offset in host frame<br/>- own anchor key point"]
+    h -->|no| F["floor: at = x, y; yaw; z"]
+    W --> chk["2D overlap test (SAT),<br/>skipped when z ranges are disjoint;<br/>outside-room test"]
+    H --> chk
+    F --> chk
 ```
 
 - `asset` must be an id in `assets/library.json` (validated assets only).

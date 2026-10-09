@@ -10,6 +10,21 @@ looking at results.
 
 ## Pipeline
 
+```mermaid
+flowchart LR
+    inv[("inventory<br/>823 rows")] --> prep["S0-S1<br/>triage + normalize"]
+    prep --> spec[/"spec per asset<br/>dims + provenance"/]
+    src["S2 sources<br/>datasheet / STEP"] -.-> spec
+    spec --> gate{"S3 gate"}
+    gate -->|OK| s4["S4 USD"] --> s5{"S5 physics<br/>validation"}
+    s5 -->|pass| lib[("S6 library")]
+    s5 -->|fail| spec
+    lib --> scenes["gallery +<br/>room layout"]
+```
+
+Diagrams of the data model, USD asset structure, validation sequence, status
+states and deployment are in [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md).
+
 | Stage | Script | What it does |
 |---|---|---|
 | S0 triage | `pipeline/s0_triage.py` | Assigns priority, route and flags, and parses dimensions from each description |

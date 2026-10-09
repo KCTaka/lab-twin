@@ -12,6 +12,28 @@ student) handling **one asset at one stage** should need nothing else.
 | S4 author, S5 validate, S6 register | [S4_S6_author_validate_register.md](S4_S6_author_validate_register.md) | script | yes |
 | Layout scene | [LAYOUT.md](LAYOUT.md) | person + LLM | blocked on room geometry |
 
+```mermaid
+flowchart LR
+    subgraph auto["deterministic scripts"]
+        s01["S0-S1<br/>triage, normalize"]
+        s3a["S3a STEP to USD"]
+        s46["S4-S6<br/>author, validate, register"]
+    end
+    subgraph people["person, browser agent or small LLM"]
+        s2["S2 get the file"]
+        s3["S3 fill the spec"]
+        layout["layout YAML"]
+    end
+    s01 --> s2 --> s3
+    s2 --> s3a
+    s3 -->|"S3 gate (script)"| s46
+    s3a --> s46
+    s46 --> layout
+```
+
+Everything a person or LLM produces passes a machine check before it is used:
+specs pass the S3 gate, assets pass S5, and layouts are checked for overlaps on build.
+
 ## Universal rules (apply to every stage)
 
 1. **Never invent a number.** Every value comes from the inventory, a datasheet

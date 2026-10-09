@@ -15,6 +15,24 @@
   and creates spec stubs for active scopes. It never overwrites an existing spec
   and keeps stage progress across re-runs.
 
+## What S1 does to one triage row
+
+```mermaid
+flowchart TD
+    row["triage row"] --> semi{"part-number field<br/>contains ';'?"}
+    semi -->|yes| split["one child row per P/N<br/>id = parent__PN<br/>flags: split_from_group, qty_uncertain"]
+    semi -->|no| one["one row"]
+    split --> pack
+    one --> pack["instances = qty x pack_size"]
+    pack --> rules{"first matching RULES entry<br/>(manufacturer + P/N regex)"}
+    rules -->|match| sf["scope, family,<br/>optional route override"]
+    rules -->|"no match"| dflt["priority X: excluded<br/>Instrument: instruments_deferred<br/>else backlog_Pn"]
+    sf --> act{"scope in<br/>ACTIVE_SCOPES?"}
+    dflt --> act
+    act -->|yes| todo["stage columns = todo<br/>+ spec stub (never overwritten)"]
+    act -->|no| skip["stage columns = skip:scope"]
+```
+
 ## Changing scope
 
 To bring more rows into the pipeline, add a rule to `RULES` (manufacturer regex,
