@@ -10,8 +10,27 @@ effort:
 | Tape/laser-measure survey + photos | ~1 cm | 1-2 h | walls, doors, windows, column/sink/fume-hood positions, then each table's corner positions |
 | 3D scan (phone LiDAR / photogrammetry) | 1-3 cm, captures clutter | 1 h + processing | best for later visual fidelity; still needs the survey for scale checks |
 
-The inventory hints that at least one room is **SF4202** (the TMC table top was
-bought to "replace water-damaged top in SF4202"); confirm the full room list.
+### Rooms (group wiki, JPPhotonics/group-information, checked 2026-10-09)
+
+| Room | Use | Notes |
+|---|---|---|
+| SF4107 | Telecom characterization lab | most of this inventory (C/O-band lasers, Keysight LCA/DCA, probe stations) likely lives here: confirm |
+| SF4202 | Visible light characterization lab | the inventory's TMC top replaced a "water-damaged top in SF4202" |
+| BA5159 | Voinigescu lab (shared high-speed equipment) | listed in `omniverse-lab/instruments/Equipment in Joyce's lab.pdf` |
+
+Which inventory rows are in which room is not recorded anywhere we found; a
+`room` column (filled during the survey) is the cheapest way to get it.
+
+### Prior work: JPPhotonics/omniverse-lab
+
+- `assets/lab-scene/lab_scene_setup.usd`: a 6 x 5 x 3 m placeholder room (floor + two
+  walls), a generic 1.8 x 0.75 x 0.9 m bench, and references to vendor CAD (Newport TF-38-24-I,
+  Thorlabs MDT693B, BA4/M, HFA001, L490). Its room is not a measured shell.
+- `instruments/l490/`: Thorlabs L490 USD with coupling-behaviour scripts;
+  `instruments/keithley2400/emulator_kb/`: SCPI emulator knowledge base. These are the
+  instrument-tier work this pipeline deferred, so they should be merged, not duplicated.
+- The group also has a `digital-twin-lab` project on an Omniverse Nucleus server (address
+  not yet known to this repo).
 
 ## Layout file
 
