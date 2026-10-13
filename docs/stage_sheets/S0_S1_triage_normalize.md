@@ -40,7 +40,7 @@ part-number regex, scope, family, optional route override, note) and add its
 scope to `ACTIVE_SCOPES`. Prefer explicit rules over keyword heuristics: every
 assignment should be explainable from one line.
 
-## Current scopes (2026-10-09)
+## Current scopes (2026-10-12)
 
 | scope | rows | meaning |
 |---|---|---|
@@ -48,6 +48,7 @@ assignment should be explainable from one line.
 | layout_L2_room_tbd | 7 | large process tools (ICP etcher, pumps, chiller): which room? |
 | bench_items | 3 | bench-top units placed on furniture later |
 | instruments_deferred | 50 | instruments: later doc-to-asset pipeline |
-| backlog_P1..P3 | 807 | stages, probes, optomechanics, fibre, etc. |
+| cad_ingested | 10 | vendor STEP downloaded (CAD pilot), routed to the CAD path (active) |
+| backlog_P1..P3 | 797 | stages, probes, optomechanics, fibre, etc. |
 | excluded | 27 | consumables, options, kit parents |
-| pipeline_test | 1 | synthetic STEP fixture for the CAD route |
+| pipeline_test | 3 | synthetic STEP fixtures for the CAD route; validated, not registered |

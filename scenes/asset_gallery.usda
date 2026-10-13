@@ -22,7 +22,7 @@ def Xform "World"
         {
             color3f[] primvars:displayColor = [(0.55, 0.56, 0.58)]
             double size = 1
-            float3 xformOp:scale = (37.01061, 8, 0.02)
+            float3 xformOp:scale = (35.43786, 8, 0.02)
             uniform token[] xformOpOrder = ["xformOp:scale"]
         }
     }
@@ -42,7 +42,7 @@ def Xform "World"
 
     def Xform "Gallery"
     {
-        double3 xformOp:translate = (-16.505305, 0, 0)
+        double3 xformOp:translate = (-15.718930000000002, 0, 0)
         uniform token[] xformOpOrder = ["xformOp:translate"]
 
         def Xform "Newport_OTS_UT2_48_12_I_6fd189" (
@@ -213,35 +213,11 @@ def Xform "World"
             uniform token[] xformOpOrder = ["xformOp:translate"]
         }
 
-        def Xform "FIXTURE_cad_cp_like_cage_plate" (
-            prepend references = @../assets/FIXTURE_cad_cp_like_cage_plate/FIXTURE_cad_cp_like_cage_plate.usda@
-        )
-        {
-            double3 xformOp:translate = (30.933020000000003, 0, 0)
-            uniform token[] xformOpOrder = ["xformOp:translate"]
-        }
-
-        def Xform "FIXTURE_cad_ph_like_holder" (
-            prepend references = @../assets/FIXTURE_cad_ph_like_holder/FIXTURE_cad_ph_like_holder.usda@
-        )
-        {
-            double3 xformOp:translate = (31.463045, 0, 0)
-            uniform token[] xformOpOrder = ["xformOp:translate"]
-        }
-
-        def Xform "FIXTURE_cad_tr2_like_post" (
-            prepend references = @../assets/FIXTURE_cad_tr2_like_post/FIXTURE_cad_tr2_like_post.usda@
-        )
-        {
-            double3 xformOp:translate = (31.978920000000002, 0, 0)
-            uniform token[] xformOpOrder = ["xformOp:translate"]
-        }
-
         def Xform "Thorlabs_TR1_00d2ae" (
             prepend references = @../assets/Thorlabs_TR1_00d2ae/Thorlabs_TR1_00d2ae.usda@
         )
         {
-            double3 xformOp:translate = (32.491605, 0, 0)
+            double3 xformOp:translate = (30.918855000000004, 0, 0)
             uniform token[] xformOpOrder = ["xformOp:translate"]
         }
 
@@ -249,7 +225,7 @@ def Xform "World"
             prepend references = @../assets/Thorlabs_TR1_P5_61fc70/Thorlabs_TR1_P5_61fc70.usda@
         )
         {
-            double3 xformOp:translate = (33.004275, 0, 0)
+            double3 xformOp:translate = (31.431525000000004, 0, 0)
             uniform token[] xformOpOrder = ["xformOp:translate"]
         }
     }

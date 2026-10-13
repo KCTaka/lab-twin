@@ -9,8 +9,8 @@ Outputs
   assets/<asset_id>/thumb.png          3/4 view of each asset, framed by its bbox
 
 The gallery is a REVIEW scene (is every asset the right size and shape?), not
-the lab layout; the layout is built from scenes/lab_layout.yaml once room
-geometry is known.
+the lab layout; layouts are built in the lab-room repo (scenes/build_layout.py
+there), which reads assets/library.json from this checkout.
 """
 from __future__ import annotations
 

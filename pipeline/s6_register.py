@@ -4,6 +4,8 @@
 The library is what scene configs reference (cf. MATTERIX Fig. 3: a scene is a
 config dict of asset ids + poses; the asset carries geometry, physics and key
 points). Only assets whose s5_validate starts with `done` are registered.
+Pipeline self-test fixtures (scope `pipeline_test`) run S3-S5 like any asset but are
+never registered: the library is what layouts place, and a fixture is not a lab object.
 
 Each entry records: usd path, family, semantic class, footprint/height (m),
 key points (m, asset frame), body type, mass, provisional params, and the
@@ -59,6 +61,9 @@ def entry(row):
 def main():
     lib = {}
     for r in read_manifest():
+        if r["scope"] == "pipeline_test":
+            set_status(r["asset_id"], "s6_register", "skip:pipeline_test")
+            continue
         if r["s5_validate"].startswith("done"):
             lib[r["asset_id"]] = entry(r)
             set_status(r["asset_id"], "s6_register", "done")

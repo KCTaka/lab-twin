@@ -69,4 +69,5 @@ Run it whenever a family or the validator changes.
 
 `assets/library.json`: one entry per validated asset, with the USD path, size (m),
 key points (m, asset frame), body type, mass and provisional list. Scene
-builders read only this file.
+builders read only this file. Self-test fixtures (`FIXTURE_*`, scope `pipeline_test`)
+are validated but never registered (`s6_register = skip:pipeline_test`).

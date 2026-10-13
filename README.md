@@ -35,7 +35,7 @@ states and deployment are in [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md).
 | S4 author | `pipeline/s4_author_usd.py` | Authors USD in metres, Z-up, with collision, physics material, mass, key points and semantics |
 | S5 validate | `pipeline/s5_validate.py` | Runs metrics, bbox, floor-origin and collision checks, plus a PhysX drop test on every support surface, with a negative control |
 | S6 register | `pipeline/s6_register.py` | Writes `assets/library.json`, which scene builders read |
-| scenes | `scenes/build_gallery.py`, `scenes/build_layout.py` | Builds the review gallery with thumbnails, and the room layout from YAML |
+| scenes | `scenes/build_gallery.py` | Builds the review gallery with thumbnails. Room layouts are built in [lab-room](https://github.com/KCTaka/lab-room), which reads `assets/library.json` |
 
 ```bash
 python3 -m venv .venv && .venv/bin/pip install cadquery trimesh numpy jsonschema pyyaml pandas pillow

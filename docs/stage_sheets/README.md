@@ -10,7 +10,7 @@ student) handling **one asset at one stage** should need nothing else.
 | S3 geometry (spec) | [S3_geometry_spec.md](S3_geometry_spec.md) | small LLM + checker | LLM fills, code checks |
 | S3a STEP to USD | [S3a_step_convert.md](S3a_step_convert.md) | script | yes (headless Kit) |
 | S4 author, S5 validate, S6 register | [S4_S6_author_validate_register.md](S4_S6_author_validate_register.md) | script | yes |
-| Layout scene | [LAYOUT.md](LAYOUT.md) | person + LLM | blocked on room geometry |
+| Layout scene | moved to the lab-room repo (`docs/LAYOUT.md`, `docs/SCAN.md`) | person + LLM | room scanned 2026-10-09; shell fit next |
 
 ```mermaid
 flowchart LR

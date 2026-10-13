@@ -31,7 +31,7 @@ flowchart TD
     subgraph use["4 · Use"]
         direction LR
         lib[("assets/library.json")] --> gal["review gallery<br/>+ thumbnails"]
-        lib --> lay["room layout<br/>from YAML"]
+        lib --> lay["room layout<br/>(lab-room repo)"]
     end
 
     stub --> S3
@@ -235,6 +235,7 @@ flowchart LR
     person -->|"s2_record_source.py"| batch
     batch -->|"git push"| gh[("GitHub<br/>KCTaka/lab-twin (private)")]
     batch -.->|"not yet connected"| nucleus[("Omniverse Nucleus<br/>digital-twin-lab")]
+    gh -->|"library.json"| lr[("GitHub<br/>KCTaka/lab-room (private)<br/>scan, shell, layout")]
     gh -.->|"merge plan open"| ovl["JPPhotonics/omniverse-lab<br/>L490, Keithley 2400 work"]
 ```
 
